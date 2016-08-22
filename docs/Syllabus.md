@@ -14,18 +14,18 @@ The methods, applications, and implications of genomics--the analysis of whole g
 - Office hours: Tues/Fri 8-10am in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/
 
 
-### 1. Contact Information for Dr Raymond Holsapple
+### 2. Contact Information for Dr Raymond Holsapple
 
 - Office: 193 Rudman Hall
 - Phone: XXX-XXX-XXXX
-- Email (preferred):@wildcats.edu
+- Email:@wildcats.edu
 - Twitter: @???
 - Office hours: ???
 
 
-### 2. Lecture: MWF 11:10-12:00PM Rudman G89
-### 3. Lab: Friday Either 1:10-3:00PM or 3:10-5:00PM in Hewitt 301
-### 4. Web Resources:
+### 3. Lecture: MWF 11:10-12:00PM Rudman G89
+### 4. Lab: Friday Either 1:10-3:00PM or 3:10-5:00PM in Hewitt 301
+### 5. Web Resources:
 
 - Website: https://gen711.github.io/Gen711
 - Canvas: I will use this site for grades, only!
@@ -34,7 +34,7 @@ The methods, applications, and implications of genomics--the analysis of whole g
 - BioStars: https://www.biostars.org/t/
 - Summer workshop website that has lots of good info: http://angus.readthedocs.org/en/2016
 
-### 5. Assignments and Exams
+### 6. Assignments and Exams
 
 **Weekly Assignments:** These are assigned in lab, and typically involve some sort of sequence analysis and short answer questions. There will be 5 throughout the semester worth 20 points each (100pts total). You may work in groups, but you must submit your own report. These will be due 1 week after they are assigned, typically on Tuesday, unless otherwise instructed. **NO late assignments accepted**
 
@@ -44,11 +44,14 @@ The methods, applications, and implications of genomics--the analysis of whole g
 
 **Participation:** Attendance to the lab portion of the class is critical. We have 13 lab sessions. 10 points each, maximum of 120 points may be earned. One lab may be missed without penalty. Additional missed labs may be made up with prior approval (> 1 week) from Prof. MacManes
 
-### 6. Materials Needed
+### 7. Materials Needed
 
 **Amazon Web services:** For lab exercises, we will use the Amazon Computer Cloud (EC2). You will need to set up an account during the first lab, and will be given $100 to pay for the analyses you will run this semester. The EC2 interface will work properly in OSX and Linux operating systems. For those of you with Windows computers, you will need to install a terminal emulator (MobaXterm is one option), or use the OSX computers in the computer lab.
 
-### 7. Grades
+**Readings:** I will post photocopies or weblinks to the readings, most of which will be primary literature.  
+
+
+### 8. Grades
 
 The grade scale is: 93-100=A; 90-92.99=A-; 87-89.99=B+; 83-86.99=B; 80-82.99=B-; 77-79.99=C+; 73-76.99=C; 70-72.99=C-; 67-69.99=D+; 63-66.99=D; 60-62.99=D-; Below 60=F
 
@@ -60,20 +63,20 @@ The grade scale is: 93-100=A; 90-92.99=A-; 87-89.99=B+; 83-86.99=B; 80-82.99=B-;
 |Participation  |120  
 |**Total Points**   |**720**
 
-### 8. Course Policies
+### 9. Course Policies
 
 **Student conduct:** Honesty is a core value at the University of New Hampshire.  The members of this academic community require and expect one another to conduct themselves with integrity.  The Student Rights, Rules and Responsibilities handbook (www.unh.edu/student/rights) explains UNH's expectation for academic honesty and defines those actions that constitute academic misconduct with regard to exams, homework, plagiarism, computers, etc.  The penalty for the first incident of cheating, plagiarism or other breaches of the university's academic honesty policies will be an automatic F grade for that assignment.  A second infraction will result in an F grade for the class.  The Dean's office will be notified and dismissal from the university could result.
 
 **Disability Services for Students:** The University of New Hampshire is committed to providing students with documented disabilities equal access to all university programs and facilities.  If you have a disability requiring accommodation, you must register with Disability Services for Students (DSS).  Contact DSS at 862-2607.  If you have received an Accommodation Letter for this course from DSS, please meet with Prof. MacManes privately to review those accommodations.
 
-### 9. How to get an A. Receiving an A in this shall should be really easy (I mean it!), assuming you follow these basic guidelines.
+### 10. How to get an A. Receiving an A in this shall should be really easy (I mean it!), assuming you follow these basic guidelines.
 
 - Come to class and lab, pay attention, be interactive: Active learning far outcompetes passive, so while coming to class itself is good, interacting/asking questions will be much better.
 - Ask questions when your confused. Come to office hours, or schedule a time to meet.
 - Don't cram! Study a little, several times per week. You will remember more, and the exams will be less stressful.
 - Read the book and use (with caution) online resources.
 
-### 10. Course Schedule - Subject to Change
+### 11. Course Schedule - Subject to Change
 
 
 |  Week                     |  Reading   | Topic                                           |    Lab                     |
