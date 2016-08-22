@@ -1,9 +1,9 @@
-# Genetics 711/811 | Bioinformatics and Genomics | Syllabus
+## Genetics 711/811 | Bioinformatics and Genomics | Syllabus
 
 
 ### 0. Course Description:
 
-    The methods, applications, and implications of genomics--the analysis of whole genomes. Microbial, plant and animal genomics are addressed, as well as medical, ethical and legal implications. The lab provides exposure and experience on a range of bioinformatics approaches--the computer applications used in genome analysis.
+The methods, applications, and implications of genomics--the analysis of whole genomes. Microbial, plant and animal genomics are addressed, as well as medical, ethical and legal implications. The lab provides exposure and experience on a range of bioinformatics approaches--the computer applications used in genome analysis.
 
 ### 1. Contact Information for Professor Matthew MacManes
 
@@ -78,7 +78,7 @@
 
 ### 10. Course Schedule - Subject to Change
 
-    
+
                     |  Week                     |  Reading   | Topic                                           |    Lab                     |
                     |---------------------------|------------|-------------------------------------------------|----------------------------|
                     | 31Aug                     |            | Intro to Bioinformatics and Molecular Evolution | BLAST                      |
