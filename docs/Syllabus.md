@@ -69,7 +69,8 @@ The grade scale is: 93-100=A; 90-92.99=A-; 87-89.99=B+; 83-86.99=B; 80-82.99=B-;
 
 **Disability Services for Students:** The University of New Hampshire is committed to providing students with documented disabilities equal access to all university programs and facilities.  If you have a disability requiring accommodation, you must register with Disability Services for Students (DSS).  Contact DSS at 862-2607.  If you have received an Accommodation Letter for this course from DSS, please meet with Prof. MacManes privately to review those accommodations.
 
-### 10. How to get an A. Receiving an A in this shall should be really easy (I mean it!), assuming you follow these basic guidelines.
+### 10. How to get an A.
+Receiving an A in this shall should be really easy (I mean it!), assuming you follow these basic guidelines.
 
 - Come to class and lab, pay attention, be interactive: Active learning far outcompetes passive, so while coming to class itself is good, interacting/asking questions will be much better.
 - Ask questions when your confused. Come to office hours, or schedule a time to meet.
