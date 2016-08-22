@@ -17,7 +17,7 @@
 
 3. Lab: Friday 3:10-5:00PM Hewitt 301.
 
-4. Syllabus :doc:`Syllabus`
+4. Syllabus [Syllabus](Syllabus.md)
 
 5. Lecture Materials.
     -  [Welcome Lecture](Welcome Lecture 0 <lecture/Lecture_1.pdf)
