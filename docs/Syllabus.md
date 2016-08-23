@@ -11,7 +11,7 @@ The methods, applications, and implications of genomics--the analysis of whole g
 - Phone: 603-862-4052
 - Email (preferred): Matthew.MacManes@unh.edu
 - Twitter: @MacManes
-- Office hours: Tues/Fri 8-10am in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/
+- Office hours: Tues/Fri 8-9am in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/
 
 
 ### 2. Contact Information for Dr Raymond Holsapple
