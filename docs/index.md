@@ -17,6 +17,10 @@
     -  [Welcome Lecture](lecture/Lecture_1.pdf)
     -  [BLAST Lecture 1](lecture/Lecture_2.pdf)
 
+5. Reading
+
+    - [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028) You will need to sign in with UNH ID. 
+
 5. Lab lessons
     - [Getting Started](labs/getting_started)
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
