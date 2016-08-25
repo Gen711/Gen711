@@ -17,8 +17,8 @@ The methods, applications, and implications of genomics--the analysis of whole g
 ### 2. Contact Information for Dr Raymond Holsapple
 
 - Office: 193 Rudman Hall
-- Email:rh1054@wildcats.edu
-- Office hours: ???
+- Email: rh1054@wildcats.edu
+- Office hours: Thursday 10-11AM in 193 Rudman
 
 ### 3. Lecture: MWF 11:10-12:00PM Rudman G89
 ### 4. Lab: Friday Either 1:10-3:00PM or 3:10-5:00PM in Hewitt 301
@@ -35,7 +35,7 @@ The methods, applications, and implications of genomics--the analysis of whole g
 
 **Irregular Assignments:** are assigned in class and/or lab, and are meant to enhance your understanding of the material. They are typically ungraded, but doing them will help to improve your grade. Examples may include extra reading, computer work, or other things.
 
-**Reading** is assigned weekly in the form of primary literature. Each student will present a research paper to the class. This paper presentation is meant to be relatively informal, but will increase the depth of your understanding. Each presentation will be ~10 minutes, with a few minutes for questions. Schedule for this is TBD, but expect these to start before the 1st exam.  
+**Reading** is assigned weekly in the form of primary literature. Each student will present a research paper to the class. This paper presentation is meant to be relatively informal, but will increase the depth of your understanding. Each presentation will be ~10 minutes, with a few minutes for questions. Schedule for this is TBD, but expect these to start before the 1st exam. [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028)
 
 **Exams:** There will be 2 exams covering both lecture and lab material. Each will be worth 100 points. The dates for these will be October 9 and November 20. Makeup exams will be permitted only under extreme documented circumstances, or by prior approval (> 1 week) from Prof. MacManes.
 
@@ -46,9 +46,6 @@ The methods, applications, and implications of genomics--the analysis of whole g
 ### 7. Materials Needed
 
 **Amazon Web services:** For lab exercises, we will use the Amazon Computer Cloud (EC2). You will need to set up an account during the first lab, and will be given $100 to pay for the analyses you will run this semester. The EC2 interface will work properly in OSX and Linux operating systems. For those of you with Windows computers, you will need to install a terminal emulator (MobaXterm is one option), or use the OSX computers in the computer lab.
-
-**Readings:** I will post photocopies or weblinks to the readings, most of which will be primary literature.  
-
 
 ### 8. Grades
 
@@ -74,7 +71,7 @@ Receiving an A in this shall should be really easy (I mean it!), assuming you fo
 - Come to class and lab, pay attention, be interactive: Active learning far outcompetes passive, so while coming to class itself is good, interacting/asking questions will be much better.
 - Ask questions when your confused. Come to office hours, or schedule a time to meet.
 - Don't cram! Study a little, several times per week. You will remember more, and the exams will be less stressful.
-- Read the book and use (with caution) online resources.
+- Read the papers and use (with caution) online resources.
 
 ### 11. Course Schedule - Subject to Change
 
@@ -84,7 +81,7 @@ Receiving an A in this shall should be really easy (I mean it!), assuming you fo
 | 29Aug                     |            | Intro to Bioinformatics and Molecular Evolution | UNIX                      |
 | 5Sept (No Class Mon)      |            | Finding Data \& Pairwise Alignment              | BLAST                       |
 | 12Sept                    |            | BLAST                                           | Alignment                  |
-| 19Sept                    |            | Advanced Search (BLAT/HMM/others)               | HMMER/RepeatMasker         |
+| 19Sept (No Class Wed)     |            | Advanced Search (BLAT/HMM/others)               | HMMER/RepeatMasker         |
 | 26Sept                    |            | Multiple Sequence Alignment                     | fastA/fastQ processing     |
 | 03Oct                     |            | Sequence Read Analysis                          | Transcriptome Analyses1    |
 | **EXAM OCT 07**                                                                                                       |
