@@ -17,11 +17,8 @@ The methods, applications, and implications of genomics--the analysis of whole g
 ### 2. Contact Information for Dr Raymond Holsapple
 
 - Office: 193 Rudman Hall
-- Phone: XXX-XXX-XXXX
-- Email:@wildcats.edu
-- Twitter: @???
+- Email:rh1054@wildcats.edu
 - Office hours: ???
-
 
 ### 3. Lecture: MWF 11:10-12:00PM Rudman G89
 ### 4. Lab: Friday Either 1:10-3:00PM or 3:10-5:00PM in Hewitt 301
@@ -36,11 +33,13 @@ The methods, applications, and implications of genomics--the analysis of whole g
 
 ### 6. Assignments and Exams
 
-**Weekly Assignments:** These are assigned in lab, and typically involve some sort of sequence analysis and short answer questions. There will be 5 throughout the semester worth 20 points each (100pts total). You may work in groups, but you must submit your own report. These will be due 1 week after they are assigned, typically on Tuesday, unless otherwise instructed. **NO late assignments accepted**
+**Irregular Assignments:** are assigned in class and/or lab, and are meant to enhance your understanding of the material. They are typically ungraded, but doing them will help to improve your grade. Examples may include extra reading, computer work, or other things.
 
-**Exams:** There will be 2 exams covering both lecture and lab material. Each will be worth 150 points. The dates for these will be October 9 and November 20. Makeup exams will be permitted only under extreme documented circumstances, or by prior approval (> 1 week) from Prof. MacManes.
+**Reading** is assigned weekly in the form of primary literature. Each student will present a research paper to the class. This paper presentation is meant to be relatively informal, but will increase the depth of your understanding. Each presentation will be ~10 minutes, with a few minutes for questions. Schedule for this is TBD, but expect these to start before the 1st exam.  
 
-**Final Project:** The final project will consist of an oral presentation and written report of a topic related to genomics and bioinformatics. Projects must incorporate an implementation of the computational techniques we've learned about. The final project will be worth 200 points (150 written/50 oral). Oral presentations will occur during the last 2 days of class. Written reports will be due on the last day of class. You may work in groups (< 5 members - mix of grad and undergrad), with the understanding that expectations increase with group size, given division of labor. More details will be provided later in the semester.
+**Exams:** There will be 2 exams covering both lecture and lab material. Each will be worth 100 points. The dates for these will be October 9 and November 20. Makeup exams will be permitted only under extreme documented circumstances, or by prior approval (> 1 week) from Prof. MacManes.
+
+**Final Project:** The final project will consist of an oral presentation and written report related to an assembly project. Projects must incorporate an implementation of the computational techniques we've learned about. The final project will be worth 100 points (75 written/25 oral). Oral presentations will occur during the last 2 days of class. Written reports will be due on the last day of class. More details will be provided later in the semester.
 
 **Participation:** Attendance to the lab portion of the class is critical. We have 13 lab sessions. 10 points each, maximum of 120 points may be earned. One lab may be missed without penalty. Additional missed labs may be made up with prior approval (> 1 week) from Prof. MacManes
 
@@ -55,13 +54,13 @@ The methods, applications, and implications of genomics--the analysis of whole g
 
 The grade scale is: 93-100=A; 90-92.99=A-; 87-89.99=B+; 83-86.99=B; 80-82.99=B-; 77-79.99=C+; 73-76.99=C; 70-72.99=C-; 67-69.99=D+; 63-66.99=D; 60-62.99=D-; Below 60=F
 
-| Item           |Maximum Points
-|-----|-----:|    
-|Exams          |300
-|Final Project  |200
-|Homework       |100  
+| Item          |Maximum Points
+|---------------|-----:|    
+|Exams          |200
+|Final Project  |100
+|Paper Presentation       |25  
 |Participation  |120  
-|**Total Points**   |**720**
+|**Total Points**   |**445**
 
 ### 9. Course Policies
 
@@ -82,19 +81,19 @@ Receiving an A in this shall should be really easy (I mean it!), assuming you fo
 
 |  Week                     |  Reading   | Topic                                           |    Lab                     |
 |---------------------------|------------|-------------------------------------------------|----------------------------:|
-| 31Aug                     |            | Intro to Bioinformatics and Molecular Evolution | BLAST                      |
-| 07Sept (No Class Mon)     |            | Finding Data \& Pairwise Alignment              | UNIX                       |
-| 14Sept                    |            | BLAST                                           | Alignment                  |
-| 21Sept                    |            | Advanced Search (BLAT/HMM/others)               | HMMER/RepeatMasker         |
-| 28Sept                    |            | Multiple Sequence Alignment                     | fastA/fastQ processing     |
-| 05Oct                     |            | Sequence Read Analysis                          | Transcriptome Analyses1    |
-| **EXAM OCT 09**                                                                                                       |
-| 12Oct (No Class Mon)      |            | RNA and Transcriptomics                         | Transcriptome Analyses2    |
-| 19Oct                     |            | Gene Expression                                 | Measuring Gene Expression  |
-| 26Oct                     |            | Genome Evolution                                | Genome Assembly            |
-| 02Nov                     |            | Genome Assembly                                 | Genome Analyses            |
-| 09Nov (No Class Wed)      |            | Genome Analyses                                 | Long Reads                 |
-| 16Nov                     |            | Population Genomics                             | Bacterial Genome Annot.    |
-| **EXAM NOV 20**                                                                                                       |
-| 23Nov (no Class Wed/Fri)  |            | Personal and Medical Genomics                   | UNIX                       |
-| 07Dec                     |            | Ethics & Final Project Presentations            | No Lab                     |
+| 29Aug                     |            | Intro to Bioinformatics and Molecular Evolution | UNIX                      |
+| 5Sept (No Class Mon)      |            | Finding Data \& Pairwise Alignment              | BLAST                       |
+| 12Sept                    |            | BLAST                                           | Alignment                  |
+| 19Sept                    |            | Advanced Search (BLAT/HMM/others)               | HMMER/RepeatMasker         |
+| 26Sept                    |            | Multiple Sequence Alignment                     | fastA/fastQ processing     |
+| 03Oct                     |            | Sequence Read Analysis                          | Transcriptome Analyses1    |
+| **EXAM OCT 07**                                                                                                       |
+| 10Oct (No Class Mon)      |            | RNA and Transcriptomics                         | Transcriptome Analyses2    |
+| 17Oct                     |            | Gene Expression                                 | Measuring Gene Expression  |
+| 24Oct                     |            | Genome Evolution                                | Genome Assembly            |
+| 31Oct                     |            | Genome Assembly                                 | Genome Analyses            |
+| 07Nov (No Class Wed)      |            | Genome Analyses                                 | Long Reads                 |
+| 14Nov                     |            | Population Genomics                             | Bacterial Genome Annot.    |
+| **EXAM NOV 18**                                                                                                       |
+| 21Nov (no Class Wed/Fri)  |            | Personal and Medical Genomics                   | UNIX                       |
+| 05Dec                     |            | Ethics & Final Project Presentations            | No Lab                     |
