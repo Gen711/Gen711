@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Genetics 711/811 | Bioinformatics and Genomics\n\n\n\n\n\n\nContact Information for Professor Matthew MacManes\n\n\n\n\nOffice: 189 Rudman Hall\n\n\nEmail (preferred): Matthew.MacManes@unh.edu\n\n\nTwitter: @macmanes\n\n\nOffice hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/\n\n\n\n\n\n\n\n\nLecture: MWF 11:10-12:00PM Rudman G89\n\n\n\n\n\n\nLab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.\n\n\n\n\n\n\nSyllabus \nSyllabus\n\n\n\n\n\n\nLecture Materials.\n\n\n\n\nWelcome Lecture\n\n\nBLAST Lecture 1\n\n\n\n\n\n\n\n\nLab lessons\n\n\n\n\nGetting Started\n\n\nCommand Line Bootcamp\n\n\nLaunch an EC2 Instance\n\n\n\n\n\n\n\n\nReading\n\n\n\n\n\n\nFolder o' Papers\n You will need to sign in with UNH ID.\n\n\n\n\n\n\nHomework\n\n\n\n\n\n\nExams\n\n\n\n\nYikes!!!: :doc:\nlabs/mock.exam1\n\n\nUtter Panic: :doc:\nlabs/mock.exam2\n\n\nPractice for exam2: :doc:\nlabs/Exam2_Practice\n\n\nThe real deal exam 2: :doc:\nlabs/exam2", 
+            "text": "Genetics 711/811 | Bioinformatics and Genomics\n\n\n\n\n\n\nContact Information for Professor Matthew MacManes\n\n\n\n\nOffice: 189 Rudman Hall\n\n\nEmail (preferred): Matthew.MacManes@unh.edu\n\n\nTwitter: @macmanes\n\n\nOffice hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/\n\n\n\n\n\n\n\n\nLecture: MWF 11:10-12:00PM Rudman G89\n\n\n\n\n\n\nLab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.\n\n\n\n\n\n\nSyllabus \nSyllabus\n\n\n\n\n\n\nAWS Resources\n\n\n\n\n\n\nLecture Materials.\n\n\n\n\nWelcome Lecture\n\n\nBLAST Lecture 1\n\n\n\n\n\n\n\n\nLab lessons\n\n\n\n\nGetting Started\n\n\nCommand Line Bootcamp\n\n\nLaunch an EC2 Instance\n\n\n\n\n\n\n\n\nReading\n\n\n\n\nFolder o' Papers\n You will need to sign in with UNH ID.\n\n\n\n\n\n\n\n\nHomework\n\n\n\n\n\n\nExams\n\n\n\n\nYikes!!!: :doc:\nlabs/mock.exam1\n\n\nUtter Panic: :doc:\nlabs/mock.exam2\n\n\nPractice for exam2: :doc:\nlabs/Exam2_Practice\n\n\nThe real deal exam 2: :doc:\nlabs/exam2", 
             "title": "Home"
         }, 
         {
             "location": "/#genetics-711811-bioinformatics-and-genomics", 
-            "text": "Contact Information for Professor Matthew MacManes   Office: 189 Rudman Hall  Email (preferred): Matthew.MacManes@unh.edu  Twitter: @macmanes  Office hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/     Lecture: MWF 11:10-12:00PM Rudman G89    Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.    Syllabus  Syllabus    Lecture Materials.   Welcome Lecture  BLAST Lecture 1     Lab lessons   Getting Started  Command Line Bootcamp  Launch an EC2 Instance     Reading    Folder o' Papers  You will need to sign in with UNH ID.    Homework    Exams   Yikes!!!: :doc: labs/mock.exam1  Utter Panic: :doc: labs/mock.exam2  Practice for exam2: :doc: labs/Exam2_Practice  The real deal exam 2: :doc: labs/exam2", 
+            "text": "Contact Information for Professor Matthew MacManes   Office: 189 Rudman Hall  Email (preferred): Matthew.MacManes@unh.edu  Twitter: @macmanes  Office hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/     Lecture: MWF 11:10-12:00PM Rudman G89    Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.    Syllabus  Syllabus    AWS Resources    Lecture Materials.   Welcome Lecture  BLAST Lecture 1     Lab lessons   Getting Started  Command Line Bootcamp  Launch an EC2 Instance     Reading   Folder o' Papers  You will need to sign in with UNH ID.     Homework    Exams   Yikes!!!: :doc: labs/mock.exam1  Utter Panic: :doc: labs/mock.exam2  Practice for exam2: :doc: labs/Exam2_Practice  The real deal exam 2: :doc: labs/exam2", 
             "title": "Genetics 711/811 | Bioinformatics and Genomics"
         }, 
         {
@@ -79,6 +79,16 @@
             "location": "/Syllabus/#11-course-schedule-subject-to-change", 
             "text": "Week  Reading  Topic  Lab      29Aug   Intro to Bioinformatics and Molecular Evolution  UNIX    5Sept (No Class Mon)   Finding Data \\  Pairwise Alignment  BLAST    12Sept   BLAST  Alignment    19Sept (No Class Wed)   Advanced Search (BLAT/HMM/others)  HMMER/RepeatMasker    26Sept   Multiple Sequence Alignment  fastA/fastQ processing    03Oct   Sequence Read Analysis  Transcriptome Analyses1    EXAM OCT 07       10Oct (No Class Mon)   RNA and Transcriptomics  Transcriptome Analyses2    17Oct   Gene Expression  Measuring Gene Expression    24Oct   Genome Evolution  Genome Assembly    31Oct   Genome Assembly  Genome Analyses    07Nov (No Class Wed)   Genome Analyses  Long Reads    14Nov   Population Genomics  Bacterial Genome Annot.    EXAM NOV 18       21Nov (no Class Wed/Fri)   Personal and Medical Genomics  UNIX    05Dec   Ethics   Final Project Presentations  No Lab", 
             "title": "11. Course Schedule - Subject to Change"
+        }, 
+        {
+            "location": "/AWS/", 
+            "text": "How To Get Going with AWS\n\n\n\n\nApply for an educational account at https://aws.amazon.com/education/awseducate/apply/. This will give you $100 credit and other benefits.\n\n\n\n\nIMPORTANT\n: When registering, you do not want the \"AWS Educate Starter Account\". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).", 
+            "title": "AWS"
+        }, 
+        {
+            "location": "/AWS/#how-to-get-going-with-aws", 
+            "text": "Apply for an educational account at https://aws.amazon.com/education/awseducate/apply/. This will give you $100 credit and other benefits.   IMPORTANT : When registering, you do not want the \"AWS Educate Starter Account\". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).", 
+            "title": "How To Get Going with AWS"
         }
     ]
 }
