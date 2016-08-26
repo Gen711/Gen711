@@ -11,7 +11,7 @@
 
 2. Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.
 
-3. Syllabus [Syllabus](Syllabus.md)
+3. [Syllabus](Syllabus.md)
 
 4. [AWS Resources](AWS.md)
 
