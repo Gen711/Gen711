@@ -82,12 +82,12 @@
         }, 
         {
             "location": "/AWS/", 
-            "text": "How To Get Going with AWS\n\n\n\n\n\n\nApply for an educational account at https://aws.amazon.com/education/awseducate/apply/. This will give you $100 credit and other benefits.\n\n\n\n\n\n\nIMPORTANT\n: When registering, you do not want the \"AWS Educate Starter Account\". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).\n\n\n\n\nPart of the registration process will require you answer an automated phone call from Amazon that serves to verify your human being-ness...\n\n\n\n\nYou need to do this even if you have a regular Amazon account.\n\n\n\n\n\n\nLaunch an EC2 Instance", 
+            "text": "How To Get Going with AWS\n\n\n\n\n\n\nApply for an educational account at \nhttps://aws.amazon.com/education/awseducate/apply/\n. This will give you $100 credit and other benefits.\n\n\n\n\n\n\nIMPORTANT\n: When registering, you do not want the \"AWS Educate Starter Account\". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).\n\n\n\n\nPart of the registration process will require you answer an automated phone call from Amazon that serves to verify your human being-ness...\n\n\n\n\nYou need to do this even if you have a regular Amazon account.\n\n\n\n\n\n\nLaunch an EC2 Instance", 
             "title": "AWS"
         }, 
         {
             "location": "/AWS/#how-to-get-going-with-aws", 
-            "text": "Apply for an educational account at https://aws.amazon.com/education/awseducate/apply/. This will give you $100 credit and other benefits.    IMPORTANT : When registering, you do not want the \"AWS Educate Starter Account\". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).   Part of the registration process will require you answer an automated phone call from Amazon that serves to verify your human being-ness...   You need to do this even if you have a regular Amazon account.    Launch an EC2 Instance", 
+            "text": "Apply for an educational account at  https://aws.amazon.com/education/awseducate/apply/ . This will give you $100 credit and other benefits.    IMPORTANT : When registering, you do not want the \"AWS Educate Starter Account\". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).   Part of the registration process will require you answer an automated phone call from Amazon that serves to verify your human being-ness...   You need to do this even if you have a regular Amazon account.    Launch an EC2 Instance", 
             "title": "How To Get Going with AWS"
         }
     ]
