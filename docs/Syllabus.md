@@ -27,8 +27,8 @@ The methods, applications, and implications of genomics--the analysis of whole g
 - Website: [https://gen711.github.io/Gen711](https://gen711.github.io/Gen711)
 - Canvas: I will use this site for grades, only!
 - Google: everything you'll learn this semester has been discussed on the internet. Use it!
-- [https://gen711.github.io/Gen711](http://SeqAnswers.com): The forums are really great.
-- BioStars: [https://gen711.github.io/Gen711](https://www.biostars.org/t/)
+- [http://SeqAnswers.com](http://SeqAnswers.com): The forums are really great.
+- BioStars: [https://www.biostars.org/t/](https://www.biostars.org/t/)
 - Summer workshop website that has lots of good info: [http://angus.readthedocs.org/en/2016](http://angus.readthedocs.org/en/2016)
 
 ### 6. Assignments and Exams
