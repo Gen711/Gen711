@@ -7,14 +7,14 @@
         
         
         
-        <link rel="shortcut icon" href="./img/favicon.ico">
+        <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>Gen711 - Fall2016</title>
+	<title>AWS - Gen711 - Fall2016</title>
 
-        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="./css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -25,7 +25,7 @@
         
     </head>
 
-    <body class="homepage">
+    <body>
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -43,7 +43,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">Gen711 - Fall2016</a>
+            <a class="navbar-brand" href="..">Gen711 - Fall2016</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,20 +53,20 @@
                 <ul class="nav navbar-nav">
                 
                 
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Syllabus/">Syllabus</a>
+                    </li>
+                
+                
+                
                     <li class="active">
-                        <a href=".">Home</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="Syllabus/">Syllabus</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="AWS/">AWS</a>
+                        <a href="./">AWS</a>
                     </li>
                 
                 
@@ -80,13 +80,13 @@
                     </a>
                 </li>
                 
-                    <li class="disabled">
-                        <a rel="next" >
+                    <li >
+                        <a rel="next" href="../Syllabus/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="Syllabus/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -102,68 +102,27 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#genetics-711811-bioinformatics-and-genomics">Genetics 711/811 | Bioinformatics and Genomics</a></li>
+        <li class="main active"><a href="#how-to-get-going-with-aws">How To Get Going with AWS</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="genetics-711811-bioinformatics-and-genomics">Genetics 711/811 | Bioinformatics and Genomics</h2>
+<h2 id="how-to-get-going-with-aws">How To Get Going with AWS</h2>
 <ol>
 <li>
-<p>Contact Information for Professor Matthew MacManes</p>
-<ul>
-<li>Office: 189 Rudman Hall</li>
-<li>Email (preferred): Matthew.MacManes@unh.edu</li>
-<li>Twitter: @macmanes</li>
-<li>Office hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/</li>
-</ul>
+<p>Apply for an educational account at <a href="https://aws.amazon.com/education/awseducate/apply/">https://aws.amazon.com/education/awseducate/apply/</a>. This will give you $100 credit and other benefits.</p>
 </li>
 <li>
-<p>Lecture: MWF 11:10-12:00PM Rudman G89</p>
+<p><strong>IMPORTANT</strong>: When registering, you do not want the "AWS Educate Starter Account". You will need to type in your credit card, but no charged will be incurred (assuming you follow the directions).</p>
+</li>
+<li>Part of the registration process will require you answer an automated phone call from Amazon that serves to verify your human being-ness...</li>
+<li>
+<p>You need to do this even if you have a regular Amazon account.</p>
 </li>
 <li>
-<p>Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.</p>
-</li>
-<li>
-<p>Syllabus <a href="Syllabus/">Syllabus</a></p>
-</li>
-<li>
-<p><a href="AWS/">AWS Resources</a></p>
-</li>
-<li>
-<p>Lecture Materials.</p>
-<ul>
-<li><a href="./lecture/Lecture_1.pdf">Welcome Lecture</a></li>
-<li><a href="./lecture/Lecture_2.pdf">BLAST Lecture 1</a></li>
-</ul>
-</li>
-<li>
-<p>Lab lessons</p>
-<ul>
-<li><a href="./labs/getting_started">Getting Started</a></li>
-<li><a href="http://rik.smith-unna.com/command_line_bootcamp">Command Line Bootcamp</a></li>
-<li><a href="./lecture/Lanch_AMI.pdf">Launch an EC2 Instance</a></li>
-</ul>
-</li>
-<li>
-<p>Reading</p>
-<ul>
-<li><a href="https://unh.app.box.com/files/0/f/11054782028">Folder o' Papers</a> You will need to sign in with UNH ID.</li>
-</ul>
-</li>
-<li>
-<p>Homework</p>
-</li>
-<li>
-<p>Exams</p>
-<ul>
-<li>Yikes!!!: :doc:<code>labs/mock.exam1</code></li>
-<li>Utter Panic: :doc:<code>labs/mock.exam2</code></li>
-<li>Practice for exam2: :doc:<code>labs/Exam2_Practice</code></li>
-<li>The real deal exam 2: :doc:<code>labs/exam2</code></li>
-</ul>
+<p><a href="../lecture/Lanch_AMI.pdf">Launch an EC2 Instance</a></p>
 </li>
 </ol></div>
             
@@ -175,12 +134,12 @@
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
 
-        <script src="./js/jquery-1.10.2.min.js"></script>
-        <script src="./js/bootstrap-3.0.3.min.js"></script>
-        <script src="./js/highlight.pack.js"></script>
-        <script>var base_url = '.';</script>
-        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-        <script src="./js/base.js"></script>
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
@@ -209,8 +168,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-08-26 10:58:21.950911
--->

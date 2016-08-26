@@ -24,12 +24,12 @@ The methods, applications, and implications of genomics--the analysis of whole g
 ### 4. Lab: Friday Either 1:10-3:00PM or 3:10-5:00PM in Hewitt 301
 ### 5. Web Resources:
 
-- Website: https://gen711.github.io/Gen711
+- Website: [https://gen711.github.io/Gen711](https://gen711.github.io/Gen711)
 - Canvas: I will use this site for grades, only!
 - Google: everything you'll learn this semester has been discussed on the internet. Use it!
-- http://SeqAnswers.com: The forums are really great.
-- BioStars: https://www.biostars.org/t/
-- Summer workshop website that has lots of good info: http://angus.readthedocs.org/en/2016
+- [https://gen711.github.io/Gen711](http://SeqAnswers.com): The forums are really great.
+- BioStars: [https://gen711.github.io/Gen711](https://www.biostars.org/t/)
+- Summer workshop website that has lots of good info: [http://angus.readthedocs.org/en/2016](http://angus.readthedocs.org/en/2016)
 
 ### 6. Assignments and Exams
 
