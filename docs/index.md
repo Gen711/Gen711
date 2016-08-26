@@ -13,24 +13,26 @@
 
 3. Syllabus [Syllabus](Syllabus.md)
 
-4. Lecture Materials.
+4. [AWS Resources](AWS.md)
+
+5. Lecture Materials.
     -  [Welcome Lecture](lecture/Lecture_1.pdf)
     -  [BLAST Lecture 1](lecture/Lecture_2.pdf)
 
-5. Lab lessons
+6. Lab lessons
     - [Getting Started](labs/getting_started)
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
     - [Launch an EC2 Instance](lecture/Lanch_AMI.pdf)
 
 
-6. Reading
+7. Reading
 
-- [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028) You will need to sign in with UNH ID.
+    - [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028) You will need to sign in with UNH ID.
 
-7. Homework
+8. Homework
 
 
-8. Exams
+9. Exams
 
     - Yikes!!!: :doc:`labs/mock.exam1`
     - Utter Panic: :doc:`labs/mock.exam2`

@@ -2,3 +2,4 @@ site_name: Gen711 - Fall2016
 pages:
 - Home: index.md
 - Syllabus: Syllabus.md
+- AWS: AWS.md
