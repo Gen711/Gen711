@@ -3,7 +3,7 @@
 
 ### 0. Course Description:
 
-The methods, applications, and implications of genomics--the analysis of whole genomes. Microbial, plant and animal genomics are addressed, as well as medical, ethical and legal implications. The lab provides exposure and experience on a range of bioinformatics approaches--the computer applications used in genome analysis.
+The methods, applications, and implications of genomics - the analysis of whole genomes. Microbial, plant and animal genomics are addressed, as well as medical, ethical and legal implications. The lab provides exposure and experience on a range of bioinformatics approaches - the computer applications used in genome analysis.
 
 ### 1. Contact Information for Professor Matthew MacManes
 
@@ -11,7 +11,7 @@ The methods, applications, and implications of genomics--the analysis of whole g
 - Phone: 603-862-4052
 - Email (preferred): Matthew.MacManes@unh.edu
 - Twitter: @MacManes
-- Office hours: Tues/Fri 8-9am in 189 Rudman, or by appt. Schedule at [http://genomebio.org/office-hours/](http://genomebio.org/office-hours/)
+- Office hours: Tues/Fri 8-9am in 189 Rudman, or by appt. Just show up, or schedule at [http://genomebio.org/office-hours/](http://genomebio.org/office-hours/)
 
 
 ### 2. Contact Information for Dr Raymond Holsapple
@@ -37,15 +37,15 @@ The methods, applications, and implications of genomics--the analysis of whole g
 
 **Reading** is assigned weekly in the form of primary literature. Each student will present a research paper to the class. This paper presentation is meant to be relatively informal, but will increase the depth of your understanding. Each presentation will be ~10 minutes, with a few minutes for questions. Schedule for this is TBD, but expect these to start before the 1st exam. [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028)
 
-**Exams:** There will be 2 exams covering both lecture and lab material. Each will be worth 100 points. The dates for these will be October 9 and November 20. Makeup exams will be permitted only under extreme documented circumstances, or by prior approval (> 1 week) from Prof. MacManes.
+**Exams:** There will be 2 exams covering both lecture and lab material. Each will be worth 100 points. The dates for these will be October 7 and November 18. Makeup exams will be permitted only under extreme documented circumstances, or by prior approval (> 1 week) from Prof. MacManes.
 
-**Final Project:** The final project will consist of an oral presentation and written report related to an assembly project. Projects must incorporate an implementation of the computational techniques we've learned about. The final project will be worth 100 points (75 written/25 oral). Oral presentations will occur during the last 2 days of class. Written reports will be due on the last day of class. More details will be provided later in the semester.
+**Final Project:** The final project will consist of an oral presentation and written report (e.g., the methods section) related to an assembly project. Projects must incorporate an implementation of the computational techniques we've learned about. The final project will be worth 100 points (75 written/25 oral). Oral presentations will occur during the last 3 days of class. Written reports will be due on the last day of class. More details will be provided later in the semester.
 
 **Participation:** Attendance to the lab portion of the class is critical. We have 13 lab sessions. 10 points each, maximum of 120 points may be earned. One lab may be missed without penalty. Additional missed labs may be made up with prior approval (> 1 week) from Prof. MacManes
 
 ### 7. Materials Needed
 
-**Amazon Web services:** For lab exercises, we will use the Amazon Computer Cloud (EC2). You will need to set up an account during the first lab, and will be given $100 to pay for the analyses you will run this semester. The EC2 interface will work properly in OSX and Linux operating systems. For those of you with Windows computers, you will need to install a terminal emulator (MobaXterm is one option), or use the OSX computers in the computer lab.
+**Amazon Web services:** For lab exercises, we will use the Amazon Computer Cloud (EC2). You will need to set up an account during the first lab, and will be given $100 to pay for the analyses you will run this semester. The EC2 interface will work properly in OSX and Linux operating systems. For those of you with Windows computers, you will need to use the OSX computers in the computer lab. Work outside the class can be accomplished after installation of a terminal emulator (MobaXterm is best).
 
 ### 8. Grades
 
@@ -79,18 +79,19 @@ Receiving an A in this shall should be really easy (I mean it!), assuming you fo
 |  Week                     |  Reading   | Topic                                           |    Lab                     |
 |---------------------------|------------|-------------------------------------------------|----------------------------:|
 | 29Aug                     |            | Intro to Bioinformatics and Molecular Evolution | UNIX                      |
-| 5Sept (No Class Mon)      |            | Finding Data \& Pairwise Alignment              | BLAST                       |
+| 5Sept (No Class Mon)      |            | Finding Data & Pairwise Alignment              | BLAST                       |
 | 12Sept                    |            | BLAST                                           | Alignment                  |
 | 19Sept (No Class Wed)     |            | Advanced Search (BLAT/HMM/others)               | HMMER/RepeatMasker         |
 | 26Sept                    |            | Multiple Sequence Alignment                     | fastA/fastQ processing     |
 | 03Oct                     |            | Sequence Read Analysis                          | Transcriptome Analyses1    |
 | **EXAM OCT 07**                                                                                                       |
-| 10Oct (No Class Mon)      |            | RNA and Transcriptomics                         | Transcriptome Analyses2    |
+| 10Oct      |            | RNA and Transcriptomics                         | Transcriptome Analyses2    |
 | 17Oct                     |            | Gene Expression                                 | Measuring Gene Expression  |
 | 24Oct                     |            | Genome Evolution                                | Genome Assembly            |
 | 31Oct                     |            | Genome Assembly                                 | Genome Analyses            |
-| 07Nov (No Class Wed)      |            | Genome Analyses                                 | Long Reads                 |
+| 07Nov (No Class Fri)      |            | Genome Analyses                                 | Long Reads                 |
 | 14Nov                     |            | Population Genomics                             | Bacterial Genome Annot.    |
 | **EXAM NOV 18**                                                                                                       |
-| 21Nov (no Class Wed/Fri)  |            | Personal and Medical Genomics                   | UNIX                       |
+| 21Nov (no Class Wed/Fri)  |            | Personal and Medical Genomics                   | Projects                       |
+| 28Nov|| TBD |Projects
 | 05Dec                     |            | Ethics & Final Project Presentations            | No Lab                     |
