@@ -18,8 +18,8 @@
 5. [AWS Resources](AWS.md)
 
 6. Lecture Materials.
-    -  [Welcome Lecture](lecture/Lecture_1.pdf)
-    -  [BLAST Lecture 1](lecture/Lecture_2.pdf)
+    -  [Welcome Lecture](lecture/Lecture_1_2016.pdf)
+
 
 7. Lab lessons
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
