@@ -3,9 +3,9 @@
 0. Contact Information for Professor Matthew MacManes
 
     - Office: 189 Rudman Hall
-    - Email (preferred): Matthew.MacManes@unh.edu
-    - Twitter: @macmanes
-    - Office hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/
+    - Email (preferred): <mailto:Matthew.MacManes@unh.edu>
+    - Twitter: @MacManes
+    - Office hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at [http://genomebio.org/office-hours/](http://genomebio.org/office-hours/)
 
 1. [Slack](https://gen711f16.slack.com/)
 
