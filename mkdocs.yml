@@ -3,3 +3,4 @@ pages:
 - Home: index.md
 - Syllabus: Syllabus.md
 - AWS: AWS.md
+- Getting Started: Lab1_unix.md
