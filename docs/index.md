@@ -1,6 +1,6 @@
 ## Genetics 711/811 | Bioinformatics and Genomics
 
-0. Contact Information for Professor Matthew MacManes
+0. Contact Information for Prof. Matthew MacManes
 
     - Office: 189 Rudman Hall
     - Email (preferred): <mailto:Matthew.MacManes@unh.edu>
