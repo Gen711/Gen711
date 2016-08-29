@@ -7,32 +7,34 @@
     - Twitter: @macmanes
     - Office hours: Tues/Fri 8-9AM in 189 Rudman, or by appt. Schedule at http://genomebio.org/office-hours/
 
-1. Lecture: MWF 11:10-12:00PM Rudman G89
+1. [Slack](https://gen711f16.slack.com/)
 
-2. Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.
+2. Lecture: MWF 11:10-12:00PM Rudman G89
 
-3. [Syllabus](Syllabus.md)
+3. Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.
 
-4. [AWS Resources](AWS.md)
+4. [Syllabus](Syllabus.md)
 
-5. Lecture Materials.
+5. [AWS Resources](AWS.md)
+
+6. Lecture Materials.
     -  [Welcome Lecture](lecture/Lecture_1.pdf)
     -  [BLAST Lecture 1](lecture/Lecture_2.pdf)
 
-6. Lab lessons
+7. Lab lessons
     - [Getting Started](labs/getting_started)
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
     - [Launch an EC2 Instance](lecture/Lanch_AMI.pdf)
 
 
-7. Reading
+8. Reading
 
     - [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028) You will need to sign in with UNH ID.
 
-8. Homework
+9. Homework
 
 
-9. Exams
+10. Exams
 
     - Yikes!!!: :doc:`labs/mock.exam1`
     - Utter Panic: :doc:`labs/mock.exam2`

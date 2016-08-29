@@ -24,6 +24,7 @@ The methods, applications, and implications of genomics--the analysis of whole g
 ### 4. Lab: Friday Either 1:10-3:00PM or 3:10-5:00PM in Hewitt 301
 ### 5. Web Resources:
 
+- [Slack](https://gen711f16.slack.com/)
 - Canvas: I will use this site for grades, only!
 - Google: everything you'll learn this semester has been discussed on the internet. Use it!
 - [http://SeqAnswers.com](http://SeqAnswers.com): The forums are really great.
