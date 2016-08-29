@@ -22,8 +22,8 @@
     -  [BLAST Lecture 1](lecture/Lecture_2.pdf)
 
 7. Lab lessons
-    - [Getting Started](labs/getting_started)
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
+    - [Getting Started](lab_lessons/Lab1_unix.md)
     - [Launch an EC2 Instance](lecture/Lanch_AMI.pdf)
 
 
