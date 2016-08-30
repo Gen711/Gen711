@@ -29,7 +29,7 @@
 
 8. Reading
 
-    - [Folder o' Papers](https://unh.box.com/s/9nue1tsnhrroqmh017a1m2eklyfnfy71) You will need to sign in with UNH ID.
+    - [Folder o' Papers](https://unh.box.com/s/ra6ns2amwgv8eanjbuh2uyb5lbh4op69) You will need to sign in with UNH ID.
         - Week 1: Goodwin2016 and Ashley
 
 9. Homework
