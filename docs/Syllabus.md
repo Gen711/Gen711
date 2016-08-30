@@ -35,7 +35,7 @@ The methods, applications, and implications of genomics - the analysis of whole 
 
 **Irregular Assignments:** are assigned in class and/or lab, and are meant to enhance your understanding of the material. They are typically ungraded, but doing them will help to improve your grade. Examples may include extra reading, computer work, or other things.
 
-**Reading** is assigned weekly in the form of primary literature. Each student will present a research paper to the class. This paper presentation is meant to be relatively informal, but will increase the depth of your understanding. Each presentation will be ~10 minutes, with a few minutes for questions. Schedule for this is TBD, but expect these to start before the 1st exam. [Folder o' Papers](https://unh.app.box.com/files/0/f/11054782028)
+**Reading** is assigned weekly in the form of primary literature. Each student will present a research paper to the class. This paper presentation is meant to be relatively informal, but will increase the depth of your understanding. Each presentation will be ~10 minutes, with a few minutes for questions. Schedule for this is TBD, but expect these to start before the 1st exam. [Folder o' Papers](https://unh.box.com/s/9nue1tsnhrroqmh017a1m2eklyfnfy71)
 
 **Exams:** There will be 2 exams covering both lecture and lab material. Each will be worth 100 points. The dates for these will be October 7 and November 18. Makeup exams will be permitted only under extreme documented circumstances, or by prior approval (> 1 week) from Prof. MacManes.
 
