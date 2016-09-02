@@ -18,13 +18,16 @@
 5. [AWS Resources](AWS.md)
 
 6. Lecture Materials.
-    -  [Welcome Lecture](lecture/Lecture_1_2016.pdf)
+    - [Welcome Lecture](lecture/Lecture_1_2016.pdf)
+    - [Lecture 2](lecture/Lecture_2.pdf)
+    - [Lecture 3](lecture/Lecture_3.pdf)
 
 
 7. Lab lessons
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
-    - [Getting Started](lab_lessons/Lab1_unix.md)
     - [Launch an EC2 Instance](lecture/Lanch_AMI.pdf)
+    - [Getting Started](lab_lessons/Lab1_unix.md)
+
 
 
 8. Reading
