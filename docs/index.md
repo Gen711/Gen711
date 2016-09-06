@@ -26,8 +26,8 @@
 7. Lab lessons
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
     - [Launch an EC2 Instance](lecture/Lanch_AMI.pdf)
-    - [Getting Started](lab_lessons/Lab1_unix.md)
-
+    - [Getting Started](lab_lessons/unix.md)
+    - [WEEK 2 LAB](lab_lessons/Lab1_blast.md)
 
 
 8. Reading
