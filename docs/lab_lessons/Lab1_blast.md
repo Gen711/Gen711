@@ -74,6 +74,12 @@ look at `blast.out`. the 1st column is the ID of the desert mouse transcript, th
 
 	less -S blast.out
 
-Oh crap.. there are 16501 lines in that file, how aer we going to find the Scn5a gene that we are looking for?? Meet `grep`.
+Oh crap.. there are 16501 lines in that file, how are we going to find the Scn5a gene that we are looking for?? Meet `grep`.
 
 	grep -i SCN5A blast.out
+
+As an additional exercise, see if you sequenced your favorite gene in the new animals. Navigate to http://useast.ensembl.org/Mus_musculus/Info/Index to find the appropriate gene codes. For example..
+
+    grep -i "solute carrier" blast.out
+    grep -i aquaporin blast.out
+    grep -i Rbp2 blast.out
