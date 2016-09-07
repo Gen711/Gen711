@@ -34,7 +34,7 @@ OK, what are these commands?  `sudo` is the command that tells the computer tha
 So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the `update` or `upgrade` command, we're using `install`. EASY!!
 
 
-	sudo apt-get -y install build-essentials git curl gcc make g++ python-dev unzip
+	sudo apt-get -y install build-essential git curl gcc make g++ python-dev unzip
 
 
 ok, for this lab we are going to use BLAST, which is available as a package entitled `ncbi-blast+`
@@ -48,7 +48,7 @@ to get a feel for the different options, type `blastp -help`. Which type of blas
 
 ### Challenge...
 
-You have just returned from South America, where you captured a rare - never been seen before - desert mouse. You are interested in knowing how it survives, and start by trying to identify the Sodium transport genes, in particular a gene called Scn5a (https://en.wikipedia.org/wiki/Nav1.5). You've just had the animals's transcriptome sequenced, and are about to begin the search!! You *could* use web blast like you've done in the past, but there are 20166 sequences that you need to search and that would take a loooooooong time. 
+You have just returned from South America, where you captured a rare - never been seen before - desert mouse. You are interested in knowing how it survives, and start by trying to identify the Sodium transport genes, in particular a gene called Scn5a (https://en.wikipedia.org/wiki/Nav1.5). You've just had the animals's transcriptome sequenced, and are about to begin the search!! You *could* use web blast like you've done in the past, but there are 20166 sequences that you need to search and that would take a loooooooong time.
 
 Download the data here:
 
