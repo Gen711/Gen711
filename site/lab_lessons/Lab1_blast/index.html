@@ -148,7 +148,7 @@ ssh -i ~/Downloads/your.pem ubuntu@xx.xx.xx.x
 </code></pre>
 <p>OK, what are these commands?  <code>sudo</code> is the command that tells the computer that we have admin privileges. Try running the commands without the sudo -- it will complain that you don't have admin privileges or something like that. <em>Careful here, using sudo means that you can do something really bad to your own computer -- like delete everything</em>, so use with caution. It's not a big worry when using AWS, as this is a virtual machine- fixing your worst mistake is as easy as just terminating the instance and restarting.</p>
 <p>So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the <code>update</code> or <code>upgrade</code> command, we're using <code>install</code>. EASY!!</p>
-<pre><code>sudo apt-get -y install build-essentials git curl gcc make g++ python-dev unzip
+<pre><code>sudo apt-get -y install build-essential git curl gcc make g++ python-dev unzip
 </code></pre>
 <p>ok, for this lab we are going to use BLAST, which is available as a package entitled <code>ncbi-blast+</code></p>
 <pre><code># replace the ??? with the appropriate command that will install blast.
@@ -157,7 +157,7 @@ sudo apt-get -y install ???
 </code></pre>
 <p>to get a feel for the different options, type <code>blastp -help</code>. Which type of blast does this correspond to? Look at the help info for blastp and tblastx. There are A LOT of options, most of which you will be able to safely ignore. One of the challenges of bioinformatics is knowing about the options and which ones you can safely ignore, and which ones are important.</p>
 <h3 id="challenge">Challenge...</h3>
-<p>You have just returned from South America, where you captured a rare - never been seen before - desert mouse. You are interested in knowing how it survives, and start by trying to identify the Sodium transport genes, in particular a gene called Scn5a (https://en.wikipedia.org/wiki/Nav1.5). You've just had the animals's transcriptome sequenced, and are about to begin the search!! You <em>could</em> use web blast like you've done in the past, but there are 20166 sequences that you need to search and that would take a loooooooong time. </p>
+<p>You have just returned from South America, where you captured a rare - never been seen before - desert mouse. You are interested in knowing how it survives, and start by trying to identify the Sodium transport genes, in particular a gene called Scn5a (https://en.wikipedia.org/wiki/Nav1.5). You've just had the animals's transcriptome sequenced, and are about to begin the search!! You <em>could</em> use web blast like you've done in the past, but there are 20166 sequences that you need to search and that would take a loooooooong time.</p>
 <p>Download the data here:</p>
 <pre><code>curl -LO https://s3.amazonaws.com/macmanes_share/transcripts.fasta
 </code></pre>
@@ -176,8 +176,13 @@ gzip -d Mus_musculus.GRCm38.cdna.all.fa.gz
 <p>look at <code>blast.out</code>. the 1st column is the ID of the desert mouse transcript, the 2nd column is the e-value (a statistic related to how good the match between query and reference sequences is - smaller numbers better. The 3rd column is the Mouse transcript match descriptor)</p>
 <pre><code>less -S blast.out
 </code></pre>
-<p>Oh crap.. there are 16501 lines in that file, how aer we going to find the Scn5a gene that we are looking for?? Meet <code>grep</code>.</p>
+<p>Oh crap.. there are 16501 lines in that file, how are we going to find the Scn5a gene that we are looking for?? Meet <code>grep</code>.</p>
 <pre><code>grep -i SCN5A blast.out
+</code></pre>
+<p>As an additional exercise, see if you sequenced your favorite gene in the new animals. Navigate to http://useast.ensembl.org/Mus_musculus/Info/Index to find the appropriate gene codes. For example..</p>
+<pre><code>grep -i "solute carrier" blast.out
+grep -i aquaporin blast.out
+grep -i Rbp2 blast.out
 </code></pre></div>
             
         </div>

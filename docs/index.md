@@ -22,6 +22,8 @@
     - [Lecture 2](lecture/Lecture_2.pdf)
     - [Lecture 3](lecture/Lecture_3.pdf)
     - [Lecture 4](lecture/Lecture_4.pdf)
+    - [Lecture 6](lecture/Lecture_6.pdf)
+
 
 7. Lab lessons
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
