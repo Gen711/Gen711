@@ -23,6 +23,7 @@
     - [Lecture 3](lecture/Lecture_3.pdf)
     - [Lecture 4](lecture/Lecture_4.pdf)
     - [Lecture 6](lecture/Lecture_6.pdf)
+    - [Lecture 7](lecture/Lecture_7.pdf)
 
 
 7. Lab lessons
