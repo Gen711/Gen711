@@ -36,6 +36,8 @@
 
     - [Folder o' Papers](https://unh.box.com/s/ra6ns2amwgv8eanjbuh2uyb5lbh4op69) You will need to sign in with UNH ID.
         - Week 1: Goodwin2016 and Ashley
+        - Week 2: Altschul and Kelley
+        - Week 3: "Week2" and Katoh
 
 9. Homework
 
