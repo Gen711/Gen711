@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Week 3 lab - Gen711 - Fall2016</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Gen711 - Fall2016</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../Syllabus/">Syllabus</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../AWS/">AWS</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../unix/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../Lab1_blast/">Week 2 lab</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Week 3 lab</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../Lab1_blast/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#lab-3-alignment">Lab 3: Alignment</a></li>
+        
+    
+        <li class="main "><a href="#install-biopython">Install BioPython</a></li>
+        
+    
+        <li class="main "><a href="#install-linuxbrew">Install LinuxBrew</a></li>
+        
+            <li><a href="#install-ruby">Install Ruby</a></li>
+        
+            <li><a href="#install-linuxbrew-itself">Install LinuxBrew itself</a></li>
+        
+    
+        <li class="main "><a href="#install-mafft-and-raxml-and-blast">Install mafft and RAxML and BLAST</a></li>
+        
+    
+        <li class="main "><a href="#download-the-database-and-unzip-it">Download the database and unzip it</a></li>
+        
+    
+        <li class="main "><a href="#download-the-query-sequences">Download the query sequences</a></li>
+        
+    
+        <li class="main "><a href="#make-blast-database-and-blast">Make blast database and blast</a></li>
+        
+            <li><a href="#make-a-file-that-contains-the-sequences-for-the-blast-hits-you-just-discovered">Make a file that contains the sequences for the blast hits you just discovered</a></li>
+        
+            <li><a href="#now-make-a-file-that-contains-both-the-query-sequences-and-the-sequences-we-found-by-blasting">Now, make a file that contains BOTH  the query sequences AND the sequences we found by blasting.</a></li>
+        
+            <li><a href="#use-mafft-for-alignment">Use mafft for alignment</a></li>
+        
+            <li><a href="#raxml">RAxML</a></li>
+        
+            <li><a href="#copy-phylogeny-and-view-online">Copy phylogeny and view online.</a></li>
+        
+    
+        <li class="main "><a href="#terminate-your-instance">TERMINATE YOUR INSTANCE</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="lab-3-alignment">Lab 3: Alignment</h2>
+<p>During this lab, we will acquaint ourselves with alignment. Your objectives are:</p>
+<ol>
+<li>
+<p>Familiarize yourself with the software, how to execute it, how to visualize results.</p>
+</li>
+<li>
+<p>Regarding your dataset, tell me how some of these genes are related to their homologous copies.</p>
+</li>
+</ol>
+<p>Step 1: Launch and AMI. For this exercise, we will use a c4.xlarge instance.</p>
+<p>::</p>
+<pre><code>ssh -i ~/Downloads/your.pem ubuntu@???-???-???-???
+</code></pre>
+<p>The machine you are using is Linux Ubuntu: Ubuntu is an operating system you can use (I do) on your laptop or desktop. One of the nice things about this OS is the ability to update the software, easily.  The command <code>sudo apt-get update</code> checks a server for updates to existing software.</p>
+<pre><code class="bash">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade
+</code></pre>
+
+<p>OK, what are these commands?  <code>sudo</code> is the command that tells the computer that we have admin privileges. Try running the commands without the sudo -- it will complain that you don't have admin privileges or something like that. <em>Careful here, using sudo means that you can do something really bad to your own computer -- like delete everything</em>, so use with caution. It's not a big worry when using AWS, as this is a virtual machine- fixing your worst mistake is as easy as just terminating the instance and restarting.</p>
+<p>So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the <code>update</code> or <code>upgrade</code> command, we're using <code>install</code>. EASY!!</p>
+<pre><code class="bash">sudo apt-get -y install build-essential git
+</code></pre>
+
+<h2 id="install-biopython">Install BioPython</h2>
+<pre><code class="bash">pip install biopython
+</code></pre>
+
+<h2 id="install-linuxbrew">Install LinuxBrew</h2>
+<h4 id="install-ruby">Install Ruby</h4>
+<pre><code class="bash">cd
+wget https://keybase.io/mpapis/key.asc
+gpg --import key.asc
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+source /home/ubuntu/.rvm/scripts/rvm
+</code></pre>
+
+<h4 id="install-linuxbrew-itself">Install LinuxBrew itself</h4>
+<pre><code class="bash">sudo mkdir /home/linuxbrew
+sudo chown $USER:$USER /home/linuxbrew
+git clone https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbrew
+echo 'export PATH=&quot;/home/linuxbrew/.linuxbrew/bin:$PATH&quot;' &gt;&gt; ~/.profile
+echo 'export MANPATH=&quot;/home/linuxbrew/.linuxbrew/share/man:$MANPATH&quot;' &gt;&gt; ~/.profile
+echo 'export INFOPATH=&quot;/home/linuxbrew/.linuxbrew/share/info:$INFOPATH&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+brew tap homebrew/science
+brew update
+brew doctor
+</code></pre>
+
+<h2 id="install-mafft-and-raxml-and-blast">Install mafft and RAxML and BLAST</h2>
+<pre><code class="bash">brew install mafft raxml blast aria2
+</code></pre>
+
+<h2 id="download-the-database-and-unzip-it">Download the database and unzip it</h2>
+<pre><code class="bash">aria2c ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+gzip -d uniprot_sprot.fasta.gz
+</code></pre>
+
+<h2 id="download-the-query-sequences">Download the query sequences</h2>
+<pre><code class="bash">aria2c https://s3.amazonaws.com/gen711/dataset1.pep
+</code></pre>
+
+<h2 id="make-blast-database-and-blast">Make blast database and blast</h2>
+<pre><code class="bash">makeblastdb -in uniprot_sprot.fasta -out uniprot -dbtype prot
+</code></pre>
+
+<p><strong>For the query sequences</strong>, I am going to pull out 2 specific sequences from the larger dataset <code>dataset1.pep</code>. These are both HOX genes that I have identified ahead of time. The command <code>grep</code> finds words/numbers/symbols in files. Remember that the <code>&gt;</code> sends the results of the command to a file, in this case names <code>query.pep</code>.</p>
+<pre><code class="bash">grep -A1 'ENSPTRP00000032491\|ENSPTRP00000032494' dataset1.pep &gt; query.pep
+</code></pre>
+
+<p>Now that I have a couple of query sequences, we are ready to blast.</p>
+<pre><code class="bash">  blastp -evalue 8e-8 -num_threads 4 -db uniprot -query query.pep -max_target_seqs 3 -outfmt &quot;6 qseqid score pident evalue stitle&quot;
+</code></pre>
+
+<p>You will see the results in a table with 4 columns. Use <code>blastp -help</code> to see what the results mean. Test out some of the blast options. Try changing the matrix size using <code>-matrix</code>, to see how these changes affect the results.</p>
+<h4 id="make-a-file-that-contains-the-sequences-for-the-blast-hits-you-just-discovered">Make a file that contains the sequences for the blast hits you just discovered</h4>
+<pre><code class="bash">### You need a little script to help you pull out the sequences
+
+curl -LO https://raw.githubusercontent.com/macmanes-lab/general/master/filter.py
+
+### Now open a file, and make a list of the names of the proteins you just identified using blast
+
+nano cool_prots.list
+
+### paste this list, and save and quit nano
+
+HXA2_HUMAN
+HXA2_BOVIN
+HXA2_PAPAN
+HXA3_HUMAN
+HXA3_MOUSE
+HXA3_BOVIN
+HXA9_HUMAN
+
+
+### Now sue the sctipr to pull out the proteins into a file
+
+python filter.py uniprot_sprot.fasta \
+&lt;(grep -f cool_prots.list uniprot_sprot.fasta | awk '{print $1}' | sed 's_&gt;__') &gt; cool_prots.fasta
+
+</code></pre>
+
+<h4 id="now-make-a-file-that-contains-both-the-query-sequences-and-the-sequences-we-found-by-blasting">Now, make a file that contains BOTH  the query sequences AND the sequences we found by blasting.</h4>
+<pre><code class="bash">
+cat query.pep cool_prots.fasta &gt; for_alignment.pep
+
+</code></pre>
+
+<h4 id="use-mafft-for-alignment">Use mafft for alignment</h4>
+<pre><code class="bash">
+mafft --reorder --bl 80 --localpair --thread 4 for_alignment.pep &gt; for.tree
+
+</code></pre>
+
+<h4 id="raxml">RAxML</h4>
+<p>Make a phylogeny</p>
+<pre><code class="bash">
+raxmlHPC-PTHREADS -f a -m PROTCATBLOSUM62 -T 4 -x 34 -N 100 -n tree -s for.tree -p 35
+
+
+</code></pre>
+
+<h3 id="copy-phylogeny-and-view-online">Copy phylogeny and view online.</h3>
+<pre><code class="bash">
+    less RAxML_bipartitionsBranchLabels.tree
+
+    #copy this info.
+
+</code></pre>
+
+<p>Visualize tree on website: http://www.evolgenius.info/evolview/</p>
+<ol>
+<li>Click on "Use without and account"</li>
+<li>Click on the folder icon in the top-left part of the page.</li>
+<li>Paste in the code from your terminal. <strong>FYI, this is the NEWICK tree format</strong>, yes, named after Newick's Restaurant just down the road from us!!</li>
+<li>Find the HOX9 gene - this is the outgroup sequence we will use to rood the tree. Hover over the branch and it will turn red - a box will open, click "reroot here"</li>
+</ol>
+<h1 id="terminate-your-instance">TERMINATE YOUR INSTANCE</h1></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
