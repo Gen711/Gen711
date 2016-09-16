@@ -123,10 +123,7 @@
         <li class="main active"><a href="#lab-3-alignment">Lab 3: Alignment</a></li>
         
     
-        <li class="main "><a href="#install-biopython">Install BioPython</a></li>
-        
-    
-        <li class="main "><a href="#install-linuxbrew">Install LinuxBrew</a></li>
+        <li class="main "><a href="#install-linuxbrew">Install LinuxBrew.</a></li>
         
             <li><a href="#install-ruby">Install Ruby</a></li>
         
@@ -136,7 +133,10 @@
         <li class="main "><a href="#install-mafft-and-raxml-and-blast">Install mafft and RAxML and BLAST</a></li>
         
     
-        <li class="main "><a href="#download-the-database-and-unzip-it">Download the database and unzip it</a></li>
+        <li class="main "><a href="#install-biopython">Install BioPython</a></li>
+        
+    
+        <li class="main "><a href="#download-the-blast-database-and-unzip-it">Download the blast database and unzip it</a></li>
         
     
         <li class="main "><a href="#download-the-query-sequences">Download the query sequences</a></li>
@@ -172,11 +172,13 @@
 <p>Regarding your dataset, tell me how some of these genes are related to their homologous copies.</p>
 </li>
 </ol>
-<p>Step 1: Launch and AMI. For this exercise, we will use a c4.xlarge instance.</p>
-<p>::</p>
-<pre><code>ssh -i ~/Downloads/your.pem ubuntu@???-???-???-???
+<p>Step 1: Launch and AMI. For this exercise, we will use a c4.xlarge instance. This instance has 4 cores.</p>
+<pre><code class="bash">
+ssh -i ~/Downloads/your.pem ubuntu@???-???-???-???
+
 </code></pre>
-<p>The machine you are using is Linux Ubuntu: Ubuntu is an operating system you can use (I do) on your laptop or desktop. One of the nice things about this OS is the ability to update the software, easily.  The command <code>sudo apt-get update</code> checks a server for updates to existing software.</p>
+
+<p>Update the software</p>
 <pre><code class="bash">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade
 </code></pre>
 
@@ -185,12 +187,10 @@
 <pre><code class="bash">sudo apt-get -y install build-essential git
 </code></pre>
 
-<h2 id="install-biopython">Install BioPython</h2>
-<pre><code class="bash">pip install biopython
-</code></pre>
-
-<h2 id="install-linuxbrew">Install LinuxBrew</h2>
+<h2 id="install-linuxbrew">Install LinuxBrew.</h2>
+<p>http://linuxbrew.sh/. LinuxBrew can be installed in your home directory and does not require root access. The same package manager can be used on both your Linux server and your Mac laptop.</p>
 <h4 id="install-ruby">Install Ruby</h4>
+<p>LinuxBrew needs Ruby to install</p>
 <pre><code class="bash">cd
 wget https://keybase.io/mpapis/key.asc
 gpg --import key.asc
@@ -212,10 +212,18 @@ brew doctor
 </code></pre>
 
 <h2 id="install-mafft-and-raxml-and-blast">Install mafft and RAxML and BLAST</h2>
+<p>Yes, installing software is easy.. <code>brew install XXX</code>. Do you have a favorite software package. Try and install it, in addition to the other things we are installing.</p>
 <pre><code class="bash">brew install mafft raxml blast aria2
 </code></pre>
 
-<h2 id="download-the-database-and-unzip-it">Download the database and unzip it</h2>
+<h2 id="install-biopython">Install BioPython</h2>
+<p>BioPython is a python package that does a lot of common tasks related to sequence manipulation.</p>
+<pre><code class="bash">pip install biopython
+</code></pre>
+
+<h2 id="download-the-blast-database-and-unzip-it">Download the blast database and unzip it</h2>
+<p>We are downloading SwissProt, which has about 550,000 curated protein sequences.</p>
+<p>Note we are using a program called <code>aria2c</code> to download. This is a something that, for huuuuge files, can significantly speed up the process. For smaller things, I'll still use <code>curl</code></p>
 <pre><code class="bash">aria2c ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 gzip -d uniprot_sprot.fasta.gz
 </code></pre>
@@ -228,12 +236,13 @@ gzip -d uniprot_sprot.fasta.gz
 <pre><code class="bash">makeblastdb -in uniprot_sprot.fasta -out uniprot -dbtype prot
 </code></pre>
 
-<p><strong>For the query sequences</strong>, I am going to pull out 2 specific sequences from the larger dataset <code>dataset1.pep</code>. These are both HOX genes that I have identified ahead of time. The command <code>grep</code> finds words/numbers/symbols in files. Remember that the <code>&gt;</code> sends the results of the command to a file, in this case names <code>query.pep</code>.</p>
+<p><strong>For the query sequences</strong>, I am going to pull out 2 specific sequences from the larger dataset <code>dataset1.pep</code>. These are both HOX genes that I have identified before class. The command <code>grep</code> finds words/numbers/symbols in files. The <code>-A1</code> flag that I pass to the <code>grep</code> command asks that grep returns the line that matches, but also the line just below the match. We're downloading a fasta record.. think about why this makes sense.</p>
+<p>Remember that the <code>&gt;</code> sends the results of the command to a file, in this case names <code>query.pep</code>.</p>
 <pre><code class="bash">grep -A1 'ENSPTRP00000032491\|ENSPTRP00000032494' dataset1.pep &gt; query.pep
 </code></pre>
 
 <p>Now that I have a couple of query sequences, we are ready to blast.</p>
-<pre><code class="bash">  blastp -evalue 8e-8 -num_threads 4 -db uniprot -query query.pep -max_target_seqs 3 -outfmt &quot;6 qseqid score pident evalue stitle&quot;
+<pre><code class="bash">blastp -evalue 8e-8 -num_threads 4 -db uniprot -query query.pep -max_target_seqs 3 -outfmt &quot;6 qseqid score pident evalue stitle&quot;
 </code></pre>
 
 <p>You will see the results in a table with 4 columns. Use <code>blastp -help</code> to see what the results mean. Test out some of the blast options. Try changing the matrix size using <code>-matrix</code>, to see how these changes affect the results.</p>
@@ -257,7 +266,7 @@ HXA3_BOVIN
 HXA9_HUMAN
 
 
-### Now sue the sctipr to pull out the proteins into a file
+### Now sue the script to pull out the proteins into a file. Note that this script does something pretty fancy. It uses process substitution (https://en.wikipedia.org/wiki/Process_substitution). To understand process substitution you also need to get familiar with the ideas of stdout and stdin (https://en.wikipedia.org/wiki/Standard_streams)
 
 python filter.py uniprot_sprot.fasta \
 &lt;(grep -f cool_prots.list uniprot_sprot.fasta | awk '{print $1}' | sed 's_&gt;__') &gt; cool_prots.fasta
@@ -265,18 +274,21 @@ python filter.py uniprot_sprot.fasta \
 </code></pre>
 
 <h4 id="now-make-a-file-that-contains-both-the-query-sequences-and-the-sequences-we-found-by-blasting">Now, make a file that contains BOTH  the query sequences AND the sequences we found by blasting.</h4>
+<p>What does <code>cat</code> do??</p>
 <pre><code class="bash">
 cat query.pep cool_prots.fasta &gt; for_alignment.pep
 
 </code></pre>
 
 <h4 id="use-mafft-for-alignment">Use mafft for alignment</h4>
+<p>What are the different options to <code>mafft</code></p>
 <pre><code class="bash">
 mafft --reorder --bl 80 --localpair --thread 4 for_alignment.pep &gt; for.tree
 
 </code></pre>
 
 <h4 id="raxml">RAxML</h4>
+<p>What are the different options to <code>RaxML</code></p>
 <p>Make a phylogeny</p>
 <pre><code class="bash">
 raxmlHPC-PTHREADS -f a -m PROTCATBLOSUM62 -T 4 -x 34 -N 100 -n tree -s for.tree -p 35
@@ -286,7 +298,7 @@ raxmlHPC-PTHREADS -f a -m PROTCATBLOSUM62 -T 4 -x 34 -N 100 -n tree -s for.tree 
 
 <h3 id="copy-phylogeny-and-view-online">Copy phylogeny and view online.</h3>
 <pre><code class="bash">
-    less RAxML_bipartitionsBranchLabels.tree
+less RAxML_bipartitionsBranchLabels.tree
 
     #copy this info.
 
@@ -294,7 +306,7 @@ raxmlHPC-PTHREADS -f a -m PROTCATBLOSUM62 -T 4 -x 34 -N 100 -n tree -s for.tree 
 
 <p>Visualize tree on website: http://www.evolgenius.info/evolview/</p>
 <ol>
-<li>Click on "Use without and account"</li>
+<li>Click on "Use without an account"</li>
 <li>Click on the folder icon in the top-left part of the page.</li>
 <li>Paste in the code from your terminal. <strong>FYI, this is the NEWICK tree format</strong>, yes, named after Newick's Restaurant just down the road from us!!</li>
 <li>Find the HOX9 gene - this is the outgroup sequence we will use to rood the tree. Hover over the branch and it will turn red - a box will open, click "reroot here"</li>
