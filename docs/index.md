@@ -24,6 +24,7 @@
     - [Lecture 4](lecture/Lecture_4.pdf)
     - [Lecture 6](lecture/Lecture_6.pdf)
     - [Lecture 7](lecture/Lecture_7.pdf)
+    - [Lecture 9](lecture/Lecture_9.pdf)
 
 
 7. Lab lessons
@@ -40,6 +41,8 @@
         - Week 1: Goodwin2016 and Ashley
         - Week 2: Altschul and Kelley
         - Week 3: "Week2" and Katoh
+        - [What is a HMM](http://www.nature.com/nbt/journal/v22/n10/pdf/nbt1004-1315.pdf)
+        - [HMMs in Biology](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2766791/pdf/CG-10-402.pdf)
 
 9. Homework
 
