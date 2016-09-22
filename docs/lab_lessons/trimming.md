@@ -137,9 +137,6 @@ scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/khmer_analysis/*histo ~/D
 ```
 
 
-> Now, on your MAC, find the PDF files you just downloaded.. Open them up and see what they look like. Can you figure out what they mean? 
-
-
 > Now look at the and ``.histo`` file.  which is the plot of quality containing both the mean quality as well as that for each tile. I want you to plot the distribution using R and RStudio.
 
 
