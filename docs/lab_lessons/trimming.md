@@ -65,7 +65,7 @@ ctl-b d
 
 ```
 
-> Install Skewer, a trimming tool. Seqtk, a sequence manipulation tool, and Python..
+Install Skewer, a trimming tool. Seqtk, a sequence manipulation tool, and Python..
 
 
 ```bash  
@@ -74,9 +74,7 @@ brew install skewer seqtk python jellyfish
 
 ```
 
-
-
-> now go back to the download tmux window to see if//wait for the download
+now go back to the download tmux window to see if//wait for the download
 
 ```bash
 tmux at -t download
@@ -87,7 +85,7 @@ ctl-d
 
 ```
 
-> Run khmer. Make sure to look at the manual.
+Run khmer. Make sure to look at the manual.
 
 
 ```bash
@@ -95,10 +93,10 @@ ctl-d
 tmux new -s kmer
 mkdir $HOME/kmer_analysis && cd $HOME/kmer_analysis
   
- #IMPORTANT DETAIL: usually pasting things in 1 at a time is fine - except here... When you see ``\`` at the end of lines, this means copy the 2 (or 3 or 4) lines together. 
+#IMPORTANT DETAIL: usually pasting things in 1 at a time is fine - except here... When you see ``\`` at the end of lines, this means copy the 2 (or 3 or 4) lines together. 
 
 
- #do trimming at P2
+#do trimming at P2
 
 trim=2
 seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
@@ -107,7 +105,7 @@ seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
 
 jellyfish histo $trim.counts.jf > $trim.counts.histo
 
- #do trimming at P30
+#do trimming at P30
 
 trim=30
 seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
@@ -124,9 +122,9 @@ jellyfish histo $trim.counts.jf > $trim.counts.histo
 ```
 
 
-> Wait for these things to be done.. Use ``top -c`` to do this.. Remember ``q`` gets you outta ``top``.
+Wait for these things to be done.. Use ``top -c`` to do this.. Remember ``q`` gets you outta ``top``.
 
-> Open up a new terminal (tab) or window using the buttons command-t. You're going to download the files you created on teh AWS machine to the MAC your using in the lab. 
+Open up a new terminal (tab) or window using the buttons command-t. You're going to download the files you created on teh AWS machine to the MAC your using in the lab. 
 
 ```bash
 scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/khmer_analysis/*histo ~/Downloads/
@@ -135,11 +133,11 @@ scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/khmer_analysis/*histo ~/D
 ```
 
 
-> Now look at the and ``.histo`` file.  which is the plot of quality containing both the mean quality as well as that for each tile. I want you to plot the distribution using R and RStudio.
+Now look at the and ``.histo`` file.  which is the plot of quality containing both the mean quality as well as that for each tile. I want you to plot the distribution using R and RStudio.
 
 
 
-> OPEN RStudio - this should be installed on your Mac. These commands you'll type into RStudio, NOT the terminal.
+OPEN RStudio - this should be installed on your Mac. These commands you'll type into RStudio, NOT the terminal.
 
 
 ```bash
