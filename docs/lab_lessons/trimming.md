@@ -1,29 +1,27 @@
 ## Lab4: Trimming fastQ
 
-
-
-> Step 1: Launch and AMI. For this exercise, we will use a c4.2xlarge instance. **IMPORTANT DETAIL!!!!!!!!!** We need to have more hard drive space for this exercise. So when you select the machine type, don't click ``Review and Launch`` like you normally do. Instead, go to near the top of teh page and click ``4. Add Storage``. You'll see a column labelled ``Size (GiB)`` with a 8 under that.. Change that 8 to 100. Now click ``Review and Launch`` like normal. You now have a computer with a hard drive of size 100Gb. 
+Step 1: Launch the AMI. For this exercise, we will use a c4.2xlarge instance. **IMPORTANT DETAIL!!!!!!!!!** We need to have more hard drive space for this exercise. So when you select the machine type, don't click ``Review and Launch`` like you normally do. Instead, go to near the top of teh page and click ``4. Add Storage``. You'll see a column labelled ``Size (GiB)`` with a 8 under that.. Change that 8 to 100. Now click ``Review and Launch`` like normal. You now have a computer with a hard drive of size 100Gb. 
 
 
 ```bash
 ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???
 ```
 
-> Update Software
+Update Software
 
 
 ```bash
 sudo apt-get update && sudo apt-get -y upgrade
 ```
 
-> Install other software
+Install other software
 
 ```bash
 sudo apt-get -y install build-essential git
 ```
 
 
-> Install LinuxBrew
+Install LinuxBrew
 
 ```bash
 
@@ -49,7 +47,7 @@ brew doctor
 ```
 
 
-> Download data, and uncompress them.. Let's put this in a tmux window so we can get to doing other things.. remember you need paste the tmux relevant commands one at a time. 
+Download data, and uncompress them.. Let's put this in a tmux window so we can get to doing other things.. remember you need paste the tmux relevant commands one at a time. 
 
 
 ```bash
