@@ -127,7 +127,7 @@ Wait for these things to be done.. Use ``top -c`` to do this.. Remember ``q`` ge
 Open up a new terminal (tab) or window using the buttons command-t. You're going to download the files you created on teh AWS machine to the MAC your using in the lab.
 
 ```bash
-scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/khmer_analysis/*histo ~/Downloads/
+scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/kmer_analysis/*histo ~/Downloads/
 
 
 ```
