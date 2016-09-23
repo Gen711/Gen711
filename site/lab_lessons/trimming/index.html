@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Week 2 lab - Gen711 - Fall2016</title>
+	<title>Week 4 lab - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -77,8 +77,8 @@
                 
                 
                 
-                    <li class="active">
-                        <a href="./">Week 2 lab</a>
+                    <li >
+                        <a href="../Lab1_blast/">Week 2 lab</a>
                     </li>
                 
                 
@@ -89,8 +89,8 @@
                 
                 
                 
-                    <li >
-                        <a href="../trimming/">Week 4 lab</a>
+                    <li class="active">
+                        <a href="./">Week 4 lab</a>
                     </li>
                 
                 
@@ -105,12 +105,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../unix/">
+                        <a rel="next" href="../alignment/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../alignment/">
+                    <li class="disabled">
+                        <a rel="prev" >
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -126,76 +126,146 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#lab-1-blast">Lab 1: BLAST</a></li>
+        <li class="main active"><a href="#lab4-trimming-fastq">Lab4: Trimming fastQ</a></li>
         
-            <li><a href="#challenge">Challenge...</a></li>
+    
+        <li class="main "><a href="#terminate-your-instance">Terminate your instance!!!</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="lab-1-blast">Lab 1: BLAST</h2>
-<p>During this lab, we will acquaint ourselves with the the software package BLAST. Your objectives are:</p>
-<ol>
-<li>
-<p>Familiarize yourself with the software, how to execute it, how to visualize results.</p>
-</li>
-<li>
-<p>Regarding your dataset, tell me how some of these genes are related to their homologous copies.</p>
-</li>
-</ol>
-<p>Step 1: Launch and AMI. You will need to navigate to aws.amazon.com to do this. Follow the instructions on the <code>Amazon Resources</code> page if you cannot remember how to launch an instance.  For this exercise, we will use a c4.xlarge instance, which has 4 cores and costs 21 cents per hour to rent.</p>
-<pre><code># This is a comment, anything that follow the hashtag symbol is a comment.
+<h2 id="lab4-trimming-fastq">Lab4: Trimming fastQ</h2>
+<p>Step 1: Launch the AMI. For this exercise, we will use a c4.2xlarge instance. <strong>IMPORTANT DETAIL!!!!!!!!!</strong> We need to have more hard drive space for this exercise. So when you select the machine type, don't click <code>Review and Launch</code> like you normally do. Instead, go to near the top of teh page and click <code>4. Add Storage</code>. You'll see a column labelled <code>Size (GiB)</code> with a 8 under that.. Change that 8 to 100. Now click <code>Review and Launch</code> like normal. You now have a computer with a hard drive of size 100Gb. </p>
+<pre><code class="bash">ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???
+</code></pre>
 
-# replace the `x's` in the below command with your Public IP address
+<p>Update Software</p>
+<pre><code class="bash">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade
+</code></pre>
 
-ssh -i ~/Downloads/your.pem ubuntu@xx.xx.xx.x
+<p>Install other software</p>
+<pre><code class="bash">sudo apt-get -y install build-essential git
 </code></pre>
-<p>The machine you are using is Linux Ubuntu: Ubuntu is an operating system you can use (I do) on your laptop or desktop. One of the nice things about this OS is the ability to update the software, easily.  The command <code>sudo apt-get update</code> checks a server for updates to existing software. <code>apt-get</code> is like the Mac app store for those of you that are Mac/iPhone users.</p>
-<pre><code>sudo apt-get update
-</code></pre>
-<p>The upgrade command actually installs any of the required updates.</p>
-<pre><code>sudo apt-get -y upgrade
-</code></pre>
-<p>OK, what are these commands?  <code>sudo</code> is the command that tells the computer that we have admin privileges. Try running the commands without the sudo -- it will complain that you don't have admin privileges or something like that. <em>Careful here, using sudo means that you can do something really bad to your own computer -- like delete everything</em>, so use with caution. It's not a big worry when using AWS, as this is a virtual machine- fixing your worst mistake is as easy as just terminating the instance and restarting.</p>
-<p>So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the <code>update</code> or <code>upgrade</code> command, we're using <code>install</code>. EASY!!</p>
-<pre><code>sudo apt-get -y install build-essential git curl gcc make g++ python-dev unzip
-</code></pre>
-<p>ok, for this lab we are going to use BLAST, which is available as a package entitled <code>ncbi-blast+</code></p>
-<pre><code># replace the ??? with the appropriate command that will install blast.
 
-sudo apt-get -y install ???
+<p>Install LinuxBrew</p>
+<pre><code class="bash">
+cd
+wget https://keybase.io/mpapis/key.asc
+gpg --import key.asc
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+source /home/ubuntu/.rvm/scripts/rvm
+
+
+sudo mkdir /home/linuxbrew
+sudo chown $USER:$USER /home/linuxbrew
+git clone https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbrew
+echo 'export PATH=&quot;/home/linuxbrew/.linuxbrew/bin:$PATH&quot;' &gt;&gt; ~/.profile
+echo 'export MANPATH=&quot;/home/linuxbrew/.linuxbrew/share/man:$MANPATH&quot;' &gt;&gt; ~/.profile
+echo 'export INFOPATH=&quot;/home/linuxbrew/.linuxbrew/share/info:$INFOPATH&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+brew tap homebrew/science
+brew update
+brew doctor
+
+
 </code></pre>
-<p>to get a feel for the different options, type <code>blastp -help</code>. Which type of blast does this correspond to? Look at the help info for blastp and tblastx. There are A LOT of options, most of which you will be able to safely ignore. One of the challenges of bioinformatics is knowing about the options and which ones you can safely ignore, and which ones are important.</p>
-<h3 id="challenge">Challenge...</h3>
-<p>You have just returned from South America, where you captured a rare - never been seen before - desert mouse. You are interested in knowing how it survives, and start by trying to identify the Sodium transport genes, in particular a gene called Scn5a (https://en.wikipedia.org/wiki/Nav1.5). You've just had the animals's transcriptome sequenced, and are about to begin the search!! You <em>could</em> use web blast like you've done in the past, but there are 20166 sequences that you need to search and that would take a loooooooong time.</p>
-<p>Download the data here:</p>
-<pre><code>curl -LO https://s3.amazonaws.com/macmanes_share/transcripts.fasta
+
+<p>Download data, and uncompress them.. Let's put this in a tmux window so we can get to doing other things.. remember you need paste the tmux relevant commands one at a time. </p>
+<pre><code class="bash">
+tmux new -s download
+
+cd $HOME &amp;&amp; mkdir reads &amp;&amp; cd reads
+curl -LO https://s3.amazonaws.com/gen711/TruSeq3-PE.fa
+curl -L https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R1.PF.fastq.gz &gt; kidney.1.fq.gz &amp;
+curl -L https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R2.PF.fastq.gz &gt; kidney.2.fq.gz
+
+#then this to get out of tmux
+
+ctl-b d
+
 </code></pre>
-<p>You know that the model organism, the lab mouse, has an excellent genome and you decide to use it to help identify the sodium transport genes in the new animal. Download the data:</p>
-<pre><code>curl -LO ftp://ftp.ensembl.org/pub/release-85/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz
-gzip -d Mus_musculus.GRCm38.cdna.all.fa.gz
+
+<p>Install Skewer, a trimming tool. Seqtk, a sequence manipulation tool, and Python..</p>
+<pre><code class="bash">
+brew install skewer seqtk python jellyfish
+
 </code></pre>
-<h4 id="ok-lets-do-some-blasting">OK, let's do some blasting..</h4>
-<p>1st step is to make the blast database</p>
-<pre><code>makeblastdb -in Mus_musculus.GRCm38.cdna.all.fa -out mus -dbtype nucl
+
+<p>now go back to the download tmux window to see if//wait for the download</p>
+<pre><code class="bash">tmux at -t download
+
+#IMPORTANT - when it is done downloading, kill the window
+
+ctl-d
+
 </code></pre>
-<p>Now blast.. your results should be saved in a file called <code>blast.out</code></p>
-<pre><code>blastn -db mus -max_target_seqs 1 -query transcripts.fasta \
--outfmt '6 qseqid evalue stitle' -evalue 1e-10 -num_threads 4 -out blast.out
+
+<p>Run khmer. Make sure to look at the manual.</p>
+<pre><code class="bash">
+tmux new -s kmer
+mkdir $HOME/kmer_analysis &amp;&amp; cd $HOME/kmer_analysis
+
+#IMPORTANT DETAIL: usually pasting things in 1 at a time is fine - except here... When you see ``\`` at the end of lines, this means copy the 2 (or 3 or 4) lines together. 
+
+
+#do trimming at P2
+
+trim=2
+seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
+| skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
+| jellyfish count -s 1000000 -m 25 -t 8 -o $trim.counts.jf -C /dev/stdin
+
+jellyfish histo $trim.counts.jf &gt; $trim.counts.histo
+
+#do trimming at P30
+
+trim=30
+seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
+| skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
+| jellyfish count -s 1000000 -m 25 -t 8 -o $trim.counts.jf -C /dev/stdin
+
+jellyfish histo $trim.counts.jf &gt; $trim.counts.histo
+
+
+ # to exit out of the tmux window, if you want to. 
+
+ ctl-b d
+
 </code></pre>
-<p>look at <code>blast.out</code>. the 1st column is the ID of the desert mouse transcript, the 2nd column is the e-value (a statistic related to how good the match between query and reference sequences is - smaller numbers better. The 3rd column is the Mouse transcript match descriptor)</p>
-<pre><code>less -S blast.out
+
+<p>Wait for these things to be done.. Use <code>top -c</code> to do this.. Remember <code>q</code> gets you outta <code>top</code>.</p>
+<p>Open up a new terminal (tab) or window using the buttons command-t. You're going to download the files you created on teh AWS machine to the MAC your using in the lab. </p>
+<pre><code class="bash">scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/khmer_analysis/*histo ~/Downloads/
+
+
 </code></pre>
-<p>Oh crap.. there are 16501 lines in that file, how are we going to find the Scn5a gene that we are looking for?? Meet <code>grep</code>.</p>
-<pre><code>grep -i SCN5A blast.out
+
+<p>Now look at the and <code>.histo</code> file.  which is the plot of quality containing both the mean quality as well as that for each tile. I want you to plot the distribution using R and RStudio.</p>
+<p>OPEN RStudio - this should be installed on your Mac. These commands you'll type into RStudio, NOT the terminal.</p>
+<pre><code class="bash">
+#Import Data
+p2 &lt;- read.csv(&quot;~/Downloads/2.counts.histo&quot;, quote=&quot;\&quot;&quot;)
+p30 &lt;- read.csv(&quot;~/Downloads/30.counts.histo&quot;, quote=&quot;\&quot;&quot;)
+
+par(mfcol=c(2,1))
+
+plot(p2$count[2:10] ~ p2$count[2:10], type='p', lwd=5,
+    col='blue', frame.plot=F, xlab='25-mer frequency', ylab='kmer count',
+    main='Kmer distribution in sample with different trimming thresholds')
+
+lines(p30$count[2:10] ~ p30$count[2:10], type='p', lwd=5,
+    col='red')
+
+plot(p2$count[2:30] - p30$count[2:30], type='p',
+    xlim=c(2,20), xaxs=&quot;i&quot;, yaxs=&quot;i&quot;, frame.plot=F,
+    ylim=c(0,1500000), col='red', xlab='kmer frequency',
+    lwd=4, ylab='count',
+    main='Diff in 25mer counts of freq 2 to 20 \n Phred2 vs. Phred30')
 </code></pre>
-<p>As an additional exercise, see if you sequenced your favorite gene in the new animals. Navigate to http://useast.ensembl.org/Mus_musculus/Info/Index to find the appropriate gene codes. For example..</p>
-<pre><code>grep -i "solute carrier" blast.out
-grep -i aquaporin blast.out
-grep -i Rbp2 blast.out
-</code></pre></div>
+
+<h2 id="terminate-your-instance">Terminate your instance!!!</h2></div>
             
         </div>
 
