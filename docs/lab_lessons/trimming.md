@@ -148,11 +148,11 @@ p30 <- read.table("~/Downloads/30.counts.histo", quote="\"", comment.char="")
 
 par(mfcol=c(2,1))
 
-plot(p2$V2[2:10] ~ p2$V2[2:10], type='p', lwd=5,
+plot(p2$V2[2:10] ~ 1, type='p', lwd=5,
     col='blue', frame.plot=F, xlab='25-mer frequency', ylab='kmer count',
     main='Kmer distribution in sample with different trimming thresholds')
 
-lines(p30$V2[2:10] ~ p30$V2[2:10], type='p', lwd=5,
+lines(p30$V2[2:10] ~ 1, type='p', lwd=5,
     col='red')
 
 plot(p2$V2[2:30] - p30$V2[2:30], type='p',
