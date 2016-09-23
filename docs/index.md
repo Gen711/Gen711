@@ -33,7 +33,7 @@
     - [Getting Started](lab_lessons/unix.md)
     - [WEEK 2 LAB](lab_lessons/Lab1_blast.md)
     - [Week 3 lab](lab_lessons/alignment.md)
-
+    - [Week 4 lab](lab_lessons/trimming.md)
 
 8. Reading
 
