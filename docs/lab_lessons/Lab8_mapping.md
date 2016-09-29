@@ -98,7 +98,7 @@ Flag info: <a href="http://broadinstitute.github.io/picard/explain-flags.html" t
     bwa mem -t8 index /mnt/data/SRR1575395_1.fastq /mnt/data/SRR1575395_2.fastq > brain.sam
 
 
-> Look at SAM file. 
+> Look at SAM file.
 
 
 
@@ -106,19 +106,19 @@ Flag info: <a href="http://broadinstitute.github.io/picard/explain-flags.html" t
 
     head brain.sam
     tail brain.sam
-    
-    #Count how many reads in fastq files. `grep -c` counts the number of occurances of the pattern, which in this case is `^@`. I am looking for lines that begin with (specified by `^`) the @ character. 
-    
+
+    #Count how many reads in fastq files. `grep -c` counts the number of occurances of the pattern, which in this case is `^@`. I am looking for lines that begin with (specified by `^`) the @ character.
+
     grep -c ^@ ../data/SRR1575395_1.fastq ../data/SRR1575395_2.fastq
-    
+
     #count number of reads mapping with Flag 65/67. The 1st part of this command `awk`, pulls out the second column of the files, and counts everthing that has either 65 or 67. What do these flags correspond to?   
-    
+
     awk '{print $2}' brain.sam | grep ^6 | grep -c '65\|67'
-    
+
     #why do we need the `grep ^6` thing in there... try `awk '{print $2}' brain.sam | grep '65\|67' | wc -l`
-    
+
     #what about this??
-    
+
     awk '{print $2}' brain.sam | grep '^65\|^67' | wc -l
 
 
@@ -129,4 +129,3 @@ Flag info: <a href="http://broadinstitute.github.io/picard/explain-flags.html" t
 	#I'm giving you the last bit of the awk code. You have to figure out the 1st awk command and the 1st grep command. This will send the number of mismatches to a file `mismatches.txt`. Can you download it to your usb or HD and plot the results, find the mean number of mismatches, etc??
 
 	awk | grep | awk -F ":" '{print $3}' > mismatches.txt
-
