@@ -11,14 +11,6 @@
 
     
     <url>
-     <loc>None/Syllabus/</loc>
-     <lastmod>2016-09-29</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
      <loc>None/AWS/</loc>
      <lastmod>2016-09-29</lastmod>
      <changefreq>daily</changefreq>
@@ -27,34 +19,98 @@
 
     
     <url>
-     <loc>None/lab_lessons/unix/</loc>
+     <loc>None/Syllabus/</loc>
      <lastmod>2016-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
+        
+    <url>
+     <loc>None/lab_lessons/Lab10_bacterial_genome_assembly/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     <url>
      <loc>None/lab_lessons/Lab1_blast/</loc>
      <lastmod>2016-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
+    <url>
+     <loc>None/lab_lessons/Lab3_hmmer/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab4_fastq/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab4_mapping/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab5_trimming/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab6_khmer/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab7_transcriptome_assembly/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab8_mapping/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/Lab9_euk.genome.assembly/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/README/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     <url>
      <loc>None/lab_lessons/alignment/</loc>
      <lastmod>2016-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
      <loc>None/lab_lessons/trimming/</loc>
      <lastmod>2016-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>None/lab_lessons/unix/</loc>
+     <lastmod>2016-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>
