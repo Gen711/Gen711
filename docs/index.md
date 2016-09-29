@@ -34,6 +34,7 @@
     - [WEEK 2 LAB](lab_lessons/Lab1_blast.md)
     - [Week 3 lab](lab_lessons/alignment.md)
     - [Week 4 lab](lab_lessons/trimming.md)
+    - [Week 5 lab](lab_lessons/mapping.md)
 
 8. Reading
 
