@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Lab7 transcriptome assembly - Gen711 - Fall2016</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Gen711 - Fall2016</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../AWS/">AWS</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../Syllabus/">Syllabus</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab lessons <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../Lab10_bacterial_genome_assembly/">Lab10 bacterial genome assembly</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab1_blast/">Lab1 blast</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab3_hmmer/">Lab3 hmmer</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab4_fastq/">Lab4 fastq</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab4_mapping/">Lab4 mapping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab5_trimming/">Lab5 trimming</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab6_khmer/">Lab6 khmer</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Lab7 transcriptome assembly</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab8_mapping/">Lab8 mapping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../Lab9_euk.genome.assembly/">Lab9 euk.genome.assembly</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../README/">README</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../alignment/">Alignment</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../trimming/">Trimming</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../unix/">Unix</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../Lab6_khmer/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../Lab8_mapping/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#lab-7-transcriptome-assembly">Lab 7: Transcriptome assembly</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="lab-7-transcriptome-assembly">Lab 7: Transcriptome assembly</h2>
+<p>--</p>
+<p>During this lab, we will acquaint ourselves with de novo transcriptome assembly using Trinity. You will:</p>
+<ol>
+<li>
+<p>Install software and download data</p>
+</li>
+<li>
+<p>Error correct, quality and adapter trim data sets.</p>
+</li>
+<li>
+<p>Apply digital normalization to the dataset.</p>
+</li>
+<li>
+<p>Trinity assembly</p>
+</li>
+<li>
+<p>Because the above steps will take a few hours, I am providing you with 2 datasets: one is the 10 million read dataset you used last week. The other is that same 10M read dataset that I have error corrected, quality/adapter trimmed, normalized, and subsampled to 0.5 million reads (I did this so that the assembly could be done in a reasonable amount of time). Especially for the people who are going to do <em>de novo</em> transcriptome projects, and students who will use something like this in their own research, that it is probably worth going through the whole pipeline at some point.</p>
+</li>
+</ol>
+<p>-</p>
+<p>The JellyFish manual: <a href="ftp://ftp.genome.umd.edu/pub/jellyfish/JellyfishUserGuide.pdf">ftp://ftp.genome.umd.edu/pub/jellyfish/JellyfishUserGuide.pdf</a></p>
+<p>The Khmer manual: <a href="http://khmer.readthedocs.org/en/v1.1/">http://khmer.readthedocs.org/en/v1.1/</a></p>
+<p>Trinity reference material: <a href="http://trinityrnaseq.sourceforge.net/">http://trinityrnaseq.sourceforge.net/</a></p>
+<hr />
+<blockquote>
+<p>Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>m3.2xlarge</strong></span> (note different instance type). Remember to change the permission of your key code <code>chmod 400 ~/Downloads/????.pem</code> (change ????.pem to whatever you named it)</p>
+</blockquote>
+<pre><code>ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
+</code></pre>
+<hr />
+<blockquote>
+<p>Update Software</p>
+</blockquote>
+<pre><code>sudo bash
+apt-get update
+</code></pre>
+<hr />
+<blockquote>
+<p>Install updates</p>
+</blockquote>
+<pre><code>apt-get -y upgrade
+</code></pre>
+<hr />
+<blockquote>
+<p>Install other software</p>
+</blockquote>
+<pre><code>apt-get -y install subversion tmux git curl bowtie libncurses5-dev samtools gcc make g++ python-dev unzip dh-autoreconf default-jre python-pip zlib1g-dev
+</code></pre>
+<hr />
+<blockquote>
+<p>Install Lighter, software for error correction.</p>
+</blockquote>
+<pre><code>cd $HOME
+git clone https://github.com/mourisl/Lighter.git
+make -j8
+PATH=$PATH:$(pwd)/scripts
+</code></pre>
+<hr />
+<blockquote>
+<p>Install Trimmomatic</p>
+</blockquote>
+<pre><code>cd $HOME
+wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
+unzip Trimmomatic-0.32.zip
+cd Trimmomatic-0.32
+chmod +x trimmomatic-0.32.jar
+</code></pre>
+<hr />
+<blockquote>
+<p>Install Trinity</p>
+</blockquote>
+<pre><code>cd $HOME
+svn checkout svn://svn.code.sf.net/p/trinityrnaseq/code/trunk trinityrnaseq-code
+cd trinityrnaseq-code
+make -j8
+PATH=$PATH:$(pwd)
+</code></pre>
+<hr />
+<blockquote>
+<p>Install Khmer</p>
+</blockquote>
+<pre><code>cd $HOME
+pip install screed pysam
+git clone https://github.com/ged-lab/khmer.git
+cd khmer
+make -j8
+make install
+PATH=$PATH:$(pwd)/scripts
+</code></pre>
+<hr />
+<blockquote>
+<p>Download data. For this lab, these data are to be used by people wanting to do the whole pipeline. Most people will want the other dataset I link to below here..</p>
+</blockquote>
+<pre><code>cd /mnt
+wget https://s3.amazonaws.com/gen711/raw.10M.SRR797058_1.fastq.gz
+wget https://s3.amazonaws.com/gen711/raw.10M.SRR797058_2.fastq.gz
+</code></pre>
+<blockquote>
+<p>Alternatively, you can download the pre-corrected, trimmed, normalized datasets. Sadly, I had to subsample this dataset severely (to 500,000 reads) so that we could assemble it in a lab period...</p>
+</blockquote>
+<pre><code>cd /mnt
+wget https://www.dropbox.com/s/eo3wrx6lvngq3ja/ec.P2.C25.left.fq.gz
+wget https://www.dropbox.com/s/eycchg3m2my2ag2/ec.P2.C25.right.fq.gz
+</code></pre>
+<hr />
+<blockquote>
+<p>Error correct (do this step if you are working with the raw data only). Note you will have to uncompress the data if you are doing these steps. I chose the software 'lighter' because if is 1. probably good and 2. it is fast! It is written by Ben Langmead, the author of several of the powerpoint lectures I posted last week.</p>
+</blockquote>
+<pre><code>mkdir /mnt/ec
+cd /mnt/ec
+lighter -r /mnt/raw.10M.SRR797058_1.fastq -r /mnt/raw.10M.SRR797058_2.fastq -t 8 -k 25 100000000 .1
+</code></pre>
+<hr />
+<blockquote>
+<p>Trim (do this step if you are working with the raw data only)</p>
+</blockquote>
+<pre><code>mkdir /mnt/trimming
+cd /mnt/trimming
+
+#paste the below lines together as 1 command
+
+java -Xmx10g -jar $HOME/Trimmomatic-0.32/trimmomatic-0.32.jar PE \
+-threads 8 -baseout ec.P2trim.fastQ \
+/mnt/ec/raw.10M.SRR797058_1.cor.fq \
+/mnt/ec/raw.10M.SRR797058_2.cor.fq \
+ILLUMINACLIP:$HOME/Trimmomatic-0.32/adapters/TruSeq3-PE.fa:2:30:10 \
+SLIDINGWINDOW:4:2 \
+LEADING:2 \
+TRAILING:2 \
+MINLEN:25
+</code></pre>
+<hr />
+<blockquote>
+<p>Run Khmer (do this step if you are working with the raw data only)</p>
+</blockquote>
+<pre><code>mkdir /mnt/khmer
+cd /mnt/khmer
+interleave-reads.py /mnt/trimming/ec.P2trim.fastQ_1P /mnt/trimming/ec.P2trim.fastQ_2P -o interleaved.fq
+normalize-by-median.py -p -x 15e8 -k 25 -C 25 --out khmer_normalized.fq interleaved.fq
+split-paired-reads.py khmer_normalized.fq
+</code></pre>
+<hr />
+<blockquote>
+<p>Run Trinity - everybody do this. If you are running with the raw data, you'll have to change the names of the input files. Note that I am using <code>--min_kmer_cov 2</code> in the command below. This is only so that you can get through the assembly in a short amount of time. DO NOT USE THIS OPTION IN 'REAL LIFE' AS IT WILL MAKE YOUR ASSEMBLY WORSE!!! This should take ~30 minutes, so use this time to talk to your group members, or whatever else..</p>
+</blockquote>
+<pre><code>mkdir /mnt/trinity
+cd /mnt/trinity
+Trinity --seqType fq --JM 20G --min_kmer_cov 2 \
+--left /mnt/ec.P2.C25.left.fq \
+--right /mnt/ec.P2.C25.right.fq \
+--CPU 8 --output ec.P2trim.C25 --group_pairs_distance 999 --inchworm_cpu 8
+</code></pre>
+<hr />
+<blockquote>
+<p>Generate Length Based stats from your assembly. What do these mean?</p>
+</blockquote>
+<pre><code>$HOME/trinityrnaseq-code/util/TrinityStats.pl ec.P2trim.C25/Trinity.fasta
+</code></pre>
+<blockquote>
+<p>lets looks for coding sequences. Before we can do this, we need to install a Perl module using the cpan command.</p>
+</blockquote>
+<pre><code>cpan URI::Escape
+$HOME/trinityrnaseq-code/trinity-plugins/TransDecoder_r20140704/TransDecoder --CPU 8 -t ec.P2trim.C25/Trinity.fasta
+</code></pre>
+<blockquote>
+<p>This will take a few minutes. Once done, you will have a file of amino acid sequences, and coding sequences. Look at how many coding sequences you found, and how many were complete (have a start and stop codon) vs. fragmented in one way or another. What do these numbers mean?? What would you hope these numbers look like. What does <code>grep -c</code> do?</p>
+</blockquote>
+<pre><code>$HOME/trinityrnaseq-code/util/TrinityStats.pl Trinity.fasta.transdecoder.pep
+grep -c complete Trinity.fasta.transdecoder.pep
+grep -c internal Trinity.fasta.transdecoder.pep
+grep -c 5prime Trinity.fasta.transdecoder.pep
+grep -c 3prime Trinity.fasta.transdecoder.pep
+</code></pre></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

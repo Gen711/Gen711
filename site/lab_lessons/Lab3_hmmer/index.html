@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Unix - Gen711 - Fall2016</title>
+	<title>Lab3 hmmer - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -88,8 +88,8 @@
 
                         
                             
-<li >
-    <a href="../Lab3_hmmer/">Lab3 hmmer</a>
+<li class="active">
+    <a href="./">Lab3 hmmer</a>
 </li>
 
                         
@@ -154,8 +154,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Unix</a>
+<li >
+    <a href="../unix/">Unix</a>
 </li>
 
                         
@@ -174,12 +174,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../trimming/">
+                        <a rel="next" href="../Lab1_blast/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../Lab4_fastq/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -195,105 +195,124 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#lab-1">Lab 1</a></li>
-        
-            <li><a href="#important-unix-rules">Important UNIX rules</a></li>
-        
-            <li><a href="#basic-shell-commands">Basic shell commands</a></li>
-        
-            <li><a href="#downloading-data-and-stuff">Downloading Data and Stuff</a></li>
-        
-    
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="lab-1">Lab 1</h2>
-<p>During this lab, we will acquaint ourselves with the Unix terminal, learn how to access data, install software, and  find things. <em>it is absolutely critical that you master these skills</em>, so please ask questions if confused.</p>
-<p>Step 1: Launch and AMI. For this exercise, a t1.micro will be sufficient.</p>
+<p>Lab3 : HMMER</p>
+<p>During this lab, we will acquaint ourselves with the the software package HMMER. Your objectives are:</p>
+<p>-</p>
+<ol>
+<li>
+<p>Familiarize yourself with the software, how to execute it, how to visualize results.</p>
+</li>
+<li>
+<p>Regarding your dataset. Characterize a few conserved domains.</p>
+</li>
+</ol>
+<p>The HMMER manual <a href="ftp://selab.janelia.org/pub/software/hmmer3/3.1b1/Userguide.pdf">ftp://selab.janelia.org/pub/software/hmmer3/3.1b1/Userguide.pdf</a></p>
+<p>The HMMER webpage: <a href="http://hmmer.janelia.org/">http://hmmer.janelia.org/</a></p>
+<hr />
+<blockquote>
+<p>Step 1: Launch and AMI. For this exercise, we will use a c3.xlarge instance. Remember to change the permission of your key code <code>chmod 400 ~/Downloads/your.pem</code> (change your.pem to whatever you named it)</p>
+</blockquote>
 <pre><code>ssh -i ~/Downloads/your.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
 </code></pre>
-<p>The machine you are using is Linux Ubuntu: Ubuntu is an operating system you can use (I do) on your laptop or desktop. One of the nice things about this OS is the ability to update the software, easily.  The command <code>sudo apt-get update</code> checks a server for updates to existing software.</p>
-<pre><code>sudo apt-get update
+<hr />
+<pre><code>sudo bash
+apt-get update
+apt-get -y upgrade
+apt-get -y install tmux git curl gcc make g++ python-dev unzip default-jre
 </code></pre>
-<p>The upgrade command actually installs any of the required updates.</p>
-<pre><code>sudo apt-get upgrade
+<p>-</p>
+<blockquote>
+<p>Ok, for this lab we are going to use HMMER</p>
+</blockquote>
+<p>-</p>
+<pre><code>cd $HOME
+wget http://selab.janelia.org/software/hmmer3/3.1b1/hmmer-3.1b1-linux-intel-x86_64.tar.gz
+tar -zxf hmmer-3.1b1-linux-intel-x86_64.tar.gz
+cd hmmer-3.1b1-linux-intel-x86_64/
+./configure
+make &amp;&amp; make all install
+make check
 </code></pre>
-<p>OK, what are these commands?  <code>sudo</code> is the command that tells the computer that we have admin privileges. Try running the commands without the sudo -- it will complain that you don't have admin privileges or something like that. <em>Careful here, using sudo means that you can do something really bad to your own computer -- like delete everything</em>, so use with caution. It's not a big worry when using AWS, as this is a virtual machine- fixing your worst mistake is as easy as just terminating the instance and restarting.</p>
-<p>So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the <code>update</code> or <code>upgrade</code> command, we're using <code>install</code>. EASY!!</p>
-<pre><code>sudo apt-get -y install tmux git curl gcc make g++ python-dev unzip \
-    default-jre
-</code></pre>
-<p>After you run this command, try something else - try to install something else. R (a stats package - more on this wonderful software later). The package is named <code>r-base-core</code>. See if you can install it!! Installing software on Linux is easy (so long as there is a downloadable package - more on when no such package exists later in lab)</p>
-<p>BTW, did you notice the <code>\</code> at the end of line 1 in the above code snippett?? That is a special character we use to break up a single line of code over 2 or more lines. You'll see me use this a lot!</p>
-<p>OK, lets try our hands at navigating around on the command line - it is not scary!</p>
-<h3 id="important-unix-rules">Important UNIX rules</h3>
-<ul>
-<li>Everything is case sensitive. Gen711 is not the same as gen711</li>
-<li>Spaces in file names should be avoided</li>
-<li>The unix $PATH is the collection of locations where the computer looks for executables (programs)</li>
-<li>
-<p>Folders and Files are all you have. If you want to access one of these, you need to tell the computer <em>EXACTLY</em> where it is. <code>/home/macmanes/gen711/exam1_key.txt</code> will work (assuming you've spelled things correctly, and that the file really exists in that location), but <code>exam1_key.txt</code> may not.</p>
-</li>
-<li>
-<p>Lines that begin with a <code>#</code> are comments.</p>
-</li>
-</ul>
-<h3 id="basic-shell-commands">Basic shell commands</h3>
-<p>the <code>pwd</code> command returns your current location.</p>
-<pre><code>pwd
-</code></pre>
-<p>the <code>ls</code> command lists the files and folders present in your current directory.  Try <code>ls -lt</code> and <code>ls -lth</code>. <em>What is the difference between these commands?</em> Try typing <code>man ls</code> to learn about all the different flags.</p>
-<pre><code>ls -l
-</code></pre>
-<p>create a file</p>
-<pre><code>nano hello.txt
-#The nano text editor will appear -&gt; type something
-This is my 1st unix file
-CTL-x
-y
-#typing n would get rid of the text you just wrote.
-</code></pre>
-<p>look at the file, there are several ways to look at the file</p>
-<pre><code>head -5 hello.txt #this shows you the 1st 5 lines of the file
-more hello.txt #this shows you the whole file, 1 screen at a time. Space bar to advance, q to quit
-</code></pre>
-<p>make a copy of the file, using a different name, then remove it.</p>
-<pre><code>cp hello.txt bye.txt
-ls -lth
-rm bye.txt
-ls -lth
-</code></pre>
-<p>move the file (or rename it). What is the difference between <code>mv</code> and <code>cp</code>???</p>
-<pre><code>mv hello.txt bye.txt
-ls -lth
-</code></pre>
-<p>make a folder (directory), make a file inside a folder.</p>
-<pre><code>mkdir testfolder
-ls -lth
-#make a folder inside that folder
-mkdir testfolder/inside_test
-#make a file
-nano testfolder/inside_test/inside.txt
-head testfolder/inside_test/inside.txt
-rm testfolder/inside_test/inside.txt
-</code></pre>
-<p>there are a few other commands that you should be familiar with: <code>sort</code>, <code>cat</code>, <code>clear</code>, <code>tail</code>, <code>history</code>. Try googling and using <code>man</code> to figure them out.</p>
-<h3 id="downloading-data-and-stuff">Downloading Data and Stuff</h3>
-<p>download something from the web. You're using the <code>wget</code> command. You're downloading the SwissProt database. See http://www.ebi.ac.uk/uniprot</p>
-<pre><code>mkdir swissprot
-cd swissprot
-wget ftp://ftp.ebi.ac.uk/pub/databases/uniprot/knowledgebase/uniprot_sprot.fasta.gz
-</code></pre>
-<p>It will take a few minutes to download. After it's downloaded, you'll need to extract it. Files ending in <code>.gz</code> are compressed, just like <code>.zip</code>, which is a type of file compression you may be more familiar with.</p>
-<pre><code>gzip -d uniprot_sprot.fasta.gz
+<hr />
+<p>-</p>
+<blockquote>
+<p>You will download one of the 5 different datasets (use the same dataset). Do you remember how to use the <code>wget</code> and <code>gzip</code> commands from last week? Also, download Swissprot and Pfam-A</p>
+</blockquote>
+<p>-</p>
+<pre><code>cd /mnt
+
+#download your dataset
+
+dataset1= https://www.dropbox.com/s/srfk4o2bh1qmq6l/dataset1.fa.gz
+dataset2= https://www.dropbox.com/s/977n0ibznzuor22/dataset2.fa.gz
+dataset3= https://www.dropbox.com/s/8s2h7sm6xtoky6q/dataset3.fa.gz
+dataset4= https://www.dropbox.com/s/qth3mjrianb48a6/dataset4.fa.gz
+dataset5= https://www.dropbox.com/s/quexoxfh6ttmudo/dataset5.fa.gz
+
+#download the SwissProt database
+
+wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+
+#download the Pfam-A database
+
+wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
 </code></pre>
 <blockquote>
-<p>Can you tell me what type of file this is? Use the commands we used above to look at the 1st few lines.</p>
+<p>we are going to run HMMER to identify conserved protein domains. This will take a little while, and we'll use <code>tmux</code> to allow us to do this in the background, and continue to work on other things.</p>
 </blockquote>
-<pre><code>???
+<pre><code>gzip -d *gz
+tmux new -s pfam
+hmmpress Pfam-A.hmm #this is analogous to 'makeblastdb'
+hmmscan -E 1e-3 --domtblout dataset.pfam --cpu 4 Pfam-A.hmm dataset1.fa
+ctl-b d
+top -c #see that hmmscan is running..
 </code></pre>
-<p>There is some info that is complementary to this material found here: <a href="http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html">http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html</a></p></div>
+<blockquote>
+<p>the neat thing about HMMER is that it can be used as a replacement for blastP or PSI-blast.</p>
+</blockquote>
+<pre><code>#blastp-like HBB-HUMAN is a Hemoglobin B protein sequence.
+
+phmmer --domtblout hbb.phmmer -E 1e-5 \
+/home/ubuntu/hmmer-3.1b1-linux-intel-x86_64/tutorial/HBB_HUMAN \
+uniprot_sprot.fasta
+
+#PSI-blast-like
+
+jackhmmer --domtblout hbb.jackhammer -E 1e-5 \
+/home/ubuntu/hmmer-3.1b1-linux-intel-x86_64/tutorial/HBB_HUMAN \
+uniprot_sprot.fasta
+
+#you can look at the results using `more hmm.phmmer` or `more hmm.jackhmmer`. Try blasting a few of the results using the BLAST web interface.
+</code></pre>
+<blockquote>
+<p>Now let's look at the Pfam results. This analyses may still be running, but we can look at it while it's still in progress.</p>
+</blockquote>
+<pre><code>more dataset.pfam
+#There are a bunch of columns in this table - what do they mean?
+
+#Try to extract all the hits to a specific domain. Google a few domains (column 1) to see if any seem interesting.
+
+#for instance, find all occurrences of ABC_tran
+grep ABC_tran dataset.pfam
+
+#use grep to count the number of matches. Copy this number down.
+
+grep -c ABC_tran dataset.pfam
+
+#Find all the contigs that have a ABC_tran domain.
+
+grep ABC_tran dataset.pfam | awk '{print $4}' | sort | uniq
+</code></pre>
+<blockquote>
+<p>Just for fun, check on the Pfam search to see what it is doing... </p>
+</blockquote>
+<pre><code>tmux attach -t pfam
+ctl-b d
+</code></pre></div>
             
         </div>
 

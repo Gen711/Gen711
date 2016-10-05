@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Unix - Gen711 - Fall2016</title>
+	<title>Lab5 trimming - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -106,8 +106,8 @@
 
                         
                             
-<li >
-    <a href="../Lab5_trimming/">Lab5 trimming</a>
+<li class="active">
+    <a href="./">Lab5 trimming</a>
 </li>
 
                         
@@ -154,8 +154,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Unix</a>
+<li >
+    <a href="../unix/">Unix</a>
 </li>
 
                         
@@ -174,12 +174,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../trimming/">
+                        <a rel="next" href="../Lab4_mapping/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../Lab6_khmer/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -195,105 +195,178 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#lab-1">Lab 1</a></li>
-        
-            <li><a href="#important-unix-rules">Important UNIX rules</a></li>
-        
-            <li><a href="#basic-shell-commands">Basic shell commands</a></li>
-        
-            <li><a href="#downloading-data-and-stuff">Downloading Data and Stuff</a></li>
+        <li class="main active"><a href="#lab-5-trimming">Lab 5: Trimming</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="lab-1">Lab 1</h2>
-<p>During this lab, we will acquaint ourselves with the Unix terminal, learn how to access data, install software, and  find things. <em>it is absolutely critical that you master these skills</em>, so please ask questions if confused.</p>
-<p>Step 1: Launch and AMI. For this exercise, a t1.micro will be sufficient.</p>
-<pre><code>ssh -i ~/Downloads/your.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
-</code></pre>
-<p>The machine you are using is Linux Ubuntu: Ubuntu is an operating system you can use (I do) on your laptop or desktop. One of the nice things about this OS is the ability to update the software, easily.  The command <code>sudo apt-get update</code> checks a server for updates to existing software.</p>
-<pre><code>sudo apt-get update
-</code></pre>
-<p>The upgrade command actually installs any of the required updates.</p>
-<pre><code>sudo apt-get upgrade
-</code></pre>
-<p>OK, what are these commands?  <code>sudo</code> is the command that tells the computer that we have admin privileges. Try running the commands without the sudo -- it will complain that you don't have admin privileges or something like that. <em>Careful here, using sudo means that you can do something really bad to your own computer -- like delete everything</em>, so use with caution. It's not a big worry when using AWS, as this is a virtual machine- fixing your worst mistake is as easy as just terminating the instance and restarting.</p>
-<p>So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the <code>update</code> or <code>upgrade</code> command, we're using <code>install</code>. EASY!!</p>
-<pre><code>sudo apt-get -y install tmux git curl gcc make g++ python-dev unzip \
-    default-jre
-</code></pre>
-<p>After you run this command, try something else - try to install something else. R (a stats package - more on this wonderful software later). The package is named <code>r-base-core</code>. See if you can install it!! Installing software on Linux is easy (so long as there is a downloadable package - more on when no such package exists later in lab)</p>
-<p>BTW, did you notice the <code>\</code> at the end of line 1 in the above code snippett?? That is a special character we use to break up a single line of code over 2 or more lines. You'll see me use this a lot!</p>
-<p>OK, lets try our hands at navigating around on the command line - it is not scary!</p>
-<h3 id="important-unix-rules">Important UNIX rules</h3>
-<ul>
-<li>Everything is case sensitive. Gen711 is not the same as gen711</li>
-<li>Spaces in file names should be avoided</li>
-<li>The unix $PATH is the collection of locations where the computer looks for executables (programs)</li>
+<h2 id="lab-5-trimming">Lab 5: Trimming</h2>
+<hr />
+<p>During this lab, we will acquaint ourselves with the the software packages FastQC and JellyFish. Your objectives are:</p>
+<p>-</p>
+<ol>
 <li>
-<p>Folders and Files are all you have. If you want to access one of these, you need to tell the computer <em>EXACTLY</em> where it is. <code>/home/macmanes/gen711/exam1_key.txt</code> will work (assuming you've spelled things correctly, and that the file really exists in that location), but <code>exam1_key.txt</code> may not.</p>
+<p>Familiarize yourself with the software, how to execute it, how to visualize results.</p>
 </li>
 <li>
-<p>Lines that begin with a <code>#</code> are comments.</p>
+<p>Regarding your dataset. Characterize sequence quality.</p>
 </li>
-</ul>
-<h3 id="basic-shell-commands">Basic shell commands</h3>
-<p>the <code>pwd</code> command returns your current location.</p>
-<pre><code>pwd
+</ol>
+<p>The FastQC manual: <a href="http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc">http://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc</a></p>
+<p>The JellyFish manual: <a href="ftp://ftp.genome.umd.edu/pub/jellyfish/JellyfishUserGuide.pdf">ftp://ftp.genome.umd.edu/pub/jellyfish/JellyfishUserGuide.pdf</a></p>
+<hr />
+<blockquote>
+<p>Step 1: Launch and AMI. For this exercise, we will use a c3.xlarge instance. Remember to change the permission of your key code <code>chmod 400 ~/Downloads/????.pem</code> (change ????.pem to whatever you named it)</p>
+</blockquote>
+<pre><code>ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
 </code></pre>
-<p>the <code>ls</code> command lists the files and folders present in your current directory.  Try <code>ls -lt</code> and <code>ls -lth</code>. <em>What is the difference between these commands?</em> Try typing <code>man ls</code> to learn about all the different flags.</p>
-<pre><code>ls -l
+<hr />
+<blockquote>
+<p>Update Software</p>
+</blockquote>
+<pre><code>sudo bash
+apt-get update
 </code></pre>
-<p>create a file</p>
-<pre><code>nano hello.txt
-#The nano text editor will appear -&gt; type something
-This is my 1st unix file
-CTL-x
-y
-#typing n would get rid of the text you just wrote.
+<hr />
+<blockquote>
+<p>Install updates</p>
+</blockquote>
+<pre><code>apt-get -y upgrade
 </code></pre>
-<p>look at the file, there are several ways to look at the file</p>
-<pre><code>head -5 hello.txt #this shows you the 1st 5 lines of the file
-more hello.txt #this shows you the whole file, 1 screen at a time. Space bar to advance, q to quit
+<hr />
+<blockquote>
+<p>Install other software</p>
+</blockquote>
+<pre><code>apt-get -y install tmux git curl gcc make g++ python-dev unzip default-jre
 </code></pre>
-<p>make a copy of the file, using a different name, then remove it.</p>
-<pre><code>cp hello.txt bye.txt
-ls -lth
-rm bye.txt
-ls -lth
+<p>-</p>
+<blockquote>
+<p>Ok, for this lab we are going to use FastQC. There is a version available on apt-get, but it is an old version and we want to make sure that we have the most updated version.. <span style="color: #ff0000;"><strong>Make sure you know what each of these commands does, rather than blindly copying and pasting.. </strong></span></p>
+</blockquote>
+<p>-</p>
+<pre><code>cd $HOME
+wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.2.zip
+unzip fastqc_v0.11.2.zip
+cd FastQC/
+chmod +x fastqc
+PATH=$PATH:$(pwd)
 </code></pre>
-<p>move the file (or rename it). What is the difference between <code>mv</code> and <code>cp</code>???</p>
-<pre><code>mv hello.txt bye.txt
-ls -lth
+<hr />
+<blockquote>
+<p>Install Trimmomatic</p>
+</blockquote>
+<pre><code>cd $HOME
+wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
+unzip Trimmomatic-0.32.zip
+cd Trimmomatic-0.32
+chmod +x trimmomatic-0.32.jar
 </code></pre>
-<p>make a folder (directory), make a file inside a folder.</p>
-<pre><code>mkdir testfolder
-ls -lth
-#make a folder inside that folder
-mkdir testfolder/inside_test
-#make a file
-nano testfolder/inside_test/inside.txt
-head testfolder/inside_test/inside.txt
-rm testfolder/inside_test/inside.txt
+<hr />
+<blockquote>
+<p>Install Jellyfish</p>
+</blockquote>
+<pre><code>cd $HOME
+wget ftp://ftp.genome.umd.edu/pub/jellyfish/jellyfish-2.1.3.tar.gz
+tar -zxf jellyfish-2.1.3.tar.gz
+cd jellyfish-2.1.3/
+./configure
+make
+PATH=$PATH:$(pwd)/bin
 </code></pre>
-<p>there are a few other commands that you should be familiar with: <code>sort</code>, <code>cat</code>, <code>clear</code>, <code>tail</code>, <code>history</code>. Try googling and using <code>man</code> to figure them out.</p>
-<h3 id="downloading-data-and-stuff">Downloading Data and Stuff</h3>
-<p>download something from the web. You're using the <code>wget</code> command. You're downloading the SwissProt database. See http://www.ebi.ac.uk/uniprot</p>
-<pre><code>mkdir swissprot
-cd swissprot
-wget ftp://ftp.ebi.ac.uk/pub/databases/uniprot/knowledgebase/uniprot_sprot.fasta.gz
+<hr />
+<blockquote>
+<p>Download data. For this lab, we'll be using only 1 sequencing file.</p>
+</blockquote>
+<p>-</p>
+<pre><code>cd /mnt
+wget https://s3.amazonaws.com/gen711/Pero360B.2.fastq.gz
 </code></pre>
-<p>It will take a few minutes to download. After it's downloaded, you'll need to extract it. Files ending in <code>.gz</code> are compressed, just like <code>.zip</code>, which is a type of file compression you may be more familiar with.</p>
-<pre><code>gzip -d uniprot_sprot.fasta.gz
+<hr />
+<blockquote>
+<p>Do 3 different trimming levels between 2 and 40. This one is trimming at a Phred score of 30 (BAD!!!) When you run your commands, you'll need to change the numbers in <code>LEADING:30</code> <code>TRAILING:30</code> <code>SLIDINGWINDOW:4:30</code> and <code>Pero360B.trim.Phred30.fastq</code> to whatever trimming level you want to use.</p>
+</blockquote>
+<pre><code>mkdir /mnt/trimming
+cd /mnt/trimming
+
+#paste the below lines together as 1 command
+
+java -Xmx10g -jar $HOME/Trimmomatic-0.32/trimmomatic-0.32.jar SE \
+-threads 4 \
+../Pero360B.2.fastq.gz \
+Pero360B.trim.Phred30.fastq \
+ILLUMINACLIP:$HOME/Trimmomatic-0.32/adapters/TruSeq3-PE.fa:2:30:10 \
+SLIDINGWINDOW:4:30 \
+LEADING:30 \
+TRAILING:30 \
+MINLEN:25
+</code></pre>
+<hr />
+<blockquote>
+<p>After Trimmomatic is done, Run FastQC. You'll have to change the numbers to match the levels you trimmed at.</p>
+</blockquote>
+<pre><code>cd /mnt
+fastqc -t 4 Pero360B.2.fastq.gz
+fastqc -t 4 trimming/Pero360B.trim.Phred2.fastq
+fastqc -t 4 trimming/Pero360B.trim.Phred15.fastq
+fastqc -t 4 trimming/Pero360B.trim.Phred30.fastq
+</code></pre>
+<hr />
+<blockquote>
+<p>Run Jellyfish.</p>
+</blockquote>
+<pre><code>mkdir /mnt/jelly
+cd /mnt/jelly
+
+# You'll have to run these commands 4 separate times -
+# once for each different trimmed dataset, and once for the raw dataset.
+# Change the names of the input and output files..
+
+jellyfish count -m 25 -s 200M -t 4 -C -o trim30.jf ../trimming/Pero360B.trim.Phred30.fastq
+jellyfish histo trim30.jf -o trim30.histo
+</code></pre>
+<hr />
+<blockquote>
+<p>Open up a new terminal window using the buttons command-t</p>
+</blockquote>
+<pre><code>scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??.compute-1.amazonaws.com:/mnt/*zip ~/Downloads/
+scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??.compute-1.amazonaws.com:/mnt/jelly/*histo ~/Downloads/
 </code></pre>
 <blockquote>
-<p>Can you tell me what type of file this is? Use the commands we used above to look at the 1st few lines.</p>
+<p>Now, on your MAC, find the files you just downloaded - for the zip files - double click and that should unzip them.. Click on the <code>html</code> file, which will open up your browser. Look at the results. Try to figure out what each plot means.</p>
 </blockquote>
-<pre><code>???
+<p>-</p>
+<blockquote>
+<p>Now look at the <code>.histo</code> file, which is a kmer distribution. I want you to plot the distribution using R and RStudio.</p>
+</blockquote>
+<p>-</p>
+<blockquote>
+<p>OPEN RSTUDIO</p>
+</blockquote>
+<pre><code>#Import all 3 histogram datasets: this is the code for importing 1 of them..
+
+trim2 &lt;- read.table("~/Downloads/trim2.histo", quote="\"")
+
+#Plot: Make sure and change the names to match what you import.
+#What does this plot show you??
+
+barplot(c(trim2$V2[1],trim15$V2[1],trim30$V2[1]),
+    names=c('Phred2', 'Phred15', 'Phred30'),
+    main='Number of unique kmers')
+
+# plot differences between non-unique kmers
+
+plot(trim2$V2[2:30] - trim30$V2[2:30], type='l',
+    xlim=c(2,20), xaxs="i", yaxs="i", frame.plot=F,
+    ylim=c(0,2000000), col='red', xlab='kmer frequency',
+    lwd=4, ylab='count',
+    main='Diff in 25mer counts of freq 2 to 20 \n Phred2 vs. Phred30')
 </code></pre>
-<p>There is some info that is complementary to this material found here: <a href="http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html">http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html</a></p></div>
+<blockquote>
+<p>Look at the FastQC plots across the different trimming levels. Anything surprising?</p>
+<p>What do the analyses of kmer counts tell you?</p>
+</blockquote></div>
             
         </div>
 

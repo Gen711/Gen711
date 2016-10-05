@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Unix - Gen711 - Fall2016</title>
+	<title>Lab9 euk.genome.assembly - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -130,8 +130,8 @@
 
                         
                             
-<li >
-    <a href="../Lab9_euk.genome.assembly/">Lab9 euk.genome.assembly</a>
+<li class="active">
+    <a href="./">Lab9 euk.genome.assembly</a>
 </li>
 
                         
@@ -154,8 +154,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Unix</a>
+<li >
+    <a href="../unix/">Unix</a>
 </li>
 
                         
@@ -174,12 +174,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../trimming/">
+                        <a rel="next" href="../Lab8_mapping/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../README/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -195,105 +195,225 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#lab-1">Lab 1</a></li>
-        
-            <li><a href="#important-unix-rules">Important UNIX rules</a></li>
-        
-            <li><a href="#basic-shell-commands">Basic shell commands</a></li>
-        
-            <li><a href="#downloading-data-and-stuff">Downloading Data and Stuff</a></li>
+        <li class="main active"><a href="#lab-9-genome-assembly">Lab 9: Genome assembly</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="lab-1">Lab 1</h2>
-<p>During this lab, we will acquaint ourselves with the Unix terminal, learn how to access data, install software, and  find things. <em>it is absolutely critical that you master these skills</em>, so please ask questions if confused.</p>
-<p>Step 1: Launch and AMI. For this exercise, a t1.micro will be sufficient.</p>
-<pre><code>ssh -i ~/Downloads/your.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
-</code></pre>
-<p>The machine you are using is Linux Ubuntu: Ubuntu is an operating system you can use (I do) on your laptop or desktop. One of the nice things about this OS is the ability to update the software, easily.  The command <code>sudo apt-get update</code> checks a server for updates to existing software.</p>
-<pre><code>sudo apt-get update
-</code></pre>
-<p>The upgrade command actually installs any of the required updates.</p>
-<pre><code>sudo apt-get upgrade
-</code></pre>
-<p>OK, what are these commands?  <code>sudo</code> is the command that tells the computer that we have admin privileges. Try running the commands without the sudo -- it will complain that you don't have admin privileges or something like that. <em>Careful here, using sudo means that you can do something really bad to your own computer -- like delete everything</em>, so use with caution. It's not a big worry when using AWS, as this is a virtual machine- fixing your worst mistake is as easy as just terminating the instance and restarting.</p>
-<p>So now that we have updates the software, lets see how to add new software. Same basic command, but instead of the <code>update</code> or <code>upgrade</code> command, we're using <code>install</code>. EASY!!</p>
-<pre><code>sudo apt-get -y install tmux git curl gcc make g++ python-dev unzip \
-    default-jre
-</code></pre>
-<p>After you run this command, try something else - try to install something else. R (a stats package - more on this wonderful software later). The package is named <code>r-base-core</code>. See if you can install it!! Installing software on Linux is easy (so long as there is a downloadable package - more on when no such package exists later in lab)</p>
-<p>BTW, did you notice the <code>\</code> at the end of line 1 in the above code snippett?? That is a special character we use to break up a single line of code over 2 or more lines. You'll see me use this a lot!</p>
-<p>OK, lets try our hands at navigating around on the command line - it is not scary!</p>
-<h3 id="important-unix-rules">Important UNIX rules</h3>
-<ul>
-<li>Everything is case sensitive. Gen711 is not the same as gen711</li>
-<li>Spaces in file names should be avoided</li>
-<li>The unix $PATH is the collection of locations where the computer looks for executables (programs)</li>
+<h2 id="lab-9-genome-assembly">Lab 9: Genome assembly</h2>
+<hr />
+<p>During this lab, we will acquaint ourselves with Genome Assembly using SPAdes. We will assembly the genome of Plasmodium falciparum. The data are taken from this paper: http://www.nature.com/ncomms/2014/140909/ncomms5754/full/ncomms5754.html?WT.ec_id=JA-NCOMMS-20140919.
+As it stands right now, I think that you will do all the preprocessing steps this week, then the assembly next. Once you have done all the steps, <code>gzip</code> compress the files and download them to your USB drive, or the MAC HD. I can provide you with these files next week if issues arise. </p>
+<ol>
 <li>
-<p>Folders and Files are all you have. If you want to access one of these, you need to tell the computer <em>EXACTLY</em> where it is. <code>/home/macmanes/gen711/exam1_key.txt</code> will work (assuming you've spelled things correctly, and that the file really exists in that location), but <code>exam1_key.txt</code> may not.</p>
+<p>Install software and download data</p>
 </li>
 <li>
-<p>Lines that begin with a <code>#</code> are comments.</p>
+<p>Error correct, quality and adapter trim data sets.</p>
 </li>
-</ul>
-<h3 id="basic-shell-commands">Basic shell commands</h3>
-<p>the <code>pwd</code> command returns your current location.</p>
-<pre><code>pwd
+<li>
+<p>(next week) Assemble</p>
+</li>
+</ol>
+<p>-</p>
+<p>The SPAdes manuscript: http://www.ncbi.nlm.nih.gov/pubmed/22506599
+The SPAdes manual: http://spades.bioinf.spbau.ru/release3.1.1/manual.html
+SPAdes website: http://bioinf.spbau.ru/spades</p>
+<blockquote>
+<p>Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>c3.8xlarge</strong></span> (note different instance type). Remember to change the permission of your key code <code>chmod 400 ~/Downloads/????.pem</code> (change ????.pem to whatever you named it)</p>
+</blockquote>
+<pre><code>ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
 </code></pre>
-<p>the <code>ls</code> command lists the files and folders present in your current directory.  Try <code>ls -lt</code> and <code>ls -lth</code>. <em>What is the difference between these commands?</em> Try typing <code>man ls</code> to learn about all the different flags.</p>
-<pre><code>ls -l
+<hr />
+<blockquote>
+<p>Update Software</p>
+</blockquote>
+<pre><code>sudo bash
+apt-get update
 </code></pre>
-<p>create a file</p>
-<pre><code>nano hello.txt
-#The nano text editor will appear -&gt; type something
-This is my 1st unix file
-CTL-x
-y
-#typing n would get rid of the text you just wrote.
+<hr />
+<blockquote>
+<p>Install updates</p>
+</blockquote>
+<pre><code>apt-get -y upgrade
 </code></pre>
-<p>look at the file, there are several ways to look at the file</p>
-<pre><code>head -5 hello.txt #this shows you the 1st 5 lines of the file
-more hello.txt #this shows you the whole file, 1 screen at a time. Space bar to advance, q to quit
+<hr />
+<blockquote>
+<p>Install other software</p>
+</blockquote>
+<pre><code>apt-get -y install subversion tmux git curl bowtie libncurses5-dev samtools gcc make g++ python-dev unzip dh-autoreconf default-jre python-pip zlib1g-dev
 </code></pre>
-<p>make a copy of the file, using a different name, then remove it.</p>
-<pre><code>cp hello.txt bye.txt
-ls -lth
-rm bye.txt
-ls -lth
+<hr />
+<blockquote>
+<p>Install Lighter, software for error correction.</p>
+</blockquote>
+<pre><code>cd $HOME
+git clone https://github.com/mourisl/Lighter.git
+cd Lighter
+make -j8
+PATH=$PATH:$(pwd)
 </code></pre>
-<p>move the file (or rename it). What is the difference between <code>mv</code> and <code>cp</code>???</p>
-<pre><code>mv hello.txt bye.txt
-ls -lth
+<hr />
+<blockquote>
+<p>Install Trimmomatic</p>
+</blockquote>
+<pre><code>cd $HOME
+wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.32.zip
+unzip Trimmomatic-0.32.zip
+cd Trimmomatic-0.32
+chmod +x trimmomatic-0.32.jar
 </code></pre>
-<p>make a folder (directory), make a file inside a folder.</p>
-<pre><code>mkdir testfolder
-ls -lth
-#make a folder inside that folder
-mkdir testfolder/inside_test
-#make a file
-nano testfolder/inside_test/inside.txt
-head testfolder/inside_test/inside.txt
-rm testfolder/inside_test/inside.txt
+<hr />
+<blockquote>
+<p>Install SRAtoolkit</p>
+</blockquote>
+<pre><code>cd $HOME
+wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.4.2/sratoolkit.2.4.2-ubuntu64.tar.gz
+tar -zxf sratoolkit.2.4.2-ubuntu64.tar.gz
+PATH=$PATH:/home/ubuntu/sratoolkit.2.4.2-ubuntu64/bin
 </code></pre>
-<p>there are a few other commands that you should be familiar with: <code>sort</code>, <code>cat</code>, <code>clear</code>, <code>tail</code>, <code>history</code>. Try googling and using <code>man</code> to figure them out.</p>
-<h3 id="downloading-data-and-stuff">Downloading Data and Stuff</h3>
-<p>download something from the web. You're using the <code>wget</code> command. You're downloading the SwissProt database. See http://www.ebi.ac.uk/uniprot</p>
-<pre><code>mkdir swissprot
-cd swissprot
-wget ftp://ftp.ebi.ac.uk/pub/databases/uniprot/knowledgebase/uniprot_sprot.fasta.gz
+<hr />
+<blockquote>
+<p>Install SPAdes</p>
+</blockquote>
+<pre><code>wget http://spades.bioinf.spbau.ru/release3.1.1/SPAdes-3.1.1-Linux.tar.gz
+tar -zxf SPAdes-3.1.1-Linux.tar.gz
+cd SPAdes-3.1.1-Linux
+PATH=$PATH:$(pwd)/bin
 </code></pre>
-<p>It will take a few minutes to download. After it's downloaded, you'll need to extract it. Files ending in <code>.gz</code> are compressed, just like <code>.zip</code>, which is a type of file compression you may be more familiar with.</p>
-<pre><code>gzip -d uniprot_sprot.fasta.gz
+<hr />
+<blockquote>
+<p>Download 3.5kb MP library</p>
+</blockquote>
+<pre><code>cd /mnt
+wget ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR022/ERR022558/ERR022558.sra
 </code></pre>
 <blockquote>
-<p>Can you tell me what type of file this is? Use the commands we used above to look at the 1st few lines.</p>
+<p>Download 10kb MP library</p>
 </blockquote>
-<pre><code>???
+<pre><code>cd /mnt
+wget ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR022/ERR022557/ERR022557.sra
 </code></pre>
-<p>There is some info that is complementary to this material found here: <a href="http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html">http://swcarpentry.github.io/2014-08-21-upenn/novice/ref/01-shell.html</a></p></div>
+<blockquote>
+<p>Download PE library #1</p>
+</blockquote>
+<pre><code>cd /mnt
+wget ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR019/ERR019273/ERR019273.sra
+</code></pre>
+<hr />
+<blockquote>
+<p>Download PE library #2</p>
+</blockquote>
+<pre><code>cd /mnt
+wget ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR019/ERR019275/ERR019275.sra
+</code></pre>
+<hr />
+<blockquote>
+<p>Extract fastQ from sra format.</p>
+</blockquote>
+<pre><code>cd /mnt
+
+#this is a basic for loop. Copy is all as 1 line.
+
+for i in `ls *sra`; do
+    fastq-dump --split-files --split-spot $i;
+    rm $i;
+done
+</code></pre>
+<hr />
+<blockquote>
+<p>Error Correct Data</p>
+</blockquote>
+<pre><code>mkdir /mnt/ec
+cd /mnt/ec
+lighter -r /mnt/ERR019273_1.fastq -r /mnt/ERR019273_2.fastq -t 32 -k 21 45000000 .1
+lighter -r /mnt/ERR022557_1.fastq -r /mnt/ERR022557_2.fastq -t 32 -k 21 45000000 .1
+lighter -r /mnt/ERR022558_1.fastq -r /mnt/ERR022558_2.fastq -t 32 -k 21 45000000 .1
+lighter -r /mnt/ERR019275_1.fastq -r /mnt/ERR019275_2.fastq -t 32 -k 21 45000000 .1
+
+#remove the raw files.
+
+rm *fastq &amp;
+</code></pre>
+<blockquote>
+<p>trim the data:</p>
+</blockquote>
+<pre><code>mkdir /mnt/trim
+cd /mnt/trim
+#paste the below lines together as 1 command
+
+java -Xmx10g -jar $HOME/Trimmomatic-0.32/trimmomatic-0.32.jar PE \
+-threads 32 -baseout PE_lib1.fq \
+/mnt/ec/ERR019273_1.cor.fq \
+/mnt/ec/ERR019273_2.cor.fq \
+ILLUMINACLIP:$HOME/Trimmomatic-0.32/adapters/TruSeq2-PE.fa:2:30:10 \
+SLIDINGWINDOW:4:2 \
+LEADING:2 \
+TRAILING:2 \
+MINLEN:25
+
+#paste the below lines together as 1 command
+
+java -Xmx10g -jar $HOME/Trimmomatic-0.32/trimmomatic-0.32.jar PE \
+-threads 32 -baseout PE_lib2.fq \
+/mnt/ec/ERR019275_1.cor.fq \
+/mnt/ec/ERR019275_2.cor.fq \
+ILLUMINACLIP:$HOME/Trimmomatic-0.32/adapters/TruSeq2-PE.fa:2:30:10 \
+SLIDINGWINDOW:4:2 \
+LEADING:2 \
+TRAILING:2 \
+MINLEN:25
+
+#paste the below lines together as 1 command
+
+java -Xmx10g -jar $HOME/Trimmomatic-0.32/trimmomatic-0.32.jar PE \
+-threads 32 -baseout MP10000.fq \
+/mnt/ec/ERR022557_1.cor.fq \
+/mnt/ec/ERR022557_2.cor.fq \
+ILLUMINACLIP:$HOME/Trimmomatic-0.32/adapters/TruSeq2-PE.fa:2:30:10 \
+SLIDINGWINDOW:4:2 \
+LEADING:2 \
+TRAILING:2 \
+MINLEN:25
+
+#paste the below lines together as 1 command
+
+java -Xmx10g -jar $HOME/Trimmomatic-0.32/trimmomatic-0.32.jar PE \
+-threads 32 -baseout MP3500.fq \
+/mnt/ec/ERR022558_1.cor.fq \
+/mnt/ec/ERR022558_2.cor.fq \
+ILLUMINACLIP:$HOME/Trimmomatic-0.32/adapters/TruSeq2-PE.fa:2:30:10 \
+SLIDINGWINDOW:4:2 \
+LEADING:2 \
+TRAILING:2 \
+MINLEN:25
+</code></pre>
+<hr />
+<pre><code>mkdir /mnt/
+
+#remove the corrected files.
+
+rm *fq
+</code></pre>
+<blockquote>
+<p>Assembly. This you may want to do next week. Alternatively, you can put it in a tmux window and let it run. You'd have to login later however to download the assembled genome.  </p>
+</blockquote>
+<pre><code>mkdir spades
+cd spades
+
+spades.py -t 32 -m 60 \
+--pe1-1 /mnt/trim/PE_lib1_1P.fq \
+--pe1-2 /mnt/trim/PE_lib1_2P.fq \
+--pe2-1 /mnt/trim/PE_lib2_1P.fq \
+--pe2-2 /mnt/trim/PE_lib2_2P.fq \
+--mp1-1 /mnt/trim/MP3500_1P.fq \
+--mp1-2 /mnt/trim/MP3500_2P.fq \
+--mp2-1 /mnt/trim/MP10000_1P.fq \
+--mp2-2 /mnt/trim/MP10000_2P.fq \
+-o Pfal --only-assembler
+</code></pre></div>
             
         </div>
 
