@@ -55,7 +55,7 @@
 
 10. Exams
 
-    - Yikes!!!: :doc:`labs/mock.exam1.md`
+    - [Exam 1 Practice](lab_lessons/mock.exam1.md)
     - Utter Panic: :doc:`labs/mock.exam2`
     - Practice for exam2: :doc:`labs/Exam2_Practice`
     - The real deal exam 2: :doc:`labs/exam2`
