@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Trimming - Gen711 - Fall2016</title>
+	<title>Lab5 mapping - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -100,8 +100,8 @@
 
                         
                             
-<li >
-    <a href="../Lab5_mapping/">Lab5 mapping</a>
+<li class="active">
+    <a href="./">Lab5 mapping</a>
 </li>
 
                         
@@ -154,8 +154,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Trimming</a>
+<li >
+    <a href="../trimming/">Trimming</a>
 </li>
 
                         
@@ -180,12 +180,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../mock.exam1/">
+                        <a rel="next" href="../Lab4_fastq/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../unix/">
+                        <a rel="prev" href="../Lab5_trimming/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -201,21 +201,34 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#lab4-trimming-fastq">Lab4: Trimming fastQ</a></li>
+        <li class="main active"><a href="#lab-5-read-mapping">Lab 5: Read Mapping</a></li>
         
     
-        <li class="main "><a href="#terminate-your-instance">Terminate your instance!!!</a></li>
+        <li class="main "><a href="#terminate-your-instance">TERMINATE YOUR INSTANCE</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="lab4-trimming-fastq">Lab4: Trimming fastQ</h2>
-<p>Step 1: Launch the AMI. For this exercise, we will use a c4.2xlarge instance. <strong>IMPORTANT DETAIL!!!!!!!!!</strong> We need to have more hard drive space for this exercise. So when you select the machine type, don't click <code>Review and Launch</code> like you normally do. Instead, go to near the top of teh page and click <code>4. Add Storage</code>. You'll see a column labelled <code>Size (GiB)</code> with a 8 under that.. Change that 8 to 100. Now click <code>Review and Launch</code> like normal. You now have a computer with a hard drive of size 100Gb.</p>
-<pre><code class="bash">ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???
-</code></pre>
-
+<h2 id="lab-5-read-mapping">Lab 5: Read Mapping</h2>
+<p>During this lab, we will acquaint ourselves with de novo transcriptome assembly using Trinity. You will:</p>
+<ol>
+<li>
+<p>Install software and download data</p>
+</li>
+<li>
+<p>Use sra-toolkit to extract fastQ reads</p>
+</li>
+<li>
+<p>Map reads to dataset</p>
+</li>
+<li>
+<p>look at mapping quality</p>
+</li>
+</ol>
+<p>The BWA manual: http://bio-bwa.sourceforge.net/</p>
+<p>Step 1: Launch and AMI. For this exercise, we will use a c4.2xlarge machine. Add 100Gb storage.</p>
 <p>Update Software</p>
 <pre><code class="bash">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade
 </code></pre>
@@ -243,104 +256,59 @@ source ~/.profile
 brew tap homebrew/science
 brew update
 brew doctor
+</code></pre>
 
+<p>Install software</p>
+<pre><code class="bash">brew install bwa samtools aria2 salmon sratoolkit
+</code></pre>
+
+<p>Download data</p>
+<pre><code class="bash">mkdir $HOME/data
+cd $HOME/data
+aria2c http://datadryad.org/bitstream/handle/10255/dryad.72141/brain.final.fasta
+aria2c ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/SRR157/SRR1575395/SRR1575395.sra
 
 </code></pre>
 
-<p>Download data, and uncompress them.. Let's put this in a tmux window so we can get to doing other things.. remember you need paste the tmux relevant commands one at a time.</p>
-<pre><code class="bash">
-tmux new -s download
+<pre><code class="bash">cd $HOME/data
+fastq-dump --split-files --split-spot SRR1575395.sra
+</code></pre>
 
-cd $HOME &amp;&amp; mkdir reads &amp;&amp; cd reads
-curl -LO https://s3.amazonaws.com/gen711/TruSeq3-PE.fa
-curl -L https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R1.PF.fastq.gz &gt; kidney.1.fq.gz &amp;
-curl -L https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R2.PF.fastq.gz &gt; kidney.2.fq.gz
+<p>Map reads!! (17 minutes). You're mapping to a mouse brain transcriptome reference.</p>
+<pre><code class="bash">mkdir $HOME/mapping
+cd $HOME/mapping
 
-#then this to get out of tmux
 
-ctl-b d
+tmux new -s mapping
+
+
+bwa index -p index $HOME/data/brain.final.fasta
+time bwa mem -t8 index $HOME/data/SRR1575395_1.fastq $HOME/data/SRR1575395_2.fastq | samtools view -1 -o brain.bam -@ 4 -T $HOME/data/brain.final.fasta -
 
 </code></pre>
 
-<p>Install Skewer, a trimming tool. Seqtk, a sequence manipulation tool, and Python..</p>
-<pre><code class="bash">
-brew install skewer seqtk python jellyfish
+<p>Look at BAM file. Can you see the columns that we talked about in class?</p>
+<pre><code class="bash">#Take a quick general look.
 
+samtools view brain.bam | head
 </code></pre>
 
-<p>now go back to the download tmux window to see if//wait for the download</p>
-<pre><code class="bash">tmux at -t download
-
-#IMPORTANT - when it is done downloading, kill the window
-
-ctl-d
-
+<p>look at mapping stats. Figure out what this means.</p>
+<pre><code class="bash">samtools flagstat brain.bam
 </code></pre>
 
-<p>Run khmer. Make sure to look at the manual.</p>
-<pre><code class="bash">
-tmux new -s kmer
-mkdir $HOME/kmer_analysis &amp;&amp; cd $HOME/kmer_analysis
-
-#IMPORTANT DETAIL: usually pasting things in 1 at a time is fine - except here... When you see ``\`` at the end of lines, this means copy the 2 (or 3 or 4) lines together.
-
-
-#do trimming at P2
-
-trim=2
-seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
-| skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
-| jellyfish count -s 1000000 -m 25 -t 8 -o $trim.counts.jf -C /dev/stdin
-
-jellyfish histo $trim.counts.jf &gt; $trim.counts.histo
-
-#do trimming at P30
-
-trim=30
-seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
-| skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
-| jellyfish count -s 1000000 -m 25 -t 8 -o $trim.counts.jf -C /dev/stdin
-
-jellyfish histo $trim.counts.jf &gt; $trim.counts.histo
-
-
- # to exit out of the tmux window, if you want to.
-
- ctl-b d
-
+<p>Map with salmon</p>
+<pre><code>salmon index --type quasi --threads 8 --index brain.idx -t $HOME/data/brain.final.fasta
+salmon quant --gcBias --seqBias -p 8 -i brain.idx -l a -1 $HOME/data/SRR1575395_1.fastq -2  $HOME/data/SRR1575395_2.fastq -o salmon_brain
 </code></pre>
 
-<p>Wait for these things to be done.. Use <code>top -c</code> to do this.. Remember <code>q</code> gets you outta <code>top</code>.</p>
-<p>Open up a new terminal (tab) or window using the buttons command-t. You're going to download the files you created on teh AWS machine to the MAC your using in the lab.</p>
-<pre><code class="bash">scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??:~/kmer_analysis/*histo ~/Downloads/
-
-
+<p>Lastly, look at the Salmon output using the command <code>more salmon_brain/quant.sf</code>. Pick a random transcript (column 1), and note the number of fragments that map to it (this is in col. 5). Let's see how concordant this number is with the BWA output.</p>
+<p>To count the number of reads mapping to a specific transcript, we need to search the BAM/SAM file for the name. Try the code:</p>
+<pre><code class="bash">samtools view brain.bam | awk '{print $3}' | grep -c NAME_OF_YOUR_TRANSCRIPT
 </code></pre>
 
-<p>Now look at the and <code>.histo</code> file.  which is the plot of quality containing both the mean quality as well as that for each tile. I want you to plot the distribution using R and RStudio.</p>
-<p>OPEN RStudio - this should be installed on your Mac. These commands you'll type into RStudio, NOT the terminal.</p>
-<pre><code class="bash">
-#Import Data
-p2 &lt;- read.table(&quot;~/Downloads/2.counts.histo&quot;, quote=&quot;\&quot;&quot;, comment.char=&quot;&quot;)
-p30 &lt;- read.table(&quot;~/Downloads/30.counts.histo&quot;, quote=&quot;\&quot;&quot;, comment.char=&quot;&quot;)
-
-par(mfcol=c(2,1))
-
-plot(p2$V2[2:10] ~ 1, type='p', lwd=5,
-    col='blue', frame.plot=F, xlab='25-mer frequency', ylab='kmer count',
-    main='Kmer distribution in sample with different trimming thresholds')
-
-lines(p30$V2[2:10] ~ 1, type='p', lwd=5,
-    col='red')
-
-plot(p2$V2[2:30] - p30$V2[2:30], type='p',
-    xlim=c(2,20), xaxs=&quot;i&quot;, yaxs=&quot;i&quot;, frame.plot=F,
-    ylim=c(0,1500000), col='red', xlab='kmer frequency',
-    lwd=4, ylab='count',
-    main='Diff in 25mer counts of freq 2 to 20 \n Phred2 vs. Phred30')
-</code></pre>
-
-<h2 id="terminate-your-instance">Terminate your instance!!!</h2></div>
+<p>Make sure you know what this command is doing, rather than just copy/pasting..</p>
+<h1 id="terminate-your-instance">TERMINATE YOUR INSTANCE</h1></div>
             
         </div>
 

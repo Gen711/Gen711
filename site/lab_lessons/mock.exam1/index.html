@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Lab4 mapping - Gen711 - Fall2016</title>
+	<title>Mock.exam1 - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -100,8 +100,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Lab4 mapping</a>
+<li >
+    <a href="../Lab5_mapping/">Lab5 mapping</a>
 </li>
 
                         
@@ -148,6 +148,12 @@
 
                         
                             
+<li class="active">
+    <a href="./">Mock.exam1</a>
+</li>
+
+                        
+                            
 <li >
     <a href="../trimming/">Trimming</a>
 </li>
@@ -174,12 +180,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../Lab4_fastq/">
+                        <a rel="next" href="../alignment/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../Lab5_trimming/">
+                        <a rel="prev" href="../trimming/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -195,114 +201,35 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#lab-8-read-mapping">Lab 8: Read Mapping</a></li>
-        
-    
-        <li class="main "><a href="#terminate-your-instance">TERMINATE YOUR INSTANCE</a></li>
+        <li class="main active"><a href="#mock-exam-1">MOCK EXAM 1</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="lab-8-read-mapping">Lab 8: Read Mapping</h2>
-<p>During this lab, we will acquaint ourselves with de novo transcriptome assembly using Trinity. You will:</p>
+<h2 id="mock-exam-1">MOCK EXAM 1</h2>
+<p>To help you prepare for the exam practical, let's do a mock exam. These are the types of questions I will ask you during the exam. I will give you points for each section, with the idea that I have to help you get past a particular section, you lose those points, but if you can do the rest of the steps, you can still get credit for that.</p>
 <ol>
 <li>
-<p>Install software and download data</p>
+<p>Launch a <code>c4.2xlarge</code> instance.  <strong><em>_</em></strong> 5 points</p>
 </li>
 <li>
-<p>Use sra-toolkit to extract fastQ reads</p>
+<p>Update your machine and install the software using <code>apt-get</code> just like we did in lab 2,3,4,5. <strong><em>_</em></strong>__ 5 points</p>
 </li>
 <li>
-<p>Map reads to dataset</p>
+<p>Install <code>LinuxBrew</code> and <code>skewer</code> and <code>jellyfish</code> like lab 4. <strong><em>_</em></strong><strong><em>_</em></strong><strong>_</strong> 10 points.</p>
 </li>
 <li>
-<p>look at mapping quality</p>
+<p>Download the datasets located here: <code>https://s3.amazonaws.com/gen711/TruSeq3-PE.fa</code>, <code>https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R1.PF.fastq.gz</code> and <code>https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R2.PF.fastq.gz</code>.  <strong><em>_</em></strong><strong><em>_</em></strong>___ 5 points</p>
 </li>
-</ol>
-<p>The BWA manual: http://bio-bwa.sourceforge.net/</p>
-<p>Step 1: Launch and AMI. For this exercise, we will use a c4.2xlarge machine. Add 100Gb storage.</p>
-<p>Update Software</p>
-<pre><code class="bash">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade
-</code></pre>
-
-<p>Install other software</p>
-<pre><code class="bash">sudo apt-get -y install build-essential git
-</code></pre>
-
-<p>Install LinuxBrew</p>
-<pre><code class="bash">
-cd
-wget https://keybase.io/mpapis/key.asc
-gpg --import key.asc
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
-source /home/ubuntu/.rvm/scripts/rvm
-
-
-sudo mkdir /home/linuxbrew
-sudo chown $USER:$USER /home/linuxbrew
-git clone https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbrew
-echo 'export PATH=&quot;/home/linuxbrew/.linuxbrew/bin:$PATH&quot;' &gt;&gt; ~/.profile
-echo 'export MANPATH=&quot;/home/linuxbrew/.linuxbrew/share/man:$MANPATH&quot;' &gt;&gt; ~/.profile
-echo 'export INFOPATH=&quot;/home/linuxbrew/.linuxbrew/share/info:$INFOPATH&quot;' &gt;&gt; ~/.profile
-source ~/.profile
-brew tap homebrew/science
-brew update
-brew doctor
-</code></pre>
-
-<p>Install software</p>
-<pre><code class="bash">brew install bwa samtools aria2 salmon sratoolkit
-</code></pre>
-
-<p>Download data</p>
-<pre><code class="bash">mkdir $HOME/data
-cd $HOME/data
-aria2c http://datadryad.org/bitstream/handle/10255/dryad.72141/brain.final.fasta
-aria2c ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/SRR157/SRR1575395/SRR1575395.sra
-
-</code></pre>
-
-<pre><code class="bash">cd $HOME/data
-fastq-dump --split-files --split-spot SRR1575395.sra
-</code></pre>
-
-<p>Map reads!! (17 minutes). You're mapping to a mouse brain transcriptome reference.</p>
-<pre><code class="bash">mkdir $HOME/mapping
-cd $HOME/mapping
-
-
-tmux new -s mapping
-
-
-bwa index -p index $HOME/data/brain.final.fasta
-time bwa mem -t8 index $HOME/data/SRR1575395_1.fastq $HOME/data/SRR1575395_2.fastq | samtools view -1 -o brain.bam -@ 4 -T $HOME/data/brain.final.fasta -
-
-</code></pre>
-
-<p>Look at BAM file. Can you see the columns that we talked about in class?</p>
-<pre><code class="bash">#Take a quick general look.
-
-samtools view brain.bam | head
-</code></pre>
-
-<p>look at mapping stats. Figure out what this means.</p>
-<pre><code class="bash">samtools flagstat brain.bam
-</code></pre>
-
-<p>Map with salmon</p>
-<pre><code>salmon index --type quasi --threads 8 --index brain.idx -t $HOME/data/brain.final.fasta
-salmon quant --gcBias --seqBias -p 8 -i brain.idx -l a -1 $HOME/data/SRR1575395_1.fastq -2  $HOME/data/SRR1575395_2.fastq -o salmon_brain
-</code></pre>
-
-<p>Lastly, look at the Salmon output using the command <code>more salmon_brain/quant.sf</code>. Pick a random transcript (column 1), and note the number of fragments that map to it (this is in col. 5). Let's see how concordant this number is with the BWA output.</p>
-<p>To count the number of reads mapping to a specific transcript, we need to search the BAM/SAM file for the name. Try the code:</p>
-<pre><code class="bash">samtools view brain.bam | awk '{print $3}' | grep -c NAME_OF_YOUR_TRANSCRIPT
-</code></pre>
-
-<p>Make sure you know what this command is doing, rather than just copy/pasting..</p>
-<h1 id="terminate-your-instance">TERMINATE YOUR INSTANCE</h1></div>
+<li>
+<p>Trim the dataset like we did in Lab 4 using a Phred score of 28.  <strong><em>_</em></strong><strong><em>_</em></strong><strong>_</strong>_ 10 points</p>
+</li>
+<li>
+<p>Count the remaining reads using the command <code>zgrep -c @HWI skewer-trimmed-pair1.fastq</code> and put the number you get here <strong><em>_</em></strong><strong><em>_</em></strong>_ 15 points</p>
+</li>
+</ol></div>
             
         </div>
 
