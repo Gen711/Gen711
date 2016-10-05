@@ -52,7 +52,7 @@
     </url>
         
     <url>
-     <loc>None/lab_lessons/Lab4_mapping/</loc>
+     <loc>None/lab_lessons/Lab5_mapping/</loc>
      <lastmod>2016-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -95,6 +95,12 @@
         
     <url>
      <loc>None/lab_lessons/alignment/</loc>
+     <lastmod>2016-10-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/lab_lessons/mock.exam1/</loc>
      <lastmod>2016-10-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
