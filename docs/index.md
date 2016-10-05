@@ -50,6 +50,8 @@
         - Week 3: "Week2" and Katoh
         - [What is a HMM](http://www.nature.com/nbt/journal/v22/n10/pdf/nbt1004-1315.pdf)
         - [HMMs in Biology](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2766791/pdf/CG-10-402.pdf)
+        - [Correcting Illumina data](http://bib.oxfordjournals.org/content/16/4/588.full)
+        - [A survey of error-correction methods for next-generation sequencing](http://bib.oxfordjournals.org/content/14/1/56.full)
 
 9. Homework
 
