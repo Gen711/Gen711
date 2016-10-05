@@ -39,7 +39,7 @@
     - [WEEK 2 LAB](lab_lessons/Lab1_blast.md)
     - [Week 3 lab](lab_lessons/alignment.md)
     - [Week 4 lab](lab_lessons/trimming.md)
-    - [Week 5 lab](lab_lessons/Lab4_mapping.md)
+    - [Week 5 lab](lab_lessons/Lab5_mapping.md)
 
 8. Reading
 
@@ -55,7 +55,7 @@
 
 10. Exams
 
-    - Yikes!!!: :doc:`labs/mock.exam1`
+    - Yikes!!!: :doc:`labs/mock.exam1.md`
     - Utter Panic: :doc:`labs/mock.exam2`
     - Practice for exam2: :doc:`labs/Exam2_Practice`
     - The real deal exam 2: :doc:`labs/exam2`

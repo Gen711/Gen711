@@ -1,4 +1,4 @@
-## Lab 8: Read Mapping
+## Lab 5: Read Mapping
 
 
 During this lab, we will acquaint ourselves with de novo transcriptome assembly using Trinity. You will:
