@@ -218,16 +218,16 @@
 <p>Update your machine and install the software (<code>build-essential</code> and <code>git</code>) using <code>apt-get</code> just like we did in lab 2,3,4,5. <strong><em>_</em></strong>__ 5 points</p>
 </li>
 <li>
-<p>Install <code>LinuxBrew</code> and <code>skewer</code> and <code>jellyfish</code> and <code>aria2</code> like lab 4. <strong><em>_</em></strong><strong><em>_</em></strong><strong>_</strong> 10 points.</p>
+<p>Install <code>LinuxBrew</code> and <code>skewer</code> and <code>jellyfish</code> and <code>aria2</code> and <code>seqtk</code> like lab 4. <strong><em>_</em></strong><strong><em>_</em></strong><strong>_</strong> 10 points.</p>
 </li>
 <li>
 <p>Download the datasets located here: <code>https://s3.amazonaws.com/gen711/TruSeq3-PE.fa</code>, <code>https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R1.PF.fastq.gz</code> and <code>https://s3.amazonaws.com/Mc_Transcriptome/Thomas_McBr1_R2.PF.fastq.gz</code>.  <strong><em>_</em></strong><strong><em>_</em></strong>___ 5 points</p>
 </li>
 <li>
-<p>Trim the dataset like we did in Lab 4 using a Phred score of 28.  <strong><em>_</em></strong><strong><em>_</em></strong><strong>_</strong>_ 10 points</p>
+<p>Trim and count kmers from the dataset like we did in Lab 4 using a Phred score of 28.  <strong><em>_</em></strong><strong><em>_</em></strong><strong>_</strong>_ 10 points</p>
 </li>
 <li>
-<p>Count the remaining reads using the command <code>zgrep -c @HWI skewer-trimmed-pair1.fastq</code> and put the number you get here <strong><em>_</em></strong><strong><em>_</em></strong>_ 15 points</p>
+<p>Count the unique kmers left using the command <code>head -1 28.counts.histo</code> and put the number you get here <strong><em>_</em></strong><strong><em>_</em></strong>_ 15 points</p>
 </li>
 </ol></div>
             
