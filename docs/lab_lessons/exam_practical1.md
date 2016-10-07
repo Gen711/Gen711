@@ -29,4 +29,4 @@
 
 &nbsp;
 
-8. How many `cyp` genes are there in the query dataset? `__________________` (3 points)
+8. How many `cyp` genes are there in the query dataset? `__________________` (9 points)
