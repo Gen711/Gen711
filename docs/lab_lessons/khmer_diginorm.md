@@ -103,7 +103,7 @@ norm=30
 seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
 	| skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
 	| jellyfish count -s 1000000 -m 25 -t 8 -o /dev/stdout -C /dev/stdin \
- 	| jellyfish histo /dev/stdin -o trimmed.no.normalize.histo
+ 	| jellyfish histo /dev/stdin -o trimmed.yes.normalize.histo
 
 #and
 
@@ -123,11 +123,7 @@ seqtk mergepe $HOME/reads/kidney.1.fq.gz $HOME/reads/kidney.2.fq.gz \
 	scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??.compute-1.amazonaws.com:/mnt/jelly/*histo ~/Downloads/
 
 
-> Now, on your MAC, find the files you just downloaded - for the zip files - double click and that should unzip them.. Click on the `html` file, which will open up your browser. Look at the results. Try to figure out what each plot means.
-
--
-
-> Now look at the `.histo` file, which is a kmer distribution. I want you to plot the distribution using R and RStudio.
+> Look at the `.histo` file, which is a kmer distribution. I want you to plot the distribution using R and RStudio.
 
 -
 
@@ -136,8 +132,8 @@ seqtk mergepe $HOME/reads/kidney.1.fq.gz $HOME/reads/kidney.2.fq.gz \
 
     #Import all 2 histogram datasets: this is the code for importing 1 of them..
 
-    khmer <- read.table("~/Downloads/khmer.histo", quote="\"")
-    trim <- read.table("~/Downloads/trimmed.histo", quote="\"")
+    khmer <- read.table("~/Downloads/trimmed.yes.normalize.histo", quote="\"")
+    trim <- read.table("~/Downloads/trimmed.no.normalize.histo", quote="\"")
 
     #What does this plot show you??
 
