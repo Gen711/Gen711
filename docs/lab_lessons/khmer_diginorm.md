@@ -121,7 +121,7 @@ seqtk mergepe $HOME/reads/kidney.1.fq.gz $HOME/reads/kidney.2.fq.gz \
 
 
 ```bash
-scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??.compute-1.amazonaws.com:/mnt/jelly/*histo ~/Downloads/
+scp -i ~/Downloads/????.pem ubuntu@??-???-???-??:/home/ubuntu/reads/*histo ~/Downloads/
 ```
 
 Look at the `.histo` file, which is a kmer distribution. I want you to plot the distribution using R and RStudio.
@@ -130,32 +130,23 @@ Look at the `.histo` file, which is a kmer distribution. I want you to plot the 
 OPEN RSTUDIO
 
 ```R
-#Import all 2 histogram datasets: this is the code for importing 1 of them..
+#Import all 2 histogram datasets
 
 khmer <- read.table("~/Downloads/trimmed.yes.normalize.histo", quote="\"")
 trim <- read.table("~/Downloads/trimmed.no.normalize.histo", quote="\"")
 
-#What does this plot show you??
-
-barplot(c(trim$V2[1],khmer$V2[1]),
-    names=c('Non-normalized', 'C50 Normalized'),
-    main='Number of unique kmers')
-
 # plot differences between non-unique kmers
 
-plot(khmer$V2[10:300] - trim$V2[10:300], type='l',
-    xlim=c(10,300), xaxs="i", yaxs="i", frame.plot=F,
-    ylim=c(-10000,60000), col='red', xlab='kmer frequency',
-    lwd=4, ylab='count',
-    main='Diff in 25mer counts of \n normalized vs. un-normalized datasets')
-abline(h=0)
+plot(khmer$V2[0:300] - trim$V2[0:300], type='l',
+      xlim=c(00,300), xaxs="i", yaxs="i", frame.plot=F,
+      ylim=c(-20000,10000), col='red', xlab='kmer frequency',
+      lwd=4, ylab='count',
+      main='Diff in 25mer counts of \n normalized vs. un-normalized datasets')
+abline(h=0, v=30)
 ```
 
 
-<a href="http://genomebio.org/Gen711/wp-content/uploads/2014/10/khmer_norm1.jpeg"><img class="aligncenter size-large wp-image-240" src="http://genomebio.org/Gen711/wp-content/uploads/2014/10/khmer_norm1-1024x700.jpeg" alt="khmer_norm" width="1024" height="700" /></a>
-
-
-> What do the analyses of kmer counts tell you?
+What do the analyses of kmer counts tell you?
 
 
 # TERMINATE YOUR INSTANCE
