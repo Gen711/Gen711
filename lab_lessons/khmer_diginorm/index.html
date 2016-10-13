@@ -314,36 +314,27 @@ seqtk mergepe $HOME/reads/kidney.1.fq.gz $HOME/reads/kidney.2.fq.gz \
 </code></pre>
 
 <p>)pen up a new terminal window using the buttons command-t</p>
-<pre><code class="bash">scp -i ~/Downloads/????.pem ubuntu@ec2-??-???-???-??.compute-1.amazonaws.com:/mnt/jelly/*histo ~/Downloads/
+<pre><code class="bash">scp -i ~/Downloads/????.pem ubuntu@??-???-???-??:/home/ubuntu/reads/*histo ~/Downloads/
 </code></pre>
 
 <p>Look at the <code>.histo</code> file, which is a kmer distribution. I want you to plot the distribution using R and RStudio.</p>
 <p>OPEN RSTUDIO</p>
-<pre><code class="R">#Import all 2 histogram datasets: this is the code for importing 1 of them..
+<pre><code class="R">#Import all 2 histogram datasets
 
 khmer &lt;- read.table(&quot;~/Downloads/trimmed.yes.normalize.histo&quot;, quote=&quot;\&quot;&quot;)
 trim &lt;- read.table(&quot;~/Downloads/trimmed.no.normalize.histo&quot;, quote=&quot;\&quot;&quot;)
 
-#What does this plot show you??
-
-barplot(c(trim$V2[1],khmer$V2[1]),
-    names=c('Non-normalized', 'C50 Normalized'),
-    main='Number of unique kmers')
-
 # plot differences between non-unique kmers
 
-plot(khmer$V2[10:300] - trim$V2[10:300], type='l',
-    xlim=c(10,300), xaxs=&quot;i&quot;, yaxs=&quot;i&quot;, frame.plot=F,
-    ylim=c(-10000,60000), col='red', xlab='kmer frequency',
-    lwd=4, ylab='count',
-    main='Diff in 25mer counts of \n normalized vs. un-normalized datasets')
-abline(h=0)
+plot(khmer$V2[0:300] - trim$V2[0:300], type='l',
+      xlim=c(00,300), xaxs=&quot;i&quot;, yaxs=&quot;i&quot;, frame.plot=F,
+      ylim=c(-20000,10000), col='red', xlab='kmer frequency',
+      lwd=4, ylab='count',
+      main='Diff in 25mer counts of \n normalized vs. un-normalized datasets')
+abline(h=0, v=30)
 </code></pre>
 
-<p><a href="http://genomebio.org/Gen711/wp-content/uploads/2014/10/khmer_norm1.jpeg"><img class="aligncenter size-large wp-image-240" src="http://genomebio.org/Gen711/wp-content/uploads/2014/10/khmer_norm1-1024x700.jpeg" alt="khmer_norm" width="1024" height="700" /></a></p>
-<blockquote>
 <p>What do the analyses of kmer counts tell you?</p>
-</blockquote>
 <h1 id="terminate-your-instance">TERMINATE YOUR INSTANCE</h1></div>
             
         </div>
