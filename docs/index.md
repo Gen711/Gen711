@@ -41,6 +41,8 @@
     - [Week 3 lab](lab_lessons/alignment.md)
     - [Week 4 lab](lab_lessons/trimming.md)
     - [Week 5 lab](lab_lessons/Lab5_mapping.md)
+    - [Week 7 lab](lab_lessons/khmer_diginorm.md)
+
 
 8. Reading
 
