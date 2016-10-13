@@ -56,7 +56,7 @@ echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >> ~/.profile
 echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >> ~/.profile
 echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >> ~/.profile
 source ~/.profile
-brew tap homebrew/science
+brew tap Gen711/homebrew-science
 brew update
 brew doctor
 
@@ -64,7 +64,7 @@ brew doctor
 ```
 
 
-Download data, and uncompress them.. Let's put this in a tmux window so we can get to doing other things.. remember you need paste the tmux relevant commands one at a time.
+Download data, and uncompress them.
 
 
 ```bash
@@ -84,6 +84,13 @@ brew install skewer seqtk python jellyfish
 
 ```
 
+Install khmer
+
+```bash
+pip install khmer
+```
+
+
 Trim low quality bases and adapters from dataset. These files will form the basis of all out subsequent analyses.
 
 
@@ -93,20 +100,20 @@ norm=30
 
 #paste the below lines together as 1 command
 
-seqtk mergepe $HOME/reads/kidney.1.fq.gz $HOME/reads/kidney.2.fq.gz \
-  | skewer -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/TruSeq3-PE.fa - -1 \
-  | jellyfish count -m 25 -s 700M -t 8 -C -o /dev/stdout /dev/stdin \
-  | jellyfish histo /dev/stdin -o trimmed.no.normalize.histo
+seqtk mergepe ~/reads/kidney.1.fq.gz ~/reads/kidney.2.fq.gz \
+	| skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
+	| jellyfish count -s 1000000 -m 25 -t 8 -o /dev/stdout -C /dev/stdin \
+ 	| jellyfish histo /dev/stdin -o trimmed.no.normalize.histo
 
 #and
 
 #paste the below lines together as 1 command
 
 seqtk mergepe $HOME/reads/kidney.1.fq.gz $HOME/reads/kidney.2.fq.gz \
-  | skewer -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/TruSeq3-PE.fa - -1 \
+  | skewer --stdout -l 25 -m pe --mean-quality $trim --end-quality $trim -t 8 -x $HOME/reads/TruSeq3-PE.fa - \
   | normalize-by-median.py --max-memory-usage 4e9 -C 30 -o - - \
-  | jellyfish count -m 25 -s 700M -t 8 -C -o /dev/stdout /dev/stdin \
-  | jellyfish histo /dev/stdin -o trimmed.yes.normalize.histo
+  | jellyfish count -s 1000000 -m 25 -t 8 -o /dev/stdout -C /dev/stdin \
+  | jellyfish histo /dev/stdin -o trimmed.no.normalize.histo
 
 ```
 
