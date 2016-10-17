@@ -11,7 +11,7 @@
 
 2. Lecture: MWF 11:10-12:00PM Rudman G89
 
-3. Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301. [Z](lab_lessons/exam_practical1.md)
+3. Lab: Friday 1:10PM - 3PM or 3:10-5PM in Hewitt 301.
 
 4. [Syllabus](Syllabus.md)
 
@@ -64,6 +64,6 @@
 10. Exams
 
     - [Exam 1 Practice](lab_lessons/mock.exam1.md)
-    - Utter Panic: :doc:`labs/mock.exam2`
+    - [Exam 1 Practical](lab_lessons/exam_practical1.md)
     - Practice for exam2: :doc:`labs/Exam2_Practice`
     - The real deal exam 2: :doc:`labs/exam2`
