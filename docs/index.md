@@ -32,6 +32,7 @@
     - [Lecture 14](lecture/Lecture_14.pdf)
     - [Lecture 15](lecture/Lecture_15.pdf)
     - [Lecture 18](lecture/Lecture_18.pdf)
+    - [Lecture 19](lecture/Lecture_19.pdf)
 
 
 7. Lab lessons
