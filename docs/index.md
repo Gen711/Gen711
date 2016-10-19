@@ -33,6 +33,7 @@
     - [Lecture 15](lecture/Lecture_15.pdf)
     - [Lecture 18](lecture/Lecture_18.pdf)
     - [Lecture 19](lecture/Lecture_19.pdf)
+    - [Lecture 20](lecture/Lecture_20.pdf)
 
 
 7. Lab lessons
@@ -57,6 +58,10 @@
         - Week 5
         - [Correcting Illumina data](http://bib.oxfordjournals.org/content/16/4/588.full)
         - [A survey of error-correction methods for next-generation sequencing](http://bib.oxfordjournals.org/content/14/1/56.full)
+        - [The khmer software package: enabling efficient nucleotide sequence analysis](https://f1000research.com/articles/4-900/v1)
+        - [Comparison of the two major classes of assembly algorithms: overlap–layout–consensus and de-bruijn-graph](http://bfg.oxfordjournals.org/content/11/1/25.full)
+        - [Limitations of next-generation genome sequence assembly](http://www.nature.com/nmeth/journal/v8/n1/full/nmeth.1527.html)
+
 
 9. Homework
 
