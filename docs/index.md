@@ -34,6 +34,7 @@
     - [Lecture 18](lecture/Lecture_18.pdf)
     - [Lecture 19](lecture/Lecture_19.pdf)
     - [Lecture 20](lecture/Lecture_20.pdf)
+        - [Videos](https://www.youtube.com/playlist?list=PLQ-85lQlPqFNGdaeGpV8dPEeSm3AChb6L)
 
 
 7. Lab lessons
@@ -61,6 +62,7 @@
         - [The khmer software package: enabling efficient nucleotide sequence analysis](https://f1000research.com/articles/4-900/v1)
         - [Comparison of the two major classes of assembly algorithms: overlap–layout–consensus and de-bruijn-graph](http://bfg.oxfordjournals.org/content/11/1/25.full)
         - [Limitations of next-generation genome sequence assembly](http://www.nature.com/nmeth/journal/v8/n1/full/nmeth.1527.html)
+        - [Optimal Assembly for High Throughput Shotgun Sequencing](https://arxiv.org/pdf/1301.0068v3.pdf)
 
 
 9. Homework
