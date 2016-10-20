@@ -59,7 +59,7 @@ Install a Python plotting package
 
 ```bash  
 
-brew install gcc openmpi spades abyss bwa bowtie2
+brew install gcc openmpi spades abyss bwa bowtie2 samtools bedtools
 
 ```
 
@@ -119,12 +119,21 @@ quast
 
 ```bash
 
+mkdir ~/quast
+cd ~/quast
+
 curl -LO ftp://ftp.ensemblgenomes.org/pub/release-32/bacteria//fasta/bacteria_91_collection/escherichia_coli/dna/Escherichia_coli.HUSEC2011CHR1.dna_rm.toplevel.fa.gz
 
 quast ~/spades/Ecoli_all_data/scaffolds.fasta ~/abyss/ecoli-long-scaffs.fa \
         -R  Escherichia_coli.HUSEC2011CHR1.dna_rm.toplevel.fa.gz \
         -1 ~/reads/ecoli_pe.1.fq -2 ~/reads/ecoli_pe.2.fq \
         -o quast_output --threads 8
+```
+
+open a new terminal tab, download the data and view
+
+```
+scp -ri your.pem ubuntu@??.???.??.??:/home/ubuntu/abyss/quast_output ~/Downloads
 ```
 
 # Terminate your instance
