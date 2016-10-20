@@ -1,9 +1,8 @@
-Lab 10: Bacterial Genome Assembly
---
+## Lab 8: Bacterial Genome Assembly
 
----
 
-During this lab, we will acquaint ourselves with Genome Assembly using SPAdes. We will assembly the genome of <em>E. coli</em>. The data are taken from here: <a href="https://github.com/lexnederbragt/INF-BIOx121_fall2014_de_novo_assembly/blob/master/Sources.md" target="_blank">https://github.com/lexnederbragt/INF-BIOx121_fall2014_de_novo_assembly/blob/master/Sources.md</a>.
+
+During this lab, we will acquaint ourselves with Genome Assembly using SPAdes.
 
 <del>1. Install software and download data</del>
 
@@ -11,129 +10,91 @@ During this lab, we will acquaint ourselves with Genome Assembly using SPAdes. 
 
 3. Assemble
 
--
-
-The SPAdes manuscript: <a href="http://www.ncbi.nlm.nih.gov/pubmed/22506599" target="_blank">http://www.ncbi.nlm.nih.gov/pubmed/22506599</a>
-The SPAdes manual: <a href="http://spades.bioinf.spbau.ru/release3.1.1/manual.html" target="_blank">http://spades.bioinf.spbau.ru/release3.1.1/manual.html</a>
-SPAdes website: <a href="http://bioinf.spbau.ru/spades" target="_blank">http://bioinf.spbau.ru/spades</a>
-ABySS webpage: <a href="https://github.com/bcgsc/abyss" target="_blank">https://github.com/bcgsc/abyss</a>
-
--
-
-> Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>c3.2xlarge</strong></span> (note different instance type). Remember to change the permission of your key code `chmod 400 ~/Downloads/????.pem` (change ????.pem to whatever you named it)
 
 
-	ssh -i ~/Downloads/?????.pem ubuntu@ec2-???-???-???-???.compute-1.amazonaws.com
+The SPAdes manuscript:
 
 
----
+Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>c4.2xlarge</strong></span> (note different instance type). Remember to change the permission of your key code `chmod 400 ~/Downloads/????.pem` (change ????.pem to whatever you named it)
 
-> Update Software
+```bash
+sudo apt-get update && sudo apt-get -y upgrade
+```
 
+Install other software
 
-	sudo bash
-	apt-get update
-
-
----
-
-> Install updates
-
-
-	apt-get -y upgrade
+```bash
+sudo apt-get -y install build-essential git
+```
 
 
----
+Install LinuxBrew
 
-> Install other software
+```bash
 
-
-	apt-get -y install subversion tmux git curl libncurses5-dev gcc make g++ python-dev unzip dh-autoreconf zlib1g-dev libboost1.55-dev sparsehash openmpi*
-
-
-
----
-
-> Install SPAdes
+cd
+wget https://keybase.io/mpapis/key.asc
+gpg --import key.asc
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+source /home/ubuntu/.rvm/scripts/rvm
 
 
-    cd $HOME
-    wget http://spades.bioinf.spbau.ru/release3.1.1/SPAdes-3.1.1-Linux.tar.gz
-    tar -zxf SPAdes-3.1.1-Linux.tar.gz
-    cd SPAdes-3.1.1-Linux
-    PATH=$PATH:$(pwd)/bin
+sudo mkdir /home/linuxbrew
+sudo chown $USER:$USER /home/linuxbrew
+git clone https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbrew
+echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >> ~/.profile
+echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >> ~/.profile
+echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >> ~/.profile
+source ~/.profile
+brew tap Gen711/homebrew-science
+brew update
+brew doctor
 
 
----
+```
 
-> Install ABySS
+```bash  
 
+brew install gcc openmpi spades abyss quast
 
-    cd $HOME
-    git clone https://github.com/bcgsc/abyss.git
-    cd abyss
-    ./autogen.sh
-    ./configure --enable-maxk=128 --prefix=/usr/local/ --with-mpi=/usr/lib/openmpi/
-    make -j4
-    make all install
+```
 
+Download and unpack the data
 
--
-
-> Install a script for assembly evaluation.
+```bash
+cd ~/reads
+wget https://s3.amazonaws.com/gen711/ecoli_data.tar.gz
+tar -zxf ecoli_data.tar.gz
+```
 
 
-    git clone https://github.com/lexnederbragt/sequencetools.git
-    cd sequencetools/
-    PATH=$PATH:$(pwd)
+Assembly. Try this with different data combos (with mate pair data, without, with minION data and without, etc). Remember to name your assemblies something different using the `-o` flag. Spades has a built-in error correction tool (remove `--only-assembler`). Does 'double error correction seem to make a difference?'.
 
+```bash
 
-> Download and unpack the data
+mkdir ~/spades
+cd ~/spades
 
-
-	cd /mnt
-	wget https://s3.amazonaws.com/gen711/ecoli_data.tar.gz
-	tar -zxf ecoli_data.tar.gz
-
-
-> Assembly. Try this with different data combos (with mate pair data, without, with minION data and without, etc). Remember to name your assemblies something different using the `-o` flag. Spades has a built-in error correction tool (remove `--only-assembler`). Does 'double error correction seem to make a difference?'.
-
-
-    mkdir /mnt/spades
-    cd /mnt/spades
-    
-    spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 127 \
-    --pe1-1 /mnt/ecoli_pe.1.fq \
-    --pe1-2 /mnt/ecoli_pe.2.fq \
-    --mp1-1 /mnt/nextera.1.fq \
-    --mp1-2 /mnt/nextera.2.fq \
-    --pacbio /mnt/minion.data.fasta \
-    -o Ecoli_all_data
-
-
----
-
-> Evaluate Assemblies
-
-
-    abyss-fac Ecoli_all_data/scaffolds.fasta
-    
-    #take a closer look.
-    
-    assemblathon_stats.pl Ecoli_all_data/scaffolds.fasta
+spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 127 \
+--pe1-1 ~/reads/ecoli_pe.1.fq \
+--pe1-2 ~/reads/ecoli_pe.2.fq \
+--mp1-1 ~/reads/nextera.1.fq \
+--mp1-2 ~/reads/nextera.2.fq \
+--pacbio ~/reads/minion.data.fasta \
+-o Ecoli_all_data
+```
 
 
 
-
-> Assembling with ABySS (optional)
-
-
-    mkdir /mnt/abyss
-    cd /mnt/abyss
-    
-    abyss-pe np=8 k=127 name=ecoli lib='pe1' mp='mp1' long='minion' \
-    pe1='/mnt/ecoli_pe.1.fq /mnt/ecoli_pe.2.fq' \
-    mp1='/mnt/nextera.1.fq /mnt/nextera.2.fq' \
-    minion='/mnt/minion.data.fasta' mp1_l=30
+Assembling with ABySS (optional)
 
 
+```bash
+mkdir ~/abyss
+cd ~/abyss
+
+abyss-pe np=8 k=127 name=ecoli lib='pe1' mp='mp1' long='minion' \
+pe1='~/reads/ecoli_pe.1.fq /mnt/ecoli_pe.2.fq' \
+mp1='~/reads/nextera.1.fq /mnt/nextera.2.fq' \
+minion='~/reads/minion.data.fasta' mp1_l=30
+```
