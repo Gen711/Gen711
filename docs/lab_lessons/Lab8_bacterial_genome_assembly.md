@@ -15,7 +15,7 @@ During this lab, we will acquaint ourselves with Genome Assembly using SPAdes.
 The SPAdes manuscript:
 
 
-Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>c4.2xlarge</strong></span> (note different instance type). Remember to change the permission of your key code `chmod 400 ~/Downloads/????.pem` (change ????.pem to whatever you named it)
+Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>c4.2xlarge and 50Gb HD space.</strong></span> Remember to change the permission of your key code `chmod 400 ~/Downloads/????.pem` (change ????.pem to whatever you named it)
 
 ```bash
 sudo apt-get update && sudo apt-get -y upgrade
@@ -53,15 +53,31 @@ brew doctor
 
 ```
 
+Install a Python plotting package
+
+
+
 ```bash  
 
-brew install gcc openmpi spades abyss quast
+brew install gcc openmpi spades abyss bwa
 
 ```
+
+```bash
+pip install matplotlib
+```
+
+```bash  
+
+brew install quast
+
+```
+
 
 Download and unpack the data
 
 ```bash
+mkdir ~/reads
 cd ~/reads
 wget https://s3.amazonaws.com/gen711/ecoli_data.tar.gz
 tar -zxf ecoli_data.tar.gz
@@ -75,7 +91,7 @@ Assembly. Try this with different data combos (with mate pair data, without, wit
 mkdir ~/spades
 cd ~/spades
 
-spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 127 \
+spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 96 \
 --pe1-1 ~/reads/ecoli_pe.1.fq \
 --pe1-2 ~/reads/ecoli_pe.2.fq \
 --mp1-1 ~/reads/nextera.1.fq \
@@ -86,15 +102,15 @@ spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 127 \
 
 
 
-Assembling with ABySS (optional)
+Assembling with ABySS
 
 
 ```bash
 mkdir ~/abyss
 cd ~/abyss
 
-abyss-pe np=8 k=127 name=ecoli lib='pe1' mp='mp1' long='minion' \
-pe1='~/reads/ecoli_pe.1.fq /mnt/ecoli_pe.2.fq' \
-mp1='~/reads/nextera.1.fq /mnt/nextera.2.fq' \
+abyss-pe np=8 k=96 name=ecoli lib='pe1' mp='mp1' long='minion' \
+pe1='~/reads/ecoli_pe.1.fq ~/reads/ecoli_pe.2.fq' \
+mp1='~/reads/nextera.1.fq ~/reads/nextera.2.fq' \
 minion='~/reads/minion.data.fasta' mp1_l=30
 ```
