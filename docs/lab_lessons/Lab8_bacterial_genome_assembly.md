@@ -59,7 +59,7 @@ Install a Python plotting package
 
 ```bash  
 
-brew install gcc openmpi spades abyss bwa
+brew install gcc openmpi spades abyss bwa bowtie2
 
 ```
 
@@ -91,7 +91,7 @@ Assembly. Try this with different data combos (with mate pair data, without, wit
 mkdir ~/spades
 cd ~/spades
 
-spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 96 \
+spades.py -t 8 -m 15 --only-assembler --mp1-rf -k 95 \
 --pe1-1 ~/reads/ecoli_pe.1.fq \
 --pe1-2 ~/reads/ecoli_pe.2.fq \
 --mp1-1 ~/reads/nextera.1.fq \
@@ -109,8 +109,22 @@ Assembling with ABySS
 mkdir ~/abyss
 cd ~/abyss
 
-abyss-pe np=8 k=96 name=ecoli lib='pe1' mp='mp1' long='minion' \
+abyss-pe np=8 k=95 name=ecoli lib='pe1' mp='mp1' long='minion' \
 pe1='~/reads/ecoli_pe.1.fq ~/reads/ecoli_pe.2.fq' \
 mp1='~/reads/nextera.1.fq ~/reads/nextera.2.fq' \
 minion='~/reads/minion.data.fasta' mp1_l=30
 ```
+
+quast
+
+```bash
+
+curl -LO ftp://ftp.ensemblgenomes.org/pub/release-32/bacteria//fasta/bacteria_91_collection/escherichia_coli/dna/Escherichia_coli.HUSEC2011CHR1.dna_rm.toplevel.fa.gz
+
+quast ~/spades/Ecoli_all_data/scaffolds.fasta ~/abyss/ecoli-long-scaffs.fa \
+        -R  Escherichia_coli.HUSEC2011CHR1.dna_rm.toplevel.fa.gz \
+        -1 ~/reads/ecoli_pe.1.fq -2 ~/reads/ecoli_pe.2.fq \
+        -o quast_output --threads 8
+```
+
+# Terminate your instance
