@@ -35,6 +35,7 @@
     - [Lecture 19](lecture/Lecture_19.pdf)
     - [Lecture 20](lecture/Lecture_20.pdf)
         - [Videos](https://www.youtube.com/playlist?list=PLQ-85lQlPqFNGdaeGpV8dPEeSm3AChb6L)
+    - [Lecture 21](lecture/Lecture_21.pdf)
 
 
 7. Lab lessons
@@ -46,7 +47,7 @@
     - [Week 4 lab](lab_lessons/trimming.md)
     - [Week 5 lab](lab_lessons/Lab5_mapping.md)
     - [Week 7 lab](lab_lessons/khmer_diginorm.md)
-    - [Week 7 lab](lab_lessons/Lab8_bacterial_genome_assembly.md)
+    - [Week 8 lab](lab_lessons/Lab8_bacterial_genome_assembly.md)
 
 
 8. Reading
