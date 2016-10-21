@@ -133,7 +133,9 @@ quast ~/spades/Ecoli_all_data/scaffolds.fasta ~/abyss/ecoli-long-scaffs.fa \
 open a new terminal tab, download the data and view
 
 ```
-scp -ri your.pem ubuntu@??.???.??.??:/home/ubuntu/abyss/quast_output ~/Downloads
+scp -ri your.pem ubuntu@??.???.??.??:/home/ubuntu/quast/quast_output ~/Downloads
 ```
+
+### Which assembly is better??
 
 # Terminate your instance
