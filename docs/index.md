@@ -36,6 +36,7 @@
     - [Lecture 20](lecture/Lecture_20.pdf)
         - [Videos](https://www.youtube.com/playlist?list=PLQ-85lQlPqFNGdaeGpV8dPEeSm3AChb6L)
     - [Lecture 21](lecture/Lecture_21.pdf)
+    - [Lecture 22](lecture/Lecture_22.pdf)
 
 
 7. Lab lessons
