@@ -37,6 +37,7 @@
         - [Videos](https://www.youtube.com/playlist?list=PLQ-85lQlPqFNGdaeGpV8dPEeSm3AChb6L)
     - [Lecture 21](lecture/Lecture_21.pdf)
     - [Lecture 22 + Project Info](lecture/Lecture_22.pdf)
+    - [Lecture 23](lecture/Lecture_23.pdf)
 
 
 7. Lab lessons
