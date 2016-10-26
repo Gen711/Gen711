@@ -67,7 +67,7 @@
         - [Comparison of the two major classes of assembly algorithms: overlap–layout–consensus and de-bruijn-graph](http://bfg.oxfordjournals.org/content/11/1/25.full)
         - [Limitations of next-generation genome sequence assembly](http://www.nature.com/nmeth/journal/v8/n1/full/nmeth.1527.html)
         - [Optimal Assembly for High Throughput Shotgun Sequencing](https://arxiv.org/pdf/1301.0068v3.pdf)
-
+        - [Trinity paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3875132/)
 
 9. Homework
 
