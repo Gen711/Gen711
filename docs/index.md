@@ -38,6 +38,8 @@
     - [Lecture 21](lecture/Lecture_21.pdf)
     - [Lecture 22 + Project Info](lecture/Lecture_22.pdf)
     - [Lecture 23](lecture/Lecture_23.pdf)
+    - [Lecture 24](lecture/Lecture_24.pdf)
+    - [Lecture 25](lecture/Lecture_25.pdf)
 
 
 7. Lab lessons
