@@ -40,6 +40,7 @@
     - [Lecture 23](lecture/Lecture_23.pdf)
     - [Lecture 24](lecture/Lecture_24.pdf)
     - [Lecture 25](lecture/Lecture_25.pdf)
+    - [Lecture 26](lecture/Lecture_26.pdf)
 
 
 7. Lab lessons
@@ -70,6 +71,8 @@
         - [Limitations of next-generation genome sequence assembly](http://www.nature.com/nmeth/journal/v8/n1/full/nmeth.1527.html)
         - [Optimal Assembly for High Throughput Shotgun Sequencing](https://arxiv.org/pdf/1301.0068v3.pdf)
         - [Trinity paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3875132/)
+        - [BUSCO](http://bioinformatics.oxfordjournals.org/content/31/19/3210.full)
+        - [TransRate](http://genome.cshlp.org/content/early/2016/06/01/gr.196469.115.full.pdf)
 
 9. Homework
 
