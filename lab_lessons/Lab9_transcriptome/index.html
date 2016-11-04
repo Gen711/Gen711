@@ -318,7 +318,7 @@ curl -LO https://s3.amazonaws.com/feeding/1.subsamp_1.fastq.gz
 curl -LO https://s3.amazonaws.com/feeding/1.subsamp_2.fastq.gz
 </code></pre>
 
-<p>Assembly. SPAdes is probably not the best assembler for transcriptomes, but it's FAST.. And we don't have a lot of time, so here it is! We're running 2 different assemblies, one using a kmer value of 55, one using a kmer valus of 25. Which one gives you the better assembly? Predictions?</p>
+<p>Assembly. SPAdes is probably not the best assembler for transcriptomes, but it's FAST.. And we don't have a lot of time, so here it is! We're running 2 different assemblies, one using a kmer value of 55, one using a kmer value of 25. Which one gives you the better assembly? Predictions?</p>
 <pre><code class="bash">mkdir ~/spades
 cd ~/spades
 
@@ -335,7 +335,10 @@ spades.py -t 16 -m 25 -k 25 --rna --only-assembler \
 </code></pre>
 
 <h5 id="run-transrate-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run TransRate for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</h5>
-<pre><code class="bash">transrate -o K55 -t 16 \
+<pre><code class="bash">
+mkdir ~/evaluation &amp;&amp; cd ~/evaluation
+
+transrate -o K55 -t 16 \
 -a ~/spades/K55/transcripts.fasta \
 --left ~/reads/1.subsamp_1.fastq.gz \
 --right ~/reads/1.subsamp_2.fastq.gz
@@ -343,7 +346,7 @@ spades.py -t 16 -m 25 -k 25 --rna --only-assembler \
 
 <h5 id="run-busco-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run BUSCO for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</h5>
 <pre><code class="bash">BUSCO.py -m tran --cpu 16 -l ~/busco/metazoa_odb9 \
--o K55 -i ~/spades/K55/transcripts.fasta 
+-o K55 -i ~/spades/K55/transcripts.fasta
 </code></pre>
 
 <h3 id="seriously-what-do-these-numbers-tell-you-about-your-transcriptome-which-assembly-is-better">Seriously, what do these numbers tell you about your transcriptome? Which assembly is better?</h3>
