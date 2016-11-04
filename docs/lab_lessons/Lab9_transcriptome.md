@@ -12,7 +12,7 @@ sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade
 Install other software
 
 ```bash
-sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib libboost
+sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib 
 ```
 
 Install LinuxBrew
