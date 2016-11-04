@@ -12,7 +12,7 @@ sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade
 Install other software
 
 ```bash
-sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib 
+sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib
 ```
 
 Install LinuxBrew
@@ -129,7 +129,7 @@ transrate -o K55 -t 16 \
 ##### Run BUSCO for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.
 ```bash
 BUSCO.py -m tran --cpu 16 -l ~/busco/metazoa_odb9 \
--o K55 -i ~/spades/K55/transcripts.fasta
+-o K55 -i ~/spades/K55/transcripts.fasta 
 ```
 
 ### Seriously, what do these numbers tell you about your transcriptome? Which assembly is better?
