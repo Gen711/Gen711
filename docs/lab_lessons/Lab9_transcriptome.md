@@ -97,7 +97,7 @@ curl -LO https://s3.amazonaws.com/feeding/1.subsamp_2.fastq.gz
 ```
 
 
-Assembly. SPAdes is probably not the best assembler for transcriptomes, but it's FAST.. And we don't have a lot of time, so here it is! We're running 2 different assemblies, one using a kmer value of 55, one using a kmer valus of 25. Which one gives you the better assembly? Predictions?
+Assembly. SPAdes is probably not the best assembler for transcriptomes, but it's FAST.. And we don't have a lot of time, so here it is! We're running 2 different assemblies, one using a kmer value of 55, one using a kmer value of 25. Which one gives you the better assembly? Predictions?
 
 ```bash
 mkdir ~/spades
@@ -118,6 +118,9 @@ spades.py -t 16 -m 25 -k 25 --rna --only-assembler \
 ##### Run TransRate for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.
 
 ```bash
+
+mkdir ~/evaluation && cd ~/evaluation
+
 transrate -o K55 -t 16 \
 -a ~/spades/K55/transcripts.fasta \
 --left ~/reads/1.subsamp_1.fastq.gz \
@@ -129,7 +132,7 @@ transrate -o K55 -t 16 \
 ##### Run BUSCO for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.
 ```bash
 BUSCO.py -m tran --cpu 16 -l ~/busco/metazoa_odb9 \
--o K55 -i ~/spades/K55/transcripts.fasta 
+-o K55 -i ~/spades/K55/transcripts.fasta
 ```
 
 ### Seriously, what do these numbers tell you about your transcriptome? Which assembly is better?
