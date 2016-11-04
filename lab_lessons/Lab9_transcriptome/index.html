@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>README - Gen711 - Fall2016</title>
+	<title>Lab9 transcriptome - Gen711 - Fall2016</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
@@ -124,8 +124,8 @@
 
                         
                             
-<li >
-    <a href="../Lab9_transcriptome/">Lab9 transcriptome</a>
+<li class="active">
+    <a href="./">Lab9 transcriptome</a>
 </li>
 
                         
@@ -136,8 +136,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">README</a>
+<li >
+    <a href="../README/">README</a>
 </li>
 
                         
@@ -192,12 +192,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../LabX_mapping/">
+                        <a rel="next" href="../Lab9_euk.genome.assembly/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../alignment/">
+                        <a rel="prev" href="../LabX_mapping/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -213,13 +213,141 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="main active"><a href="#lab-9-transcriptome-assembly">Lab 9: Transcriptome assembly</a></li>
+        
+            <li><a href="#install-software">Install software</a></li>
+        
+            <li><a href="#install-biopython">Install BioPython</a></li>
+        
+            <li><a href="#install-blast">Install Blast</a></li>
+        
+            <li><a href="#instal-transrate">Instal TransRate</a></li>
+        
+            <li><a href="#install-busco">Install BUSCO</a></li>
+        
+            <li><a href="#add-things-to-your-permanent-path">Add things to your permanent path</a></li>
+        
+            <li><a href="#download-and-unpack-the-data-this-is-1-million-reads-remember-how-many-ready-you-have-in-your-project-dataset">Download and unpack the data. This is 1 million reads. Remember how many ready you have in your project dataset.</a></li>
+        
+            <li><a href="#run-transrate-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run TransRate for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</a></li>
+        
+            <li><a href="#run-busco-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run BUSCO for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</a></li>
+        
+    
+        <li class="main "><a href="#seriously-what-do-these-numbers-tell-you-about-your-transcriptome-which-assembly-is-better">Seriously, what do these numbers tell you about your transcriptome? Which assembly is better?</a></li>
+        
+    
+        <li class="main "><a href="#terminate-your-instance">Terminate your instance</a></li>
+        
+    
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>This folder contains the (version 1) lab lessons for Gen711/811, released under a CC-BY license. </p>
-<p>This class was taught for the 1st time in Fall 2014 at the University of New Hampshire to a class of 25 (half undergrad, halF grad) with NO programming experience. We spent 2 hours per week in the computer lab doing these labs. The course website is here: http://genomebio.org/Gen711/</p>
-<p>Please feel free to fork/send me pull requests, or otherwise incorporate as you see fit.</p></div>
+<h3 id="lab-9-transcriptome-assembly">Lab 9: Transcriptome assembly</h3>
+<p>During this lab, we will acquaint ourselves with Transcriptome Assembly using SPAdes, then, we will run BUSCO and TransRate</p>
+<p>Step 1: Launch and AMI. For this exercise, we will use a <span style="color: #ff0000;"><strong>c4.4xlarge and 50Gb HD space.</strong></span> IMPORTNT: AWS changed the default machine type for UBUNTU, we want our old machine (Ubuntu 14.04), which is still there, but you have schroll to the bottom of the page to find it.</p>
+<pre><code class="bash">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade &amp;&amp; sudo apt-get -y dist-upgrade
+</code></pre>
+
+<p>Install other software</p>
+<pre><code class="bash">sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib libboost
+</code></pre>
+
+<p>Install LinuxBrew</p>
+<pre><code class="bash">cd
+wget https://keybase.io/mpapis/key.asc
+gpg --import key.asc
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
+source /home/ubuntu/.rvm/scripts/rvm
+
+
+sudo mkdir /home/linuxbrew
+sudo chown $USER:$USER /home/linuxbrew
+git clone https://github.com/Linuxbrew/brew.git /home/linuxbrew/.linuxbrew
+echo 'export PATH=&quot;/home/linuxbrew/.linuxbrew/bin:$PATH&quot;' &gt;&gt; ~/.profile
+echo 'export MANPATH=&quot;/home/linuxbrew/.linuxbrew/share/man:$MANPATH&quot;' &gt;&gt; ~/.profile
+echo 'export INFOPATH=&quot;/home/linuxbrew/.linuxbrew/share/info:$INFOPATH&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+brew tap homebrew/science
+brew update
+brew doctor
+</code></pre>
+
+<h5 id="install-software">Install software</h5>
+<pre><code class="bash">brew install gcc spades hmmer cmake
+</code></pre>
+
+<h5 id="install-biopython">Install BioPython</h5>
+<pre><code class="bash">pip install biopython
+</code></pre>
+
+<h5 id="install-blast">Install Blast</h5>
+<pre><code class="bash">cd
+curl -LO ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.5.0+-x64-linux.tar.gz
+tar -zxf ncbi-blast-2.5.0+-x64-linux.tar.gz
+PATH=$PATH:/home/ubuntu/ncbi-blast-2.5.0+/bin
+</code></pre>
+
+<h5 id="instal-transrate">Instal TransRate</h5>
+<pre><code>cd
+curl -LO https://bintray.com/artifact/download/blahah/generic/transrate-1.0.3-linux-x86_64.tar.gz
+tar -zxf transrate-1.0.3-linux-x86_64.tar.gz
+PATH=$PATH:/home/ubuntu/transrate-1.0.3-linux-x86_64:/home/ubuntu/transrate-1.0.3-linux-x86_64/bin
+</code></pre>
+
+<h5 id="install-busco">Install BUSCO</h5>
+<pre><code class="bash">cd
+git clone https://gitlab.com/ezlab/busco.git
+cd busco
+PATH=$PATH:$(pwd)
+wget http://cegg.unige.ch/pub/BUSCO2/metazoa_odb9.tar.gz &amp;&amp; tar -zxf metazoa_odb9.tar.gz
+</code></pre>
+
+<h5 id="add-things-to-your-permanent-path">Add things to your permanent path</h5>
+<pre><code class="bash">echo PATH=$PATH &gt;&gt; ~/.profile
+echo export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/Cellar/salmon/0.7.2/lib &gt;&gt; ~/.profile
+echo source /home/ubuntu/.rvm/scripts/rvm &gt;&gt; ~/.profile
+source ~/.profile
+</code></pre>
+
+<h5 id="download-and-unpack-the-data-this-is-1-million-reads-remember-how-many-ready-you-have-in-your-project-dataset">Download and unpack the data. This is 1 million reads. Remember how many ready you have in your project dataset.</h5>
+<pre><code class="bash">mkdir ~/reads
+cd ~/reads
+curl -LO https://s3.amazonaws.com/feeding/1.subsamp_1.fastq.gz
+curl -LO https://s3.amazonaws.com/feeding/1.subsamp_2.fastq.gz
+</code></pre>
+
+<p>Assembly. SPAdes is probably not the best assembler for transcriptomes, but it's FAST.. And we don't have a lot of time, so here it is! We're running 2 different assemblies, one using a kmer value of 55, one using a kmer valus of 25. Which one gives you the better assembly? Predictions?</p>
+<pre><code class="bash">mkdir ~/spades
+cd ~/spades
+
+spades.py -t 16 -m 25 -k 55 --rna --only-assembler \
+--pe1-1 ~/reads/1.subsamp_1.fastq.gz \
+--pe1-2 ~/reads/1.subsamp_2.fastq.gz \
+-o K55
+
+spades.py -t 16 -m 25 -k 25 --rna --only-assembler \
+--pe1-1 ~/reads/1.subsamp_1.fastq.gz \
+--pe1-2 ~/reads/1.subsamp_2.fastq.gz \
+-o K25
+
+</code></pre>
+
+<h5 id="run-transrate-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run TransRate for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</h5>
+<pre><code class="bash">transrate -o K55 -t 16 \
+-a ~/spades/K55/transcripts.fasta \
+--left ~/reads/1.subsamp_1.fastq.gz \
+--right ~/reads/1.subsamp_2.fastq.gz
+</code></pre>
+
+<h5 id="run-busco-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run BUSCO for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</h5>
+<pre><code class="bash">BUSCO.py -m tran --cpu 16 -l ~/busco/metazoa_odb9 \
+-o K55 -i ~/spades/K55/transcripts.fasta
+</code></pre>
+
+<h3 id="seriously-what-do-these-numbers-tell-you-about-your-transcriptome-which-assembly-is-better">Seriously, what do these numbers tell you about your transcriptome? Which assembly is better?</h3>
+<h1 id="terminate-your-instance">Terminate your instance</h1></div>
             
         </div>
 
