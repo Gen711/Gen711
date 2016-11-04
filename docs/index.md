@@ -53,6 +53,7 @@
     - [Week 5 lab](lab_lessons/Lab5_mapping.md)
     - [Week 7 lab](lab_lessons/khmer_diginorm.md)
     - [Week 8 lab](lab_lessons/Lab8_bacterial_genome_assembly.md)
+    - [Week 9 lab](lab_lessons/Lab9_transcriptome.md)
 
 
 8. Reading
