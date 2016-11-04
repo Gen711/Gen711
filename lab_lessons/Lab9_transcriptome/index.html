@@ -251,7 +251,7 @@
 </code></pre>
 
 <p>Install other software</p>
-<pre><code class="bash">sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib libboost
+<pre><code class="bash">sudo apt-get -y install build-essential git python-pip python-numpy python-matplotlib
 </code></pre>
 
 <p>Install LinuxBrew</p>
@@ -343,7 +343,7 @@ spades.py -t 16 -m 25 -k 25 --rna --only-assembler \
 
 <h5 id="run-busco-for-both-the-k25-and-k55-assemblies-here-is-the-command-for-k55-you-figure-out-what-the-k25-command-is">Run BUSCO for BOTH the K25 and K55 assemblies.. Here is the command for K=55, you figure out what the K=25 command is.</h5>
 <pre><code class="bash">BUSCO.py -m tran --cpu 16 -l ~/busco/metazoa_odb9 \
--o K55 -i ~/spades/K55/transcripts.fasta
+-o K55 -i ~/spades/K55/transcripts.fasta 
 </code></pre>
 
 <h3 id="seriously-what-do-these-numbers-tell-you-about-your-transcriptome-which-assembly-is-better">Seriously, what do these numbers tell you about your transcriptome? Which assembly is better?</h3>
