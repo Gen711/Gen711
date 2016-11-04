@@ -41,7 +41,8 @@
     - [Lecture 24](lecture/Lecture_24.pdf)
     - [Lecture 25](lecture/Lecture_25.pdf)
     - [Lecture 26](lecture/Lecture_26.pdf)
-
+    - [Lecture 27](lecture/Lecture_27.pdf)
+        - [Units of Expression](https://haroldpimentel.wordpress.com/2014/05/08/what-the-fpkm-a-review-rna-seq-expression-units/)
 
 7. Lab lessons
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
