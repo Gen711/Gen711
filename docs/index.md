@@ -43,12 +43,17 @@
     - [Lecture 26](lecture/Lecture_26.pdf)
     - [Lecture 27](lecture/Lecture_27.pdf)
         - [Units of Expression](https://haroldpimentel.wordpress.com/2014/05/08/what-the-fpkm-a-review-rna-seq-expression-units/)
+    - Lecture 28 - classroom discussion, no slides
+    - [Lecture 29](lecture/Lecture_29.pdf)
+
+
+
 
 7. Lab lessons
     - [Command Line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp)
     - [Launch an EC2 Instance](lecture/Lanch_AMI.pdf)
     - [Getting Started](lab_lessons/unix.md)
-    - [WEEK 2 LAB](lab_lessons/Lab1_blast.md)
+    - [Week 2 lab](lab_lessons/Lab1_blast.md)
     - [Week 3 lab](lab_lessons/alignment.md)
     - [Week 4 lab](lab_lessons/trimming.md)
     - [Week 5 lab](lab_lessons/Lab5_mapping.md)
