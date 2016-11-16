@@ -30,7 +30,7 @@
     - [Lecture 12](lecture/Lecture_12.pdf)
     - [Lecture 13](lecture/Lecture_13.pdf)
     - [Lecture 14](lecture/Lecture_14.pdf)
-    - [Lecture 15](lecture/Lecture_15.pdf)
+    - [Lecture 15 review ](lecture/Lecture_15.pdf)
     - [Lecture 18](lecture/Lecture_18.pdf)
     - [Lecture 19](lecture/Lecture_19.pdf)
     - [Lecture 20](lecture/Lecture_20.pdf)
@@ -45,6 +45,7 @@
         - [Units of Expression](https://haroldpimentel.wordpress.com/2014/05/08/what-the-fpkm-a-review-rna-seq-expression-units/)
     - Lecture 28 - classroom discussion, no slides
     - [Lecture 29](lecture/Lecture_29.pdf)
+    - [Lecture 30 review](lecture/Lecture_30.pdf)
 
 
 
