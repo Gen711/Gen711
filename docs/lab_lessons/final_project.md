@@ -10,7 +10,7 @@ I have made a Amazon machine with all the software already installed, so you wil
 2. On the left side bar, you will see AMIs, click this. You'll be launching an AMI that I've made for you.
 3. Once on the AMI page, type `UNH_Gen711` and change `Owned by me` to `Public Images`, then hit enter. The image should appear.
 4. At this point, launching the machine is basically how you have done it all semester.
-5. If you are assembling less than 30M reads, you will probably want a machine like the c4.4xlarge, which has 16 cores. If you are assemblign more that 30M reads, try the c4.8xlarge with 36 cores. Make sure to change the code in all places to use all the cores.     
+5. If you are assembling less than 30M reads, you will probably want a machine like the c4.4xlarge, which has 16 cores. If you are assembling more that 30M reads, try the c4.8xlarge with 36 cores. Make sure to change the code in all places to use all the cores.     
 
 ##### Workflow
 
