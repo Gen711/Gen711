@@ -31,6 +31,7 @@
     - [Lecture 13](lecture/Lecture_13.pdf)
     - [Lecture 14](lecture/Lecture_14.pdf)
     - [Lecture 15 review ](lecture/Lecture_15.pdf)
+    - [Lecture 16](lecture/Lecture_16.pdf)    
     - [Lecture 18](lecture/Lecture_18.pdf)
     - [Lecture 19](lecture/Lecture_19.pdf)
     - [Lecture 20](lecture/Lecture_20.pdf)
